@@ -1,0 +1,1707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TMDb - MovieService</title>
+    <link rel="stylesheet" type="text/css" href="/TMDb/all.css" media="all" />
+</head>
+<body>
+    <header>
+        <a href="/TMDb/">
+            <strong>
+                TMDb
+            </strong>
+            <span>Documentation</span>
+        </a>
+    </header>
+
+    <!--
+    <form class="search">
+        <input type="search" placeholder="Search" />
+    </form>
+    -->
+
+    <nav>
+        <div class="wrapper">
+            <h2>On This Page</h2>
+            <ol><li><a href="#default implementations">Default Implementations</a><ul><li class="function"><a href="#movieservice.fetchreviews(formovie:page:completion:)">fetch​Reviews(for​Movie:​page:​completion:​)</a></li><li class="function"><a href="#movieservice.fetchrecommendations(formovie:page:completion:)">fetch​Recommendations(for​Movie:​page:​completion:​)</a></li><li class="function"><a href="#movieservice.fetchsimilar(tomovie:page:completion:)">fetch​Similar(to​Movie:​page:​completion:​)</a></li><li class="function"><a href="#movieservice.fetchnowplaying(page:completion:)">fetch​Now​Playing(page:​completion:​)</a></li><li class="function"><a href="#movieservice.fetchpopular(page:completion:)">fetch​Popular(page:​completion:​)</a></li><li class="function"><a href="#movieservice.fetchtoprated(page:completion:)">fetch​Top​Rated(page:​completion:​)</a></li><li class="function"><a href="#movieservice.fetchupcoming(page:completion:)">fetch​Upcoming(page:​completion:​)</a></li><li class="function"><a href="#movieservice.reviewspublisher(formovie:page:)">reviews​Publisher(for​Movie:​page:​)</a></li><li class="function"><a href="#movieservice.recommendationspublisher(formovie:page:)">recommendations​Publisher(for​Movie:​page:​)</a></li><li class="function"><a href="#movieservice.similarpublisher(tomovie:page:)">similar​Publisher(to​Movie:​page:​)</a></li><li class="function"><a href="#movieservice.nowplayingpublisher(page:)">now​Playing​Publisher(page:​)</a></li><li class="function"><a href="#movieservice.popularpublisher(page:)">popular​Publisher(page:​)</a></li><li class="function"><a href="#movieservice.topratedpublisher(page:)">top​Rated​Publisher(page:​)</a></li><li class="function"><a href="#movieservice.upcomingpublisher(page:)">upcoming​Publisher(page:​)</a></li></ul></li><li><a href="#requirements">Requirements</a><ul><li class="function"><a href="#movieservice.fetchdetails(formovie:completion:)">fetch​Details(for​Movie:​completion:​)</a></li><li class="function"><a href="#movieservice.fetchcredits(formovie:completion:)">fetch​Credits(for​Movie:​completion:​)</a></li><li class="function"><a href="#movieservice.fetchreviews(formovie:page:completion:)">fetch​Reviews(for​Movie:​page:​completion:​)</a></li><li class="function"><a href="#movieservice.fetchimages(formovie:completion:)">fetch​Images(for​Movie:​completion:​)</a></li><li class="function"><a href="#movieservice.fetchvideos(formovie:completion:)">fetch​Videos(for​Movie:​completion:​)</a></li><li class="function"><a href="#movieservice.fetchrecommendations(formovie:page:completion:)">fetch​Recommendations(for​Movie:​page:​completion:​)</a></li><li class="function"><a href="#movieservice.fetchsimilar(tomovie:page:completion:)">fetch​Similar(to​Movie:​page:​completion:​)</a></li><li class="function"><a href="#movieservice.fetchnowplaying(page:completion:)">fetch​Now​Playing(page:​completion:​)</a></li><li class="function"><a href="#movieservice.fetchpopular(page:completion:)">fetch​Popular(page:​completion:​)</a></li><li class="function"><a href="#movieservice.fetchtoprated(page:completion:)">fetch​Top​Rated(page:​completion:​)</a></li><li class="function"><a href="#movieservice.fetchupcoming(page:completion:)">fetch​Upcoming(page:​completion:​)</a></li><li class="function"><a href="#movieservice.detailspublisher(formovie:)">details​Publisher(for​Movie:​)</a></li><li class="function"><a href="#movieservice.creditspublisher(formovie:)">credits​Publisher(for​Movie:​)</a></li><li class="function"><a href="#movieservice.reviewspublisher(formovie:page:)">reviews​Publisher(for​Movie:​page:​)</a></li><li class="function"><a href="#movieservice.imagespublisher(formovie:)">images​Publisher(for​Movie:​)</a></li><li class="function"><a href="#movieservice.videospublisher(formovie:)">videos​Publisher(for​Movie:​)</a></li><li class="function"><a href="#movieservice.recommendationspublisher(formovie:page:)">recommendations​Publisher(for​Movie:​page:​)</a></li><li class="function"><a href="#movieservice.similarpublisher(tomovie:page:)">similar​Publisher(to​Movie:​page:​)</a></li><li class="function"><a href="#movieservice.nowplayingpublisher(page:)">now​Playing​Publisher(page:​)</a></li><li class="function"><a href="#movieservice.popularpublisher(page:)">popular​Publisher(page:​)</a></li><li class="function"><a href="#movieservice.topratedpublisher(page:)">top​Rated​Publisher(page:​)</a></li><li class="function"><a href="#movieservice.upcomingpublisher(page:)">upcoming​Publisher(page:​)</a></li><li class="function"><a href="#movieservice.details(formovie:)">details(for​Movie:​)</a></li><li class="function"><a href="#movieservice.credits(formovie:)">credits(for​Movie:​)</a></li><li class="function"><a href="#movieservice.reviews(formovie:page:)">reviews(for​Movie:​page:​)</a></li><li class="function"><a href="#movieservice.images(formovie:)">images(for​Movie:​)</a></li><li class="function"><a href="#movieservice.videos(formovie:)">videos(for​Movie:​)</a></li><li class="function"><a href="#movieservice.recommendations(formovie:page:)">recommendations(for​Movie:​page:​)</a></li><li class="function"><a href="#movieservice.similar(tomovie:page:)">similar(to​Movie:​page:​)</a></li><li class="function"><a href="#movieservice.nowplaying(page:)">now​Playing(page:​)</a></li><li class="function"><a href="#movieservice.popular(page:)">popular(page:​)</a></li><li class="function"><a href="#movieservice.toprated(page:)">top​Rated(page:​)</a></li><li class="function"><a href="#movieservice.upcoming(page:)">upcoming(page:​)</a></li></ul></li></ol>
+        </div>
+    </nav>
+
+    <main>
+        <article>
+            <h1>
+    <small>Protocol</small>
+    <code class="name">Movie​Service</code>
+</h1>
+
+<div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">protocol</span> <span class="type">MovieService</span>  </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Fetch details about movies.</p>
+
+</div>
+
+    <section id="default implementations">
+        <h2>Default Implementations</h2>
+
+        <div role="article" class="function" id="movieservice.fetchreviews(formovie:page:completion:)">
+    <h3>
+        <code><a href="#movieservice.fetchreviews(formovie:page:completion:)">fetch​Reviews(for​Movie:​page:​completion:​)</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">func</span> <span class="function">fetchReviews</span>(<span class="variable">forMovie</span> <span class="variable">movieID</span>: <a href="/TMDb/Movie"><span class="type">Movie</span></a>.<span class="type">ID</span>, <span class="variable">page</span>: <span class="type">Int</span>? = <span class="keyword">nil</span>,
+                      <span class="variable">completion</span>: <span class="attribute">@</span><span class="attribute">escaping</span> (<span class="type">Result</span>&lt;<span class="type">ReviewPageableList</span>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;) -&gt; <span class="type">Void</span>)  </body></html></code></pre>
+</div>
+</div>
+<div role="article" class="function" id="movieservice.fetchrecommendations(formovie:page:completion:)">
+    <h3>
+        <code><a href="#movieservice.fetchrecommendations(formovie:page:completion:)">fetch​Recommendations(for​Movie:​page:​completion:​)</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">func</span> <span class="function">fetchRecommendations</span>(<span class="variable">forMovie</span> <span class="variable">movieID</span>: <a href="/TMDb/Movie"><span class="type">Movie</span></a>.<span class="type">ID</span>, <span class="variable">page</span>: <span class="type">Int</span>? = <span class="keyword">nil</span>,
+                              <span class="variable">completion</span>: <span class="attribute">@</span><span class="attribute">escaping</span> (<span class="type">Result</span>&lt;<span class="type">MoviePageableList</span>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;) -&gt; <span class="type">Void</span>)  </body></html></code></pre>
+</div>
+</div>
+<div role="article" class="function" id="movieservice.fetchsimilar(tomovie:page:completion:)">
+    <h3>
+        <code><a href="#movieservice.fetchsimilar(tomovie:page:completion:)">fetch​Similar(to​Movie:​page:​completion:​)</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">func</span> <span class="function">fetchSimilar</span>(<span class="variable">toMovie</span> <span class="variable">movieID</span>: <a href="/TMDb/Movie"><span class="type">Movie</span></a>.<span class="type">ID</span>, <span class="variable">page</span>: <span class="type">Int</span>? = <span class="keyword">nil</span>,
+                      <span class="variable">completion</span>: <span class="attribute">@</span><span class="attribute">escaping</span> (<span class="type">Result</span>&lt;<span class="type">MoviePageableList</span>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;) -&gt; <span class="type">Void</span>)  </body></html></code></pre>
+</div>
+</div>
+<div role="article" class="function" id="movieservice.fetchnowplaying(page:completion:)">
+    <h3>
+        <code><a href="#movieservice.fetchnowplaying(page:completion:)">fetch​Now​Playing(page:​completion:​)</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">func</span> <span class="function">fetchNowPlaying</span>(<span class="variable">page</span>: <span class="type">Int</span>? = <span class="keyword">nil</span>, <span class="variable">completion</span>: <span class="attribute">@</span><span class="attribute">escaping</span> (<span class="type">Result</span>&lt;<span class="type">MoviePageableList</span>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;) -&gt; <span class="type">Void</span>)  </body></html></code></pre>
+</div>
+</div>
+<div role="article" class="function" id="movieservice.fetchpopular(page:completion:)">
+    <h3>
+        <code><a href="#movieservice.fetchpopular(page:completion:)">fetch​Popular(page:​completion:​)</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">func</span> <span class="function">fetchPopular</span>(<span class="variable">page</span>: <span class="type">Int</span>? = <span class="keyword">nil</span>, <span class="variable">completion</span>: <span class="attribute">@</span><span class="attribute">escaping</span> (<span class="type">Result</span>&lt;<span class="type">MoviePageableList</span>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;) -&gt; <span class="type">Void</span>)  </body></html></code></pre>
+</div>
+</div>
+<div role="article" class="function" id="movieservice.fetchtoprated(page:completion:)">
+    <h3>
+        <code><a href="#movieservice.fetchtoprated(page:completion:)">fetch​Top​Rated(page:​completion:​)</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">func</span> <span class="function">fetchTopRated</span>(<span class="variable">page</span>: <span class="type">Int</span>? = <span class="keyword">nil</span>, <span class="variable">completion</span>: <span class="attribute">@</span><span class="attribute">escaping</span> (<span class="type">Result</span>&lt;<span class="type">MoviePageableList</span>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;) -&gt; <span class="type">Void</span>)  </body></html></code></pre>
+</div>
+</div>
+<div role="article" class="function" id="movieservice.fetchupcoming(page:completion:)">
+    <h3>
+        <code><a href="#movieservice.fetchupcoming(page:completion:)">fetch​Upcoming(page:​completion:​)</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">func</span> <span class="function">fetchUpcoming</span>(<span class="variable">page</span>: <span class="type">Int</span>? = <span class="keyword">nil</span>, <span class="variable">completion</span>: <span class="attribute">@</span><span class="attribute">escaping</span> (<span class="type">Result</span>&lt;<span class="type">MoviePageableList</span>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;) -&gt; <span class="type">Void</span>)  </body></html></code></pre>
+</div>
+</div>
+<div role="article" class="function" id="movieservice.reviewspublisher(formovie:page:)">
+    <h3>
+        <code><a href="#movieservice.reviewspublisher(formovie:page:)">reviews​Publisher(for​Movie:​page:​)</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">func</span> <span class="function">reviewsPublisher</span>(<span class="variable">forMovie</span> <span class="variable">movieID</span>: <a href="/TMDb/Movie"><span class="type">Movie</span></a>.<span class="type">ID</span>, <span class="variable">page</span>: <span class="type">Int</span>? = <span class="keyword">nil</span>) -&gt; <span class="type">AnyPublisher</span>&lt;<span class="type">ReviewPageableList</span>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;  </body></html></code></pre>
+</div>
+</div>
+<div role="article" class="function" id="movieservice.recommendationspublisher(formovie:page:)">
+    <h3>
+        <code><a href="#movieservice.recommendationspublisher(formovie:page:)">recommendations​Publisher(for​Movie:​page:​)</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">func</span> <span class="function">recommendationsPublisher</span>(<span class="variable">forMovie</span> <span class="variable">movieID</span>: <a href="/TMDb/Movie"><span class="type">Movie</span></a>.<span class="type">ID</span>,
+                                  <span class="variable">page</span>: <span class="type">Int</span>? = <span class="keyword">nil</span>) -&gt; <span class="type">AnyPublisher</span>&lt;<span class="type">MoviePageableList</span>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;  </body></html></code></pre>
+</div>
+</div>
+<div role="article" class="function" id="movieservice.similarpublisher(tomovie:page:)">
+    <h3>
+        <code><a href="#movieservice.similarpublisher(tomovie:page:)">similar​Publisher(to​Movie:​page:​)</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">func</span> <span class="function">similarPublisher</span>(<span class="variable">toMovie</span> <span class="variable">movieID</span>: <a href="/TMDb/Movie"><span class="type">Movie</span></a>.<span class="type">ID</span>, <span class="variable">page</span>: <span class="type">Int</span>? = <span class="keyword">nil</span>) -&gt; <span class="type">AnyPublisher</span>&lt;<span class="type">MoviePageableList</span>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;  </body></html></code></pre>
+</div>
+</div>
+<div role="article" class="function" id="movieservice.nowplayingpublisher(page:)">
+    <h3>
+        <code><a href="#movieservice.nowplayingpublisher(page:)">now​Playing​Publisher(page:​)</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">func</span> <span class="function">nowPlayingPublisher</span>(<span class="variable">page</span>: <span class="type">Int</span>? = <span class="keyword">nil</span>) -&gt; <span class="type">AnyPublisher</span>&lt;<span class="type">MoviePageableList</span>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;  </body></html></code></pre>
+</div>
+</div>
+<div role="article" class="function" id="movieservice.popularpublisher(page:)">
+    <h3>
+        <code><a href="#movieservice.popularpublisher(page:)">popular​Publisher(page:​)</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">func</span> <span class="function">popularPublisher</span>(<span class="variable">page</span>: <span class="type">Int</span>? = <span class="keyword">nil</span>) -&gt; <span class="type">AnyPublisher</span>&lt;<span class="type">MoviePageableList</span>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;  </body></html></code></pre>
+</div>
+</div>
+<div role="article" class="function" id="movieservice.topratedpublisher(page:)">
+    <h3>
+        <code><a href="#movieservice.topratedpublisher(page:)">top​Rated​Publisher(page:​)</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">func</span> <span class="function">topRatedPublisher</span>(<span class="variable">page</span>: <span class="type">Int</span>? = <span class="keyword">nil</span>) -&gt; <span class="type">AnyPublisher</span>&lt;<span class="type">MoviePageableList</span>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;  </body></html></code></pre>
+</div>
+</div>
+<div role="article" class="function" id="movieservice.upcomingpublisher(page:)">
+    <h3>
+        <code><a href="#movieservice.upcomingpublisher(page:)">upcoming​Publisher(page:​)</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">func</span> <span class="function">upcomingPublisher</span>(<span class="variable">page</span>: <span class="type">Int</span>? = <span class="keyword">nil</span>) -&gt; <span class="type">AnyPublisher</span>&lt;<span class="type">MoviePageableList</span>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;  </body></html></code></pre>
+</div>
+</div>
+    </section>
+
+
+    <section id="requirements">
+        <h2>Requirements</h2>
+
+        <div role="article" class="function" id="movieservice.fetchdetails(formovie:completion:)">
+    <h3>
+        <code>fetch​Details(for​Movie:​completion:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">func</span> <span class="function">fetchDetails</span>(<span class="variable">forMovie</span> <span class="variable">id</span>: <a href="/TMDb/Movie"><span class="type">Movie</span></a>.<span class="type">ID</span>, <span class="variable">completion</span>: <span class="attribute">@</span><span class="attribute">escaping</span> (<span class="keyword">_</span> <span class="variable">result</span>: <span class="type">Result</span>&lt;<a href="/TMDb/Movie"><span class="type">Movie</span></a>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;) -&gt; <span class="type">Void</span>) </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Fetches the primary information about a movie.</p>
+
+</div>
+<div class="discussion">
+    <p><a href="https://developers.themoviedb.org/3/movies/get-movie-details">TMDb API - Movie: Details</a></p>
+
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>id</th>
+    <td><code class="type">Movie.​ID</code></td>
+    <td><p>The identifier of the movie.</p>
+</td>
+</tr>
+<tr>
+    <th>completion</th>
+    <td><code class="type">@escaping (_ result:​ Result&lt;Movie, TMDbError&gt;) -&gt; Void</code></td>
+    <td><p>Completion handler.</p>
+</td>
+</tr>
+<tr>
+    <th>result</th>
+    <td></td>
+    <td><p>The matching movie.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+</div>
+<div role="article" class="function" id="movieservice.fetchcredits(formovie:completion:)">
+    <h3>
+        <code>fetch​Credits(for​Movie:​completion:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">func</span> <span class="function">fetchCredits</span>(<span class="variable">forMovie</span> <span class="variable">movieID</span>: <a href="/TMDb/Movie"><span class="type">Movie</span></a>.<span class="type">ID</span>,
+                      <span class="variable">completion</span>: <span class="attribute">@</span><span class="attribute">escaping</span> (<span class="keyword">_</span> <span class="variable">result</span>: <span class="type">Result</span>&lt;<a href="/TMDb/ShowCredits"><span class="type">ShowCredits</span></a>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;) -&gt; <span class="type">Void</span>) </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Fetches the cast and crew of a movie.</p>
+
+</div>
+<div class="discussion">
+    <p><a href="https://developers.themoviedb.org/3/movies/get-movie-credits">TMDb API - Movie: Credits</a></p>
+
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>movie​ID</th>
+    <td><code class="type">Movie.​ID</code></td>
+    <td><p>The identifier of the movie.</p>
+</td>
+</tr>
+<tr>
+    <th>completion</th>
+    <td><code class="type">@escaping (_ result:​ Result&lt;Show​Credits, TMDbError&gt;) -&gt; Void</code></td>
+    <td><p>Completion handler.</p>
+</td>
+</tr>
+<tr>
+    <th>result</th>
+    <td></td>
+    <td><p>Credits for the matching movie.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+</div>
+<div role="article" class="function" id="movieservice.fetchreviews(formovie:page:completion:)">
+    <h3>
+        <code>fetch​Reviews(for​Movie:​page:​completion:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">func</span> <span class="function">fetchReviews</span>(<span class="variable">forMovie</span> <span class="variable">movieID</span>: <a href="/TMDb/Movie"><span class="type">Movie</span></a>.<span class="type">ID</span>, <span class="variable">page</span>: <span class="type">Int</span>?,
+                      <span class="variable">completion</span>: <span class="attribute">@</span><span class="attribute">escaping</span> (<span class="keyword">_</span> <span class="variable">result</span>: <span class="type">Result</span>&lt;<span class="type">ReviewPageableList</span>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;) -&gt; <span class="type">Void</span>) </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Fetches the user reviews for a movie.</p>
+
+</div>
+<div class="discussion">
+    <p><a href="https://developers.themoviedb.org/3/movies/get-movie-reviews">TMDb API - Movie: Reviews</a></p>
+
+<aside class="precondition" title="Precondition">
+    <p><code>page</code> can be between <code>1</code> and <code>1000</code>.</p>
+
+</aside>
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>movie​ID</th>
+    <td><code class="type">Movie.​ID</code></td>
+    <td><p>The identifier of the movie.</p>
+</td>
+</tr>
+<tr>
+    <th>page</th>
+    <td><code class="type">Int?</code></td>
+    <td><p>The page of results to return.</p>
+</td>
+</tr>
+<tr>
+    <th>completion</th>
+    <td><code class="type">@escaping (_ result:​ Result&lt;Review​Pageable​List, TMDbError&gt;) -&gt; Void</code></td>
+    <td><p>Completion handler.</p>
+</td>
+</tr>
+<tr>
+    <th>result</th>
+    <td></td>
+    <td><p>Reviews for the matching movie as a pageable list.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+</div>
+<div role="article" class="function" id="movieservice.fetchimages(formovie:completion:)">
+    <h3>
+        <code>fetch​Images(for​Movie:​completion:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">func</span> <span class="function">fetchImages</span>(<span class="variable">forMovie</span> <span class="variable">movieID</span>: <a href="/TMDb/Movie"><span class="type">Movie</span></a>.<span class="type">ID</span>,
+                     <span class="variable">completion</span>: <span class="attribute">@</span><span class="attribute">escaping</span> (<span class="keyword">_</span> <span class="variable">result</span>: <span class="type">Result</span>&lt;<a href="/TMDb/ImageCollection"><span class="type">ImageCollection</span></a>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;) -&gt; <span class="type">Void</span>) </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Fetches the images that belong to a movie.</p>
+
+</div>
+<div class="discussion">
+    <p><a href="https://developers.themoviedb.org/3/movies/get-movie-images">TMDb API - Movie: Images</a></p>
+
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>movie​ID</th>
+    <td><code class="type">Movie.​ID</code></td>
+    <td><p>The identifier of the movie.</p>
+</td>
+</tr>
+<tr>
+    <th>completion</th>
+    <td><code class="type">@escaping (_ result:​ Result&lt;Image​Collection, TMDbError&gt;) -&gt; Void</code></td>
+    <td><p>Completion handler.</p>
+</td>
+</tr>
+<tr>
+    <th>result</th>
+    <td></td>
+    <td><p>Collection of images for the matching movie.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+</div>
+<div role="article" class="function" id="movieservice.fetchvideos(formovie:completion:)">
+    <h3>
+        <code>fetch​Videos(for​Movie:​completion:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">func</span> <span class="function">fetchVideos</span>(<span class="variable">forMovie</span> <span class="variable">movieID</span>: <a href="/TMDb/Movie"><span class="type">Movie</span></a>.<span class="type">ID</span>,
+                     <span class="variable">completion</span>: <span class="attribute">@</span><span class="attribute">escaping</span> (<span class="keyword">_</span> <span class="variable">result</span>: <span class="type">Result</span>&lt;<a href="/TMDb/VideoCollection"><span class="type">VideoCollection</span></a>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;) -&gt; <span class="type">Void</span>) </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Fetches the videos that have been added to a movie.</p>
+
+</div>
+<div class="discussion">
+    <p><a href="https://developers.themoviedb.org/3/movies/get-movie-videos">TMDb API - Movie: Videos</a></p>
+
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>movie​ID</th>
+    <td><code class="type">Movie.​ID</code></td>
+    <td><p>The identifier of the movie.</p>
+</td>
+</tr>
+<tr>
+    <th>completion</th>
+    <td><code class="type">@escaping (_ result:​ Result&lt;Video​Collection, TMDbError&gt;) -&gt; Void</code></td>
+    <td><p>Completion handler.</p>
+</td>
+</tr>
+<tr>
+    <th>result</th>
+    <td></td>
+    <td><p>Collection of videos for the matching movie.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+</div>
+<div role="article" class="function" id="movieservice.fetchrecommendations(formovie:page:completion:)">
+    <h3>
+        <code>fetch​Recommendations(for​Movie:​page:​completion:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">func</span> <span class="function">fetchRecommendations</span>(<span class="variable">forMovie</span> <span class="variable">movieID</span>: <a href="/TMDb/Movie"><span class="type">Movie</span></a>.<span class="type">ID</span>, <span class="variable">page</span>: <span class="type">Int</span>?,
+                              <span class="variable">completion</span>: <span class="attribute">@</span><span class="attribute">escaping</span> (<span class="keyword">_</span> <span class="variable">result</span>: <span class="type">Result</span>&lt;<span class="type">MoviePageableList</span>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;) -&gt; <span class="type">Void</span>) </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Fetches a list of recommended movies for a movie.</p>
+
+</div>
+<div class="discussion">
+    <p><a href="https://developers.themoviedb.org/3/movies/get-movie-recommendations">TMDb API - Movie: Recommendations</a></p>
+
+<aside class="precondition" title="Precondition">
+    <p><code>page</code> can be between <code>1</code> and <code>1000</code>.</p>
+
+</aside>
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>movie​ID</th>
+    <td><code class="type">Movie.​ID</code></td>
+    <td><p>The identifier of the movie for get recommendations for.</p>
+</td>
+</tr>
+<tr>
+    <th>page</th>
+    <td><code class="type">Int?</code></td>
+    <td><p>The page of results to return.</p>
+</td>
+</tr>
+<tr>
+    <th>completion</th>
+    <td><code class="type">@escaping (_ result:​ Result&lt;Movie​Pageable​List, TMDbError&gt;) -&gt; Void</code></td>
+    <td><p>Completion handler.</p>
+</td>
+</tr>
+<tr>
+    <th>result</th>
+    <td></td>
+    <td><p>Recommended movies for the matching movie as a pageable list.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+</div>
+<div role="article" class="function" id="movieservice.fetchsimilar(tomovie:page:completion:)">
+    <h3>
+        <code>fetch​Similar(to​Movie:​page:​completion:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">func</span> <span class="function">fetchSimilar</span>(<span class="variable">toMovie</span> <span class="variable">movieID</span>: <a href="/TMDb/Movie"><span class="type">Movie</span></a>.<span class="type">ID</span>, <span class="variable">page</span>: <span class="type">Int</span>?,
+                      <span class="variable">completion</span>: <span class="attribute">@</span><span class="attribute">escaping</span> (<span class="keyword">_</span> <span class="variable">result</span>: <span class="type">Result</span>&lt;<span class="type">MoviePageableList</span>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;) -&gt; <span class="type">Void</span>) </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Fetches a list of similar movies for a movie.</p>
+
+</div>
+<div class="discussion">
+    <p>This is not the same as the <em>Recommendations</em>.</p>
+
+<p><a href="https://developers.themoviedb.org/3/movies/get-similar-movies">TMDb API - Movie: Similar</a></p>
+
+<aside class="precondition" title="Precondition">
+    <p><code>page</code> can be between <code>1</code> and <code>1000</code>.</p>
+
+</aside>
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>movie​ID</th>
+    <td><code class="type">Movie.​ID</code></td>
+    <td><p>The identifier of the movie for get similar movies for.</p>
+</td>
+</tr>
+<tr>
+    <th>page</th>
+    <td><code class="type">Int?</code></td>
+    <td><p>The page of results to return.</p>
+</td>
+</tr>
+<tr>
+    <th>completion</th>
+    <td><code class="type">@escaping (_ result:​ Result&lt;Movie​Pageable​List, TMDbError&gt;) -&gt; Void</code></td>
+    <td><p>Completion handler.</p>
+</td>
+</tr>
+<tr>
+    <th>result</th>
+    <td></td>
+    <td><p>Similar movies for the matching movie as a pageable list.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+</div>
+<div role="article" class="function" id="movieservice.fetchnowplaying(page:completion:)">
+    <h3>
+        <code>fetch​Now​Playing(page:​completion:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">func</span> <span class="function">fetchNowPlaying</span>(<span class="variable">page</span>: <span class="type">Int</span>?, <span class="variable">completion</span>: <span class="attribute">@</span><span class="attribute">escaping</span> (<span class="keyword">_</span> <span class="variable">result</span>: <span class="type">Result</span>&lt;<span class="type">MoviePageableList</span>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;) -&gt; <span class="type">Void</span>) </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Fetches a list of currently playing movies.</p>
+
+</div>
+<div class="discussion">
+    <p><a href="https://developers.themoviedb.org/3/movies/get-now-playing">TMDb API - Movie: Now Playing</a></p>
+
+<aside class="precondition" title="Precondition">
+    <p><code>page</code> can be between <code>1</code> and <code>1000</code>.</p>
+
+</aside>
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>page</th>
+    <td><code class="type">Int?</code></td>
+    <td><p>The page of results to return.</p>
+</td>
+</tr>
+<tr>
+    <th>completion</th>
+    <td><code class="type">@escaping (_ result:​ Result&lt;Movie​Pageable​List, TMDbError&gt;) -&gt; Void</code></td>
+    <td><p>Completion handler.</p>
+</td>
+</tr>
+<tr>
+    <th>result</th>
+    <td></td>
+    <td><p>Current popular movies as a pageable list.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+</div>
+<div role="article" class="function" id="movieservice.fetchpopular(page:completion:)">
+    <h3>
+        <code>fetch​Popular(page:​completion:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">func</span> <span class="function">fetchPopular</span>(<span class="variable">page</span>: <span class="type">Int</span>?, <span class="variable">completion</span>: <span class="attribute">@</span><span class="attribute">escaping</span> (<span class="keyword">_</span> <span class="variable">result</span>: <span class="type">Result</span>&lt;<span class="type">MoviePageableList</span>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;) -&gt; <span class="type">Void</span>) </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Fetches a list of current popular movies.</p>
+
+</div>
+<div class="discussion">
+    <p><a href="https://developers.themoviedb.org/3/movies/get-popular-movies">TMDb API - Movie: Popular</a></p>
+
+<aside class="precondition" title="Precondition">
+    <p><code>page</code> can be between <code>1</code> and <code>1000</code>.</p>
+
+</aside>
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>page</th>
+    <td><code class="type">Int?</code></td>
+    <td><p>The page of results to return.</p>
+</td>
+</tr>
+<tr>
+    <th>completion</th>
+    <td><code class="type">@escaping (_ result:​ Result&lt;Movie​Pageable​List, TMDbError&gt;) -&gt; Void</code></td>
+    <td><p>Completion handler.</p>
+</td>
+</tr>
+<tr>
+    <th>result</th>
+    <td></td>
+    <td><p>Current popular movies as a pageable list.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+</div>
+<div role="article" class="function" id="movieservice.fetchtoprated(page:completion:)">
+    <h3>
+        <code>fetch​Top​Rated(page:​completion:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">func</span> <span class="function">fetchTopRated</span>(<span class="variable">page</span>: <span class="type">Int</span>?, <span class="variable">completion</span>: <span class="attribute">@</span><span class="attribute">escaping</span> (<span class="keyword">_</span> <span class="variable">result</span>: <span class="type">Result</span>&lt;<span class="type">MoviePageableList</span>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;) -&gt; <span class="type">Void</span>) </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Fetches a list of top rated movies.</p>
+
+</div>
+<div class="discussion">
+    <p><a href="https://developers.themoviedb.org/3/movies/get-top-rated-movies">TMDb API - Movie: Top Rated</a></p>
+
+<aside class="precondition" title="Precondition">
+    <p><code>page</code> can be between <code>1</code> and <code>1000</code>.</p>
+
+</aside>
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>page</th>
+    <td><code class="type">Int?</code></td>
+    <td><p>The page of results to return.</p>
+</td>
+</tr>
+<tr>
+    <th>completion</th>
+    <td><code class="type">@escaping (_ result:​ Result&lt;Movie​Pageable​List, TMDbError&gt;) -&gt; Void</code></td>
+    <td><p>Completion handler.</p>
+</td>
+</tr>
+<tr>
+    <th>result</th>
+    <td></td>
+    <td><p>Current popular movies as a pageable list.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+</div>
+<div role="article" class="function" id="movieservice.fetchupcoming(page:completion:)">
+    <h3>
+        <code>fetch​Upcoming(page:​completion:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">func</span> <span class="function">fetchUpcoming</span>(<span class="variable">page</span>: <span class="type">Int</span>?, <span class="variable">completion</span>: <span class="attribute">@</span><span class="attribute">escaping</span> (<span class="keyword">_</span> <span class="variable">result</span>: <span class="type">Result</span>&lt;<span class="type">MoviePageableList</span>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;) -&gt; <span class="type">Void</span>) </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Fetches a list of upcoming movies.</p>
+
+</div>
+<div class="discussion">
+    <p><a href="https://developers.themoviedb.org/3/movies/get-upcoming">TMDb API - Movie: Upcoming</a></p>
+
+<aside class="precondition" title="Precondition">
+    <p><code>page</code> can be between <code>1</code> and <code>1000</code>.</p>
+
+</aside>
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>page</th>
+    <td><code class="type">Int?</code></td>
+    <td><p>The page of results to return.</p>
+</td>
+</tr>
+<tr>
+    <th>completion</th>
+    <td><code class="type">@escaping (_ result:​ Result&lt;Movie​Pageable​List, TMDbError&gt;) -&gt; Void</code></td>
+    <td><p>Completion handler.</p>
+</td>
+</tr>
+<tr>
+    <th>result</th>
+    <td></td>
+    <td><p>Current popular movies as a pageable list.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+</div>
+<div role="article" class="function" id="movieservice.detailspublisher(formovie:)">
+    <h3>
+        <code>details​Publisher(for​Movie:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="attribute">@</span><span class="attribute">available</span>(<span class="keyword">macOS</span> <span class="number literal">10.15</span>, <span class="keyword">iOS</span> <span class="number literal">13.0</span>, <span class="keyword">tvOS</span> <span class="number literal">13.0</span>, <span class="keyword">watchOS</span> <span class="number literal">6.0</span>, *)
+    <span class="keyword">func</span> <span class="function">detailsPublisher</span>(<span class="variable">forMovie</span> <span class="variable">id</span>: <a href="/TMDb/Movie"><span class="type">Movie</span></a>.<span class="type">ID</span>) -&gt; <span class="type">AnyPublisher</span>&lt;<a href="/TMDb/Movie"><span class="type">Movie</span></a>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;</body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Publishes the primary information about a movie.</p>
+
+</div>
+<div class="discussion">
+    <p><a href="https://developers.themoviedb.org/3/movies/get-movie-details">TMDb API - Movie: Details</a></p>
+
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>id</th>
+    <td><code class="type">Movie.​ID</code></td>
+    <td><p>The identifier of the movie.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+  <h4>Returns</h4>
+  <p>A publisher with the matching movie.</p>
+
+</div>
+<div role="article" class="function" id="movieservice.creditspublisher(formovie:)">
+    <h3>
+        <code>credits​Publisher(for​Movie:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="attribute">@</span><span class="attribute">available</span>(<span class="keyword">macOS</span> <span class="number literal">10.15</span>, <span class="keyword">iOS</span> <span class="number literal">13.0</span>, <span class="keyword">tvOS</span> <span class="number literal">13.0</span>, <span class="keyword">watchOS</span> <span class="number literal">6.0</span>, *)
+    <span class="keyword">func</span> <span class="function">creditsPublisher</span>(<span class="variable">forMovie</span> <span class="variable">movieID</span>: <a href="/TMDb/Movie"><span class="type">Movie</span></a>.<span class="type">ID</span>) -&gt; <span class="type">AnyPublisher</span>&lt;<a href="/TMDb/ShowCredits"><span class="type">ShowCredits</span></a>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;</body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Publishes the cast and crew of a movie.</p>
+
+</div>
+<div class="discussion">
+    <p><a href="https://developers.themoviedb.org/3/movies/get-movie-credits">TMDb API - Movie: Credits</a></p>
+
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>movie​ID</th>
+    <td><code class="type">Movie.​ID</code></td>
+    <td><p>The identifier of the movie.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+  <h4>Returns</h4>
+  <p>A publisher with show credits for the matching movie.</p>
+
+</div>
+<div role="article" class="function" id="movieservice.reviewspublisher(formovie:page:)">
+    <h3>
+        <code>reviews​Publisher(for​Movie:​page:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="attribute">@</span><span class="attribute">available</span>(<span class="keyword">macOS</span> <span class="number literal">10.15</span>, <span class="keyword">iOS</span> <span class="number literal">13.0</span>, <span class="keyword">tvOS</span> <span class="number literal">13.0</span>, <span class="keyword">watchOS</span> <span class="number literal">6.0</span>, *)
+    <span class="keyword">func</span> <span class="function">reviewsPublisher</span>(<span class="variable">forMovie</span> <span class="variable">movieID</span>: <a href="/TMDb/Movie"><span class="type">Movie</span></a>.<span class="type">ID</span>, <span class="variable">page</span>: <span class="type">Int</span>?) -&gt; <span class="type">AnyPublisher</span>&lt;<span class="type">ReviewPageableList</span>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;</body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Publishes the user reviews for a movie.</p>
+
+</div>
+<div class="discussion">
+    <p><a href="https://developers.themoviedb.org/3/movies/get-movie-reviews">TMDb API - Movie: Reviews</a></p>
+
+<aside class="precondition" title="Precondition">
+    <p><code>page</code> can be between <code>1</code> and <code>1000</code>.</p>
+
+</aside>
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>movie​ID</th>
+    <td><code class="type">Movie.​ID</code></td>
+    <td><p>The identifier of the movie.</p>
+</td>
+</tr>
+<tr>
+    <th>page</th>
+    <td><code class="type">Int?</code></td>
+    <td><p>The page of results to return.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+  <h4>Returns</h4>
+  <p>A publisher with reviews for the matching movie as a pageable list.</p>
+
+</div>
+<div role="article" class="function" id="movieservice.imagespublisher(formovie:)">
+    <h3>
+        <code>images​Publisher(for​Movie:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="attribute">@</span><span class="attribute">available</span>(<span class="keyword">macOS</span> <span class="number literal">10.15</span>, <span class="keyword">iOS</span> <span class="number literal">13.0</span>, <span class="keyword">tvOS</span> <span class="number literal">13.0</span>, <span class="keyword">watchOS</span> <span class="number literal">6.0</span>, *)
+    <span class="keyword">func</span> <span class="function">imagesPublisher</span>(<span class="variable">forMovie</span> <span class="variable">movieID</span>: <a href="/TMDb/Movie"><span class="type">Movie</span></a>.<span class="type">ID</span>) -&gt; <span class="type">AnyPublisher</span>&lt;<a href="/TMDb/ImageCollection"><span class="type">ImageCollection</span></a>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;</body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Publishes the images that belong to a movie.</p>
+
+</div>
+<div class="discussion">
+    <p><a href="https://developers.themoviedb.org/3/movies/get-movie-images">TMDb API - Movie: Images</a></p>
+
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>movie​ID</th>
+    <td><code class="type">Movie.​ID</code></td>
+    <td><p>The identifier of the movie.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+  <h4>Returns</h4>
+  <p>A publisher with a collection of images for the matching movie.</p>
+
+</div>
+<div role="article" class="function" id="movieservice.videospublisher(formovie:)">
+    <h3>
+        <code>videos​Publisher(for​Movie:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="attribute">@</span><span class="attribute">available</span>(<span class="keyword">macOS</span> <span class="number literal">10.15</span>, <span class="keyword">iOS</span> <span class="number literal">13.0</span>, <span class="keyword">tvOS</span> <span class="number literal">13.0</span>, <span class="keyword">watchOS</span> <span class="number literal">6.0</span>, *)
+    <span class="keyword">func</span> <span class="function">videosPublisher</span>(<span class="variable">forMovie</span> <span class="variable">movieID</span>: <a href="/TMDb/Movie"><span class="type">Movie</span></a>.<span class="type">ID</span>) -&gt; <span class="type">AnyPublisher</span>&lt;<a href="/TMDb/VideoCollection"><span class="type">VideoCollection</span></a>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;</body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Publishes the videos that have been added to a movie.</p>
+
+</div>
+<div class="discussion">
+    <p><a href="https://developers.themoviedb.org/3/movies/get-movie-videos">TMDb API - Movie: Videos</a></p>
+
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>movie​ID</th>
+    <td><code class="type">Movie.​ID</code></td>
+    <td><p>The identifier of the movie.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+  <h4>Returns</h4>
+  <p>A publisher with a collection of videos for the matching movie.</p>
+
+</div>
+<div role="article" class="function" id="movieservice.recommendationspublisher(formovie:page:)">
+    <h3>
+        <code>recommendations​Publisher(for​Movie:​page:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="attribute">@</span><span class="attribute">available</span>(<span class="keyword">macOS</span> <span class="number literal">10.15</span>, <span class="keyword">iOS</span> <span class="number literal">13.0</span>, <span class="keyword">tvOS</span> <span class="number literal">13.0</span>, <span class="keyword">watchOS</span> <span class="number literal">6.0</span>, *)
+    <span class="keyword">func</span> <span class="function">recommendationsPublisher</span>(<span class="variable">forMovie</span> <span class="variable">movieID</span>: <a href="/TMDb/Movie"><span class="type">Movie</span></a>.<span class="type">ID</span>, <span class="variable">page</span>: <span class="type">Int</span>?) -&gt; <span class="type">AnyPublisher</span>&lt;<span class="type">MoviePageableList</span>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;</body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Publishes a list of recommended movies for a movie.</p>
+
+</div>
+<div class="discussion">
+    <p><a href="https://developers.themoviedb.org/3/movies/get-movie-recommendations">TMDb API - Movie: Recommendations</a></p>
+
+<aside class="precondition" title="Precondition">
+    <p><code>page</code> can be between <code>1</code> and <code>1000</code>.</p>
+
+</aside>
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>movie​ID</th>
+    <td><code class="type">Movie.​ID</code></td>
+    <td><p>The identifier of the movie for get recommendations for.</p>
+</td>
+</tr>
+<tr>
+    <th>page</th>
+    <td><code class="type">Int?</code></td>
+    <td><p>The page of results to return.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+  <h4>Returns</h4>
+  <p>A publisher with recommended movies for the matching movie as a pageable list.</p>
+
+</div>
+<div role="article" class="function" id="movieservice.similarpublisher(tomovie:page:)">
+    <h3>
+        <code>similar​Publisher(to​Movie:​page:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="attribute">@</span><span class="attribute">available</span>(<span class="keyword">macOS</span> <span class="number literal">10.15</span>, <span class="keyword">iOS</span> <span class="number literal">13.0</span>, <span class="keyword">tvOS</span> <span class="number literal">13.0</span>, <span class="keyword">watchOS</span> <span class="number literal">6.0</span>, *)
+    <span class="keyword">func</span> <span class="function">similarPublisher</span>(<span class="variable">toMovie</span> <span class="variable">movieID</span>: <a href="/TMDb/Movie"><span class="type">Movie</span></a>.<span class="type">ID</span>, <span class="variable">page</span>: <span class="type">Int</span>?) -&gt; <span class="type">AnyPublisher</span>&lt;<span class="type">MoviePageableList</span>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;</body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Publishes a list of similar movies for a movie.</p>
+
+</div>
+<div class="discussion">
+    <p>This is not the same as the <em>Recommendations</em>.</p>
+
+<p><a href="https://developers.themoviedb.org/3/movies/get-similar-movies">TMDb API - Movie: Similar</a></p>
+
+<aside class="precondition" title="Precondition">
+    <p><code>page</code> can be between <code>1</code> and <code>1000</code>.</p>
+
+</aside>
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>movie​ID</th>
+    <td><code class="type">Movie.​ID</code></td>
+    <td><p>The identifier of the movie for get similar movies for.</p>
+</td>
+</tr>
+<tr>
+    <th>page</th>
+    <td><code class="type">Int?</code></td>
+    <td><p>The page of results to return.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+  <h4>Returns</h4>
+  <p>A publisher with similar movies for the matching movie as a pageable list.</p>
+
+</div>
+<div role="article" class="function" id="movieservice.nowplayingpublisher(page:)">
+    <h3>
+        <code>now​Playing​Publisher(page:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="attribute">@</span><span class="attribute">available</span>(<span class="keyword">macOS</span> <span class="number literal">10.15</span>, <span class="keyword">iOS</span> <span class="number literal">13.0</span>, <span class="keyword">tvOS</span> <span class="number literal">13.0</span>, <span class="keyword">watchOS</span> <span class="number literal">6.0</span>, *)
+    <span class="keyword">func</span> <span class="function">nowPlayingPublisher</span>(<span class="variable">page</span>: <span class="type">Int</span>?) -&gt; <span class="type">AnyPublisher</span>&lt;<span class="type">MoviePageableList</span>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;</body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Publishes a list of currently playing movies.</p>
+
+</div>
+<div class="discussion">
+    <p><a href="https://developers.themoviedb.org/3/movies/get-now-playing">TMDb API - Movie: Now Playing</a></p>
+
+<aside class="precondition" title="Precondition">
+    <p><code>page</code> can be between <code>1</code> and <code>1000</code>.</p>
+
+</aside>
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>page</th>
+    <td><code class="type">Int?</code></td>
+    <td><p>The page of results to return.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+  <h4>Returns</h4>
+  <p>A publisher with currently playing movies as a pageable list.</p>
+
+</div>
+<div role="article" class="function" id="movieservice.popularpublisher(page:)">
+    <h3>
+        <code>popular​Publisher(page:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="attribute">@</span><span class="attribute">available</span>(<span class="keyword">macOS</span> <span class="number literal">10.15</span>, <span class="keyword">iOS</span> <span class="number literal">13.0</span>, <span class="keyword">tvOS</span> <span class="number literal">13.0</span>, <span class="keyword">watchOS</span> <span class="number literal">6.0</span>, *)
+    <span class="keyword">func</span> <span class="function">popularPublisher</span>(<span class="variable">page</span>: <span class="type">Int</span>?) -&gt; <span class="type">AnyPublisher</span>&lt;<span class="type">MoviePageableList</span>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;</body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Publishes a list of current popular movies.</p>
+
+</div>
+<div class="discussion">
+    <p><a href="https://developers.themoviedb.org/3/movies/get-popular-movies">TMDb API - Movie: Popular</a></p>
+
+<aside class="precondition" title="Precondition">
+    <p><code>page</code> can be between <code>1</code> and <code>1000</code>.</p>
+
+</aside>
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>page</th>
+    <td><code class="type">Int?</code></td>
+    <td><p>The page of results to return.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+  <h4>Returns</h4>
+  <p>A publisher with current popular movies as a pageable list.</p>
+
+</div>
+<div role="article" class="function" id="movieservice.topratedpublisher(page:)">
+    <h3>
+        <code>top​Rated​Publisher(page:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="attribute">@</span><span class="attribute">available</span>(<span class="keyword">macOS</span> <span class="number literal">10.15</span>, <span class="keyword">iOS</span> <span class="number literal">13.0</span>, <span class="keyword">tvOS</span> <span class="number literal">13.0</span>, <span class="keyword">watchOS</span> <span class="number literal">6.0</span>, *)
+    <span class="keyword">func</span> <span class="function">topRatedPublisher</span>(<span class="variable">page</span>: <span class="type">Int</span>?) -&gt; <span class="type">AnyPublisher</span>&lt;<span class="type">MoviePageableList</span>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;</body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Publishes a list of top rated movies.</p>
+
+</div>
+<div class="discussion">
+    <p><a href="https://developers.themoviedb.org/3/movies/get-top-rated-movies">TMDb API - Movie: Top Rated</a></p>
+
+<aside class="precondition" title="Precondition">
+    <p><code>page</code> can be between <code>1</code> and <code>1000</code>.</p>
+
+</aside>
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>page</th>
+    <td><code class="type">Int?</code></td>
+    <td><p>The page of results to return.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+  <h4>Returns</h4>
+  <p>A publisher with top rated movies as a pageable list.</p>
+
+</div>
+<div role="article" class="function" id="movieservice.upcomingpublisher(page:)">
+    <h3>
+        <code>upcoming​Publisher(page:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="attribute">@</span><span class="attribute">available</span>(<span class="keyword">macOS</span> <span class="number literal">10.15</span>, <span class="keyword">iOS</span> <span class="number literal">13.0</span>, <span class="keyword">tvOS</span> <span class="number literal">13.0</span>, <span class="keyword">watchOS</span> <span class="number literal">6.0</span>, *)
+    <span class="keyword">func</span> <span class="function">upcomingPublisher</span>(<span class="variable">page</span>: <span class="type">Int</span>?) -&gt; <span class="type">AnyPublisher</span>&lt;<span class="type">MoviePageableList</span>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;</body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Publishes a list of upcoming movies.</p>
+
+</div>
+<div class="discussion">
+    <p><a href="https://developers.themoviedb.org/3/movies/get-upcoming">TMDb API - Movie: Upcoming</a></p>
+
+<aside class="precondition" title="Precondition">
+    <p><code>page</code> can be between <code>1</code> and <code>1000</code>.</p>
+
+</aside>
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>page</th>
+    <td><code class="type">Int?</code></td>
+    <td><p>The page of results to return.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+  <h4>Returns</h4>
+  <p>A publisher with upcoming movies as a pageable list.</p>
+
+</div>
+<div role="article" class="function" id="movieservice.details(formovie:)">
+    <h3>
+        <code>details(for​Movie:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="attribute">@</span><span class="attribute">available</span>(<span class="keyword">macOS</span> <span class="number literal">12</span>, <span class="keyword">iOS</span> <span class="number literal">15.0</span>, <span class="keyword">tvOS</span> <span class="number literal">15.0</span>, <span class="keyword">watchOS</span> <span class="number literal">8.0</span>, *)
+    <span class="keyword">func</span> <span class="function">details</span>(<span class="variable">forMovie</span> <span class="variable">id</span>: <a href="/TMDb/Movie"><span class="type">Movie</span></a>.<span class="type">ID</span>) </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Returns the primary information about a movie.</p>
+
+</div>
+<div class="discussion">
+    <p><a href="https://developers.themoviedb.org/3/movies/get-movie-details">TMDb API - Movie: Details</a></p>
+
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>id</th>
+    <td><code class="type">Movie.​ID</code></td>
+    <td><p>The identifier of the movie.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+  <h4>Returns</h4>
+  <p>The matching movie.</p>
+
+</div>
+<div role="article" class="function" id="movieservice.credits(formovie:)">
+    <h3>
+        <code>credits(for​Movie:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="attribute">@</span><span class="attribute">available</span>(<span class="keyword">macOS</span> <span class="number literal">12</span>, <span class="keyword">iOS</span> <span class="number literal">15.0</span>, <span class="keyword">tvOS</span> <span class="number literal">15.0</span>, <span class="keyword">watchOS</span> <span class="number literal">8.0</span>, *)
+    <span class="keyword">func</span> <span class="function">credits</span>(<span class="variable">forMovie</span> <span class="variable">movieID</span>: <a href="/TMDb/Movie"><span class="type">Movie</span></a>.<span class="type">ID</span>) </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Returns the cast and crew of a movie.</p>
+
+</div>
+<div class="discussion">
+    <p><a href="https://developers.themoviedb.org/3/movies/get-movie-credits">TMDb API - Movie: Credits</a></p>
+
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>movie​ID</th>
+    <td><code class="type">Movie.​ID</code></td>
+    <td><p>The identifier of the movie.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+  <h4>Returns</h4>
+  <p>Credits for the matching movie.</p>
+
+</div>
+<div role="article" class="function" id="movieservice.reviews(formovie:page:)">
+    <h3>
+        <code>reviews(for​Movie:​page:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="attribute">@</span><span class="attribute">available</span>(<span class="keyword">macOS</span> <span class="number literal">12</span>, <span class="keyword">iOS</span> <span class="number literal">15.0</span>, <span class="keyword">tvOS</span> <span class="number literal">15.0</span>, <span class="keyword">watchOS</span> <span class="number literal">8.0</span>, *)
+    <span class="keyword">func</span> <span class="function">reviews</span>(<span class="variable">forMovie</span> <span class="variable">movieID</span>: <a href="/TMDb/Movie"><span class="type">Movie</span></a>.<span class="type">ID</span>, <span class="variable">page</span>: <span class="type">Int</span>?) </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Returns the user reviews for a movie.</p>
+
+</div>
+<div class="discussion">
+    <p><a href="https://developers.themoviedb.org/3/movies/get-movie-reviews">TMDb API - Movie: Reviews</a></p>
+
+<aside class="precondition" title="Precondition">
+    <p><code>page</code> can be between <code>1</code> and <code>1000</code>.</p>
+
+</aside>
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>movie​ID</th>
+    <td><code class="type">Movie.​ID</code></td>
+    <td><p>The identifier of the movie.</p>
+</td>
+</tr>
+<tr>
+    <th>page</th>
+    <td><code class="type">Int?</code></td>
+    <td><p>The page of results to return.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+  <h4>Returns</h4>
+  <p>Reviews for the matching movie as a pageable list.</p>
+
+</div>
+<div role="article" class="function" id="movieservice.images(formovie:)">
+    <h3>
+        <code>images(for​Movie:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="attribute">@</span><span class="attribute">available</span>(<span class="keyword">macOS</span> <span class="number literal">12</span>, <span class="keyword">iOS</span> <span class="number literal">15.0</span>, <span class="keyword">tvOS</span> <span class="number literal">15.0</span>, <span class="keyword">watchOS</span> <span class="number literal">8.0</span>, *)
+    <span class="keyword">func</span> <span class="function">images</span>(<span class="variable">forMovie</span> <span class="variable">movieID</span>: <a href="/TMDb/Movie"><span class="type">Movie</span></a>.<span class="type">ID</span>) </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Returns the images that belong to a movie.</p>
+
+</div>
+<div class="discussion">
+    <p><a href="https://developers.themoviedb.org/3/movies/get-movie-images">TMDb API - Movie: Images</a></p>
+
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>movie​ID</th>
+    <td><code class="type">Movie.​ID</code></td>
+    <td><p>The identifier of the movie.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+  <h4>Returns</h4>
+  <p>Collection of images for the matching movie.</p>
+
+</div>
+<div role="article" class="function" id="movieservice.videos(formovie:)">
+    <h3>
+        <code>videos(for​Movie:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="attribute">@</span><span class="attribute">available</span>(<span class="keyword">macOS</span> <span class="number literal">12</span>, <span class="keyword">iOS</span> <span class="number literal">15.0</span>, <span class="keyword">tvOS</span> <span class="number literal">15.0</span>, <span class="keyword">watchOS</span> <span class="number literal">8.0</span>, *)
+    <span class="keyword">func</span> <span class="function">videos</span>(<span class="variable">forMovie</span> <span class="variable">movieID</span>: <a href="/TMDb/Movie"><span class="type">Movie</span></a>.<span class="type">ID</span>) </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Returns the videos that have been added to a movie.</p>
+
+</div>
+<div class="discussion">
+    <p><a href="https://developers.themoviedb.org/3/movies/get-movie-videos">TMDb API - Movie: Videos</a></p>
+
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>movie​ID</th>
+    <td><code class="type">Movie.​ID</code></td>
+    <td><p>The identifier of the movie.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+  <h4>Returns</h4>
+  <p>Collection of videos for the matching movie.</p>
+
+</div>
+<div role="article" class="function" id="movieservice.recommendations(formovie:page:)">
+    <h3>
+        <code>recommendations(for​Movie:​page:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="attribute">@</span><span class="attribute">available</span>(<span class="keyword">macOS</span> <span class="number literal">12</span>, <span class="keyword">iOS</span> <span class="number literal">15.0</span>, <span class="keyword">tvOS</span> <span class="number literal">15.0</span>, <span class="keyword">watchOS</span> <span class="number literal">8.0</span>, *)
+    <span class="keyword">func</span> <span class="function">recommendations</span>(<span class="variable">forMovie</span> <span class="variable">movieID</span>: <a href="/TMDb/Movie"><span class="type">Movie</span></a>.<span class="type">ID</span>, <span class="variable">page</span>: <span class="type">Int</span>?) </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Returns a list of recommended movies for a movie.</p>
+
+</div>
+<div class="discussion">
+    <p><a href="https://developers.themoviedb.org/3/movies/get-movie-recommendations">TMDb API - Movie: Recommendations</a></p>
+
+<aside class="precondition" title="Precondition">
+    <p><code>page</code> can be between <code>1</code> and <code>1000</code>.</p>
+
+</aside>
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>movie​ID</th>
+    <td><code class="type">Movie.​ID</code></td>
+    <td><p>The identifier of the movie for get recommendations for.</p>
+</td>
+</tr>
+<tr>
+    <th>page</th>
+    <td><code class="type">Int?</code></td>
+    <td><p>The page of results to return.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+  <h4>Returns</h4>
+  <p>Recommended movies for the matching movie as a pageable list.</p>
+
+</div>
+<div role="article" class="function" id="movieservice.similar(tomovie:page:)">
+    <h3>
+        <code>similar(to​Movie:​page:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="attribute">@</span><span class="attribute">available</span>(<span class="keyword">macOS</span> <span class="number literal">12</span>, <span class="keyword">iOS</span> <span class="number literal">15.0</span>, <span class="keyword">tvOS</span> <span class="number literal">15.0</span>, <span class="keyword">watchOS</span> <span class="number literal">8.0</span>, *)
+    <span class="keyword">func</span> <span class="function">similar</span>(<span class="variable">toMovie</span> <span class="variable">movieID</span>: <a href="/TMDb/Movie"><span class="type">Movie</span></a>.<span class="type">ID</span>, <span class="variable">page</span>: <span class="type">Int</span>?) </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Returns a list of similar movies for a movie.</p>
+
+</div>
+<div class="discussion">
+    <p>This is not the same as the <em>Recommendations</em>.</p>
+
+<p><a href="https://developers.themoviedb.org/3/movies/get-similar-movies">TMDb API - Movie: Similar</a></p>
+
+<aside class="precondition" title="Precondition">
+    <p><code>page</code> can be between <code>1</code> and <code>1000</code>.</p>
+
+</aside>
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>movie​ID</th>
+    <td><code class="type">Movie.​ID</code></td>
+    <td><p>The identifier of the movie for get similar movies for.</p>
+</td>
+</tr>
+<tr>
+    <th>page</th>
+    <td><code class="type">Int?</code></td>
+    <td><p>The page of results to return.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+  <h4>Returns</h4>
+  <p>Similar movies for the matching movie as a pageable list.</p>
+
+</div>
+<div role="article" class="function" id="movieservice.nowplaying(page:)">
+    <h3>
+        <code>now​Playing(page:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="attribute">@</span><span class="attribute">available</span>(<span class="keyword">macOS</span> <span class="number literal">12</span>, <span class="keyword">iOS</span> <span class="number literal">15.0</span>, <span class="keyword">tvOS</span> <span class="number literal">15.0</span>, <span class="keyword">watchOS</span> <span class="number literal">8.0</span>, *)
+    <span class="keyword">func</span> <span class="function">nowPlaying</span>(<span class="variable">page</span>: <span class="type">Int</span>?) </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Returns a list of currently playing movies.</p>
+
+</div>
+<div class="discussion">
+    <p><a href="https://developers.themoviedb.org/3/movies/get-now-playing">TMDb API - Movie: Now Playing</a></p>
+
+<aside class="precondition" title="Precondition">
+    <p><code>page</code> can be between <code>1</code> and <code>1000</code>.</p>
+
+</aside>
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>page</th>
+    <td><code class="type">Int?</code></td>
+    <td><p>The page of results to return.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+  <h4>Returns</h4>
+  <p>Current popular movies as a pageable list.</p>
+
+</div>
+<div role="article" class="function" id="movieservice.popular(page:)">
+    <h3>
+        <code>popular(page:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="attribute">@</span><span class="attribute">available</span>(<span class="keyword">macOS</span> <span class="number literal">12</span>, <span class="keyword">iOS</span> <span class="number literal">15.0</span>, <span class="keyword">tvOS</span> <span class="number literal">15.0</span>, <span class="keyword">watchOS</span> <span class="number literal">8.0</span>, *)
+    <span class="keyword">func</span> <span class="function">popular</span>(<span class="variable">page</span>: <span class="type">Int</span>?) </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Returns a list of current popular movies.</p>
+
+</div>
+<div class="discussion">
+    <p><a href="https://developers.themoviedb.org/3/movies/get-popular-movies">TMDb API - Movie: Popular</a></p>
+
+<aside class="precondition" title="Precondition">
+    <p><code>page</code> can be between <code>1</code> and <code>1000</code>.</p>
+
+</aside>
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>page</th>
+    <td><code class="type">Int?</code></td>
+    <td><p>The page of results to return.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+  <h4>Returns</h4>
+  <p>Current popular movies as a pageable list.</p>
+
+</div>
+<div role="article" class="function" id="movieservice.toprated(page:)">
+    <h3>
+        <code>top​Rated(page:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="attribute">@</span><span class="attribute">available</span>(<span class="keyword">macOS</span> <span class="number literal">12</span>, <span class="keyword">iOS</span> <span class="number literal">15.0</span>, <span class="keyword">tvOS</span> <span class="number literal">15.0</span>, <span class="keyword">watchOS</span> <span class="number literal">8.0</span>, *)
+    <span class="keyword">func</span> <span class="function">topRated</span>(<span class="variable">page</span>: <span class="type">Int</span>?) </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Returns a list of top rated movies.</p>
+
+</div>
+<div class="discussion">
+    <p><a href="https://developers.themoviedb.org/3/movies/get-top-rated-movies">TMDb API - Movie: Top Rated</a></p>
+
+<aside class="precondition" title="Precondition">
+    <p><code>page</code> can be between <code>1</code> and <code>1000</code>.</p>
+
+</aside>
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>page</th>
+    <td><code class="type">Int?</code></td>
+    <td><p>The page of results to return.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+  <h4>Returns</h4>
+  <p>Current popular movies as a pageable list.</p>
+
+</div>
+<div role="article" class="function" id="movieservice.upcoming(page:)">
+    <h3>
+        <code>upcoming(page:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="attribute">@</span><span class="attribute">available</span>(<span class="keyword">macOS</span> <span class="number literal">12</span>, <span class="keyword">iOS</span> <span class="number literal">15.0</span>, <span class="keyword">tvOS</span> <span class="number literal">15.0</span>, <span class="keyword">watchOS</span> <span class="number literal">8.0</span>, *)
+    <span class="keyword">func</span> <span class="function">upcoming</span>(<span class="variable">page</span>: <span class="type">Int</span>?) </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Returns a list of upcoming movies.</p>
+
+</div>
+<div class="discussion">
+    <p><a href="https://developers.themoviedb.org/3/movies/get-upcoming">TMDb API - Movie: Upcoming</a></p>
+
+<aside class="precondition" title="Precondition">
+    <p><code>page</code> can be between <code>1</code> and <code>1000</code>.</p>
+
+</aside>
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>page</th>
+    <td><code class="type">Int?</code></td>
+    <td><p>The page of results to return.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+  <h4>Returns</h4>
+  <p>Current popular movies as a pageable list.</p>
+
+</div>
+    </section>
+        </article>
+    </main>
+
+    <footer>
+        <p>
+    Generated on <time datetime="2021-11-25T17:07:21+0000">November 25, 2021</time> using <a href="https://github.com/SwiftDocOrg/swift-doc">swift-doc</a> <span class="version">1.0.0-rc.1</span>.
+</p>
+    </footer>
+</body>
+</html>

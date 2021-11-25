@@ -1,0 +1,1252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TMDb - TVShowService</title>
+    <link rel="stylesheet" type="text/css" href="/TMDb/all.css" media="all" />
+</head>
+<body>
+    <header>
+        <a href="/TMDb/">
+            <strong>
+                TMDb
+            </strong>
+            <span>Documentation</span>
+        </a>
+    </header>
+
+    <!--
+    <form class="search">
+        <input type="search" placeholder="Search" />
+    </form>
+    -->
+
+    <nav>
+        <div class="wrapper">
+            <h2>On This Page</h2>
+            <ol><li><a href="#default implementations">Default Implementations</a><ul><li class="function"><a href="#tvshowservice.fetchreviews(fortvshow:page:completion:)">fetch​Reviews(for​TVShow:​page:​completion:​)</a></li><li class="function"><a href="#tvshowservice.fetchrecommendations(fortvshow:page:completion:)">fetch​Recommendations(for​TVShow:​page:​completion:​)</a></li><li class="function"><a href="#tvshowservice.fetchsimilar(totvshow:page:completion:)">fetch​Similar(to​TVShow:​page:​completion:​)</a></li><li class="function"><a href="#tvshowservice.fetchpopular(page:completion:)">fetch​Popular(page:​completion:​)</a></li><li class="function"><a href="#tvshowservice.reviewspublisher(fortvshow:page:)">reviews​Publisher(for​TVShow:​page:​)</a></li><li class="function"><a href="#tvshowservice.recommendationspublisher(fortvshow:page:)">recommendations​Publisher(for​TVShow:​page:​)</a></li><li class="function"><a href="#tvshowservice.similarpublisher(totvshow:page:)">similar​Publisher(to​TVShow:​page:​)</a></li><li class="function"><a href="#tvshowservice.popularpublisher(page:)">popular​Publisher(page:​)</a></li></ul></li><li><a href="#requirements">Requirements</a><ul><li class="function"><a href="#tvshowservice.fetchdetails(fortvshow:completion:)">fetch​Details(for​TVShow:​completion:​)</a></li><li class="function"><a href="#tvshowservice.fetchcredits(fortvshow:completion:)">fetch​Credits(for​TVShow:​completion:​)</a></li><li class="function"><a href="#tvshowservice.fetchreviews(fortvshow:page:completion:)">fetch​Reviews(for​TVShow:​page:​completion:​)</a></li><li class="function"><a href="#tvshowservice.fetchimages(fortvshow:completion:)">fetch​Images(for​TVShow:​completion:​)</a></li><li class="function"><a href="#tvshowservice.fetchvideos(fortvshow:completion:)">fetch​Videos(for​TVShow:​completion:​)</a></li><li class="function"><a href="#tvshowservice.fetchrecommendations(fortvshow:page:completion:)">fetch​Recommendations(for​TVShow:​page:​completion:​)</a></li><li class="function"><a href="#tvshowservice.fetchsimilar(totvshow:page:completion:)">fetch​Similar(to​TVShow:​page:​completion:​)</a></li><li class="function"><a href="#tvshowservice.fetchpopular(page:completion:)">fetch​Popular(page:​completion:​)</a></li><li class="function"><a href="#tvshowservice.detailspublisher(fortvshow:)">details​Publisher(for​TVShow:​)</a></li><li class="function"><a href="#tvshowservice.creditspublisher(fortvshow:)">credits​Publisher(for​TVShow:​)</a></li><li class="function"><a href="#tvshowservice.reviewspublisher(fortvshow:page:)">reviews​Publisher(for​TVShow:​page:​)</a></li><li class="function"><a href="#tvshowservice.imagespublisher(fortvshow:)">images​Publisher(for​TVShow:​)</a></li><li class="function"><a href="#tvshowservice.videospublisher(fortvshow:)">videos​Publisher(for​TVShow:​)</a></li><li class="function"><a href="#tvshowservice.recommendationspublisher(fortvshow:page:)">recommendations​Publisher(for​TVShow:​page:​)</a></li><li class="function"><a href="#tvshowservice.similarpublisher(totvshow:page:)">similar​Publisher(to​TVShow:​page:​)</a></li><li class="function"><a href="#tvshowservice.popularpublisher(page:)">popular​Publisher(page:​)</a></li><li class="function"><a href="#tvshowservice.details(fortvshow:)">details(for​TVShow:​)</a></li><li class="function"><a href="#tvshowservice.credits(fortvshow:)">credits(for​TVShow:​)</a></li><li class="function"><a href="#tvshowservice.reviews(fortvshow:page:)">reviews(for​TVShow:​page:​)</a></li><li class="function"><a href="#tvshowservice.images(fortvshow:)">images(for​TVShow:​)</a></li><li class="function"><a href="#tvshowservice.videos(fortvshow:)">videos(for​TVShow:​)</a></li><li class="function"><a href="#tvshowservice.recommendations(fortvshow:page:)">recommendations(for​TVShow:​page:​)</a></li><li class="function"><a href="#tvshowservice.similar(totvshow:page:)">similar(to​TVShow:​page:​)</a></li><li class="function"><a href="#tvshowservice.popular(page:)">popular(page:​)</a></li></ul></li></ol>
+        </div>
+    </nav>
+
+    <main>
+        <article>
+            <h1>
+    <small>Protocol</small>
+    <code class="name">TVShow​Service</code>
+</h1>
+
+<div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">protocol</span> <span class="type">TVShowService</span>  </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Fetch details about TV shows.</p>
+
+</div>
+
+    <section id="default implementations">
+        <h2>Default Implementations</h2>
+
+        <div role="article" class="function" id="tvshowservice.fetchreviews(fortvshow:page:completion:)">
+    <h3>
+        <code><a href="#tvshowservice.fetchreviews(fortvshow:page:completion:)">fetch​Reviews(for​TVShow:​page:​completion:​)</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">func</span> <span class="function">fetchReviews</span>(<span class="variable">forTVShow</span> <span class="variable">tvShowID</span>: <a href="/TMDb/TVShow"><span class="type">TVShow</span></a>.<span class="type">ID</span>, <span class="variable">page</span>: <span class="type">Int</span>? = <span class="keyword">nil</span>,
+                      <span class="variable">completion</span>: <span class="attribute">@</span><span class="attribute">escaping</span> (<span class="keyword">_</span> <span class="variable">result</span>: <span class="type">Result</span>&lt;<span class="type">ReviewPageableList</span>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;) -&gt; <span class="type">Void</span>)  </body></html></code></pre>
+</div>
+</div>
+<div role="article" class="function" id="tvshowservice.fetchrecommendations(fortvshow:page:completion:)">
+    <h3>
+        <code><a href="#tvshowservice.fetchrecommendations(fortvshow:page:completion:)">fetch​Recommendations(for​TVShow:​page:​completion:​)</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">func</span> <span class="function">fetchRecommendations</span>(<span class="variable">forTVShow</span> <span class="variable">tvShowID</span>: <a href="/TMDb/TVShow"><span class="type">TVShow</span></a>.<span class="type">ID</span>, <span class="variable">page</span>: <span class="type">Int</span>? = <span class="keyword">nil</span>,
+                              <span class="variable">completion</span>: <span class="attribute">@</span><span class="attribute">escaping</span> (<span class="keyword">_</span> <span class="variable">result</span>: <span class="type">Result</span>&lt;<span class="type">TVShowPageableList</span>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;) -&gt; <span class="type">Void</span>)  </body></html></code></pre>
+</div>
+</div>
+<div role="article" class="function" id="tvshowservice.fetchsimilar(totvshow:page:completion:)">
+    <h3>
+        <code><a href="#tvshowservice.fetchsimilar(totvshow:page:completion:)">fetch​Similar(to​TVShow:​page:​completion:​)</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">func</span> <span class="function">fetchSimilar</span>(<span class="variable">toTVShow</span> <span class="variable">tvShowID</span>: <a href="/TMDb/TVShow"><span class="type">TVShow</span></a>.<span class="type">ID</span>, <span class="variable">page</span>: <span class="type">Int</span>? = <span class="keyword">nil</span>,
+                      <span class="variable">completion</span>: <span class="attribute">@</span><span class="attribute">escaping</span> (<span class="keyword">_</span> <span class="variable">result</span>: <span class="type">Result</span>&lt;<span class="type">TVShowPageableList</span>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;) -&gt; <span class="type">Void</span>)  </body></html></code></pre>
+</div>
+</div>
+<div role="article" class="function" id="tvshowservice.fetchpopular(page:completion:)">
+    <h3>
+        <code><a href="#tvshowservice.fetchpopular(page:completion:)">fetch​Popular(page:​completion:​)</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">func</span> <span class="function">fetchPopular</span>(<span class="variable">page</span>: <span class="type">Int</span>? = <span class="keyword">nil</span>,
+                      <span class="variable">completion</span>: <span class="attribute">@</span><span class="attribute">escaping</span> (<span class="keyword">_</span> <span class="variable">result</span>: <span class="type">Result</span>&lt;<span class="type">TVShowPageableList</span>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;) -&gt; <span class="type">Void</span>)  </body></html></code></pre>
+</div>
+</div>
+<div role="article" class="function" id="tvshowservice.reviewspublisher(fortvshow:page:)">
+    <h3>
+        <code><a href="#tvshowservice.reviewspublisher(fortvshow:page:)">reviews​Publisher(for​TVShow:​page:​)</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">func</span> <span class="function">reviewsPublisher</span>(<span class="variable">forTVShow</span> <span class="variable">tvShowID</span>: <a href="/TMDb/TVShow"><span class="type">TVShow</span></a>.<span class="type">ID</span>,
+                          <span class="variable">page</span>: <span class="type">Int</span>? = <span class="keyword">nil</span>) -&gt; <span class="type">AnyPublisher</span>&lt;<span class="type">ReviewPageableList</span>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;  </body></html></code></pre>
+</div>
+</div>
+<div role="article" class="function" id="tvshowservice.recommendationspublisher(fortvshow:page:)">
+    <h3>
+        <code><a href="#tvshowservice.recommendationspublisher(fortvshow:page:)">recommendations​Publisher(for​TVShow:​page:​)</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">func</span> <span class="function">recommendationsPublisher</span>(<span class="variable">forTVShow</span> <span class="variable">tvShowID</span>: <a href="/TMDb/TVShow"><span class="type">TVShow</span></a>.<span class="type">ID</span>,
+                                  <span class="variable">page</span>: <span class="type">Int</span>? = <span class="keyword">nil</span>) -&gt; <span class="type">AnyPublisher</span>&lt;<span class="type">TVShowPageableList</span>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;  </body></html></code></pre>
+</div>
+</div>
+<div role="article" class="function" id="tvshowservice.similarpublisher(totvshow:page:)">
+    <h3>
+        <code><a href="#tvshowservice.similarpublisher(totvshow:page:)">similar​Publisher(to​TVShow:​page:​)</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">func</span> <span class="function">similarPublisher</span>(<span class="variable">toTVShow</span> <span class="variable">tvShowID</span>: <a href="/TMDb/TVShow"><span class="type">TVShow</span></a>.<span class="type">ID</span>,
+                          <span class="variable">page</span>: <span class="type">Int</span>? = <span class="keyword">nil</span>) -&gt; <span class="type">AnyPublisher</span>&lt;<span class="type">TVShowPageableList</span>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;  </body></html></code></pre>
+</div>
+</div>
+<div role="article" class="function" id="tvshowservice.popularpublisher(page:)">
+    <h3>
+        <code><a href="#tvshowservice.popularpublisher(page:)">popular​Publisher(page:​)</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">func</span> <span class="function">popularPublisher</span>(<span class="variable">page</span>: <span class="type">Int</span>? = <span class="keyword">nil</span>) -&gt; <span class="type">AnyPublisher</span>&lt;<span class="type">TVShowPageableList</span>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;  </body></html></code></pre>
+</div>
+</div>
+    </section>
+
+
+    <section id="requirements">
+        <h2>Requirements</h2>
+
+        <div role="article" class="function" id="tvshowservice.fetchdetails(fortvshow:completion:)">
+    <h3>
+        <code>fetch​Details(for​TVShow:​completion:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">func</span> <span class="function">fetchDetails</span>(<span class="variable">forTVShow</span> <span class="variable">id</span>: <a href="/TMDb/TVShow"><span class="type">TVShow</span></a>.<span class="type">ID</span>, <span class="variable">completion</span>: <span class="attribute">@</span><span class="attribute">escaping</span> (<span class="keyword">_</span> <span class="variable">result</span>: <span class="type">Result</span>&lt;<a href="/TMDb/TVShow"><span class="type">TVShow</span></a>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;) -&gt; <span class="type">Void</span>) </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Fetches the primary information about a TV show.</p>
+
+</div>
+<div class="discussion">
+    <p><a href="https://developers.themoviedb.org/3/tv/get-tv-details">TMDb API - TV Shows: Details</a></p>
+
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>id</th>
+    <td><code class="type">TVShow.​ID</code></td>
+    <td><p>The identifier of the TV show.</p>
+</td>
+</tr>
+<tr>
+    <th>completion</th>
+    <td><code class="type">@escaping (_ result:​ Result&lt;TVShow, TMDbError&gt;) -&gt; Void</code></td>
+    <td><p>Completion handler.</p>
+</td>
+</tr>
+<tr>
+    <th>result</th>
+    <td></td>
+    <td><p>The matching TV show.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+</div>
+<div role="article" class="function" id="tvshowservice.fetchcredits(fortvshow:completion:)">
+    <h3>
+        <code>fetch​Credits(for​TVShow:​completion:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">func</span> <span class="function">fetchCredits</span>(<span class="variable">forTVShow</span> <span class="variable">tvShowID</span>: <a href="/TMDb/TVShow"><span class="type">TVShow</span></a>.<span class="type">ID</span>,
+                      <span class="variable">completion</span>: <span class="attribute">@</span><span class="attribute">escaping</span> (<span class="keyword">_</span> <span class="variable">result</span>: <span class="type">Result</span>&lt;<a href="/TMDb/ShowCredits"><span class="type">ShowCredits</span></a>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;) -&gt; <span class="type">Void</span>) </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Fetches the cast and crew of a TV show.</p>
+
+</div>
+<div class="discussion">
+    <p><a href="https://developers.themoviedb.org/3/tv/get-tv-credits">TMDb API - TV Shows: Credits</a></p>
+
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>tv​Show​ID</th>
+    <td><code class="type">TVShow.​ID</code></td>
+    <td><p>The identifier of the TV show.</p>
+</td>
+</tr>
+<tr>
+    <th>completion</th>
+    <td><code class="type">@escaping (_ result:​ Result&lt;Show​Credits, TMDbError&gt;) -&gt; Void</code></td>
+    <td><p>Completion handler.</p>
+</td>
+</tr>
+<tr>
+    <th>result</th>
+    <td></td>
+    <td><p>Show credits for the matching TV show.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+</div>
+<div role="article" class="function" id="tvshowservice.fetchreviews(fortvshow:page:completion:)">
+    <h3>
+        <code>fetch​Reviews(for​TVShow:​page:​completion:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">func</span> <span class="function">fetchReviews</span>(<span class="variable">forTVShow</span> <span class="variable">tvShowID</span>: <a href="/TMDb/TVShow"><span class="type">TVShow</span></a>.<span class="type">ID</span>, <span class="variable">page</span>: <span class="type">Int</span>?,
+                      <span class="variable">completion</span>: <span class="attribute">@</span><span class="attribute">escaping</span> (<span class="keyword">_</span> <span class="variable">result</span>: <span class="type">Result</span>&lt;<span class="type">ReviewPageableList</span>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;) -&gt; <span class="type">Void</span>) </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Fetches the user reviews for a TV show.</p>
+
+</div>
+<div class="discussion">
+    <p><a href="https://developers.themoviedb.org/3/tv/get-tv-reviews">TMDb API - TV Shows: Reviews</a></p>
+
+<aside class="precondition" title="Precondition">
+    <p><code>page</code> can be between <code>1</code> and <code>1000</code>.</p>
+
+</aside>
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>tv​Show​ID</th>
+    <td><code class="type">TVShow.​ID</code></td>
+    <td><p>The identifier of the TV show.</p>
+</td>
+</tr>
+<tr>
+    <th>page</th>
+    <td><code class="type">Int?</code></td>
+    <td><p>The page of results to return.</p>
+</td>
+</tr>
+<tr>
+    <th>completion</th>
+    <td><code class="type">@escaping (_ result:​ Result&lt;Review​Pageable​List, TMDbError&gt;) -&gt; Void</code></td>
+    <td><p>Completion handler.</p>
+</td>
+</tr>
+<tr>
+    <th>result</th>
+    <td></td>
+    <td><p>Reviews for the matching TV show as a pageable list.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+</div>
+<div role="article" class="function" id="tvshowservice.fetchimages(fortvshow:completion:)">
+    <h3>
+        <code>fetch​Images(for​TVShow:​completion:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">func</span> <span class="function">fetchImages</span>(<span class="variable">forTVShow</span> <span class="variable">tvShowID</span>: <a href="/TMDb/TVShow"><span class="type">TVShow</span></a>.<span class="type">ID</span>,
+                     <span class="variable">completion</span>: <span class="attribute">@</span><span class="attribute">escaping</span> (<span class="keyword">_</span> <span class="variable">result</span>: <span class="type">Result</span>&lt;<a href="/TMDb/ImageCollection"><span class="type">ImageCollection</span></a>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;) -&gt; <span class="type">Void</span>) </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Fetches the images that belong to a TV show.</p>
+
+</div>
+<div class="discussion">
+    <p><a href="https://developers.themoviedb.org/3/tv/get-tv-images">TMDb API - TV Shows: Images</a></p>
+
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>tv​Show​ID</th>
+    <td><code class="type">TVShow.​ID</code></td>
+    <td><p>The identifier of the TV show.</p>
+</td>
+</tr>
+<tr>
+    <th>completion</th>
+    <td><code class="type">@escaping (_ result:​ Result&lt;Image​Collection, TMDbError&gt;) -&gt; Void</code></td>
+    <td><p>Completion handler.</p>
+</td>
+</tr>
+<tr>
+    <th>result</th>
+    <td></td>
+    <td><p>A collection of images for the matching TV show.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+</div>
+<div role="article" class="function" id="tvshowservice.fetchvideos(fortvshow:completion:)">
+    <h3>
+        <code>fetch​Videos(for​TVShow:​completion:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">func</span> <span class="function">fetchVideos</span>(<span class="variable">forTVShow</span> <span class="variable">tvShowID</span>: <a href="/TMDb/TVShow"><span class="type">TVShow</span></a>.<span class="type">ID</span>,
+                     <span class="variable">completion</span>: <span class="attribute">@</span><span class="attribute">escaping</span> (<span class="keyword">_</span> <span class="variable">result</span>: <span class="type">Result</span>&lt;<a href="/TMDb/VideoCollection"><span class="type">VideoCollection</span></a>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;) -&gt; <span class="type">Void</span>) </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Fetches the videos that belong to a TV show.</p>
+
+</div>
+<div class="discussion">
+    <p><a href="https://developers.themoviedb.org/3/tv/get-tv-videos">TMDb API - TV Shows: Videos</a></p>
+
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>tv​Show​ID</th>
+    <td><code class="type">TVShow.​ID</code></td>
+    <td><p>The identifier of the TV show.</p>
+</td>
+</tr>
+<tr>
+    <th>completion</th>
+    <td><code class="type">@escaping (_ result:​ Result&lt;Video​Collection, TMDbError&gt;) -&gt; Void</code></td>
+    <td><p>Completion handler.</p>
+</td>
+</tr>
+<tr>
+    <th>result</th>
+    <td></td>
+    <td><p>A collection of videos for the matching TV show.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+</div>
+<div role="article" class="function" id="tvshowservice.fetchrecommendations(fortvshow:page:completion:)">
+    <h3>
+        <code>fetch​Recommendations(for​TVShow:​page:​completion:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">func</span> <span class="function">fetchRecommendations</span>(<span class="variable">forTVShow</span> <span class="variable">tvShowID</span>: <a href="/TMDb/TVShow"><span class="type">TVShow</span></a>.<span class="type">ID</span>, <span class="variable">page</span>: <span class="type">Int</span>?,
+                              <span class="variable">completion</span>: <span class="attribute">@</span><span class="attribute">escaping</span> (<span class="keyword">_</span> <span class="variable">result</span>: <span class="type">Result</span>&lt;<span class="type">TVShowPageableList</span>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;) -&gt; <span class="type">Void</span>) </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Fetches a list of recommended TV shows for a TV show.</p>
+
+</div>
+<div class="discussion">
+    <p><a href="https://developers.themoviedb.org/3/tv/get-tv-recommendations">TMDb API - TV Shows: Recommendations</a></p>
+
+<aside class="precondition" title="Precondition">
+    <p><code>page</code> can be between <code>1</code> and <code>1000</code>.</p>
+
+</aside>
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>tv​Show​ID</th>
+    <td><code class="type">TVShow.​ID</code></td>
+    <td><p>The identifier of the TV show.</p>
+</td>
+</tr>
+<tr>
+    <th>page</th>
+    <td><code class="type">Int?</code></td>
+    <td><p>The page of results to return.</p>
+</td>
+</tr>
+<tr>
+    <th>completion</th>
+    <td><code class="type">@escaping (_ result:​ Result&lt;TVShow​Pageable​List, TMDbError&gt;) -&gt; Void</code></td>
+    <td><p>Completion handler.</p>
+</td>
+</tr>
+<tr>
+    <th>result</th>
+    <td></td>
+    <td><p>Recommended TV shows for the matching TV show as a pageable list.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+</div>
+<div role="article" class="function" id="tvshowservice.fetchsimilar(totvshow:page:completion:)">
+    <h3>
+        <code>fetch​Similar(to​TVShow:​page:​completion:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">func</span> <span class="function">fetchSimilar</span>(<span class="variable">toTVShow</span> <span class="variable">tvShowID</span>: <a href="/TMDb/TVShow"><span class="type">TVShow</span></a>.<span class="type">ID</span>, <span class="variable">page</span>: <span class="type">Int</span>?,
+                      <span class="variable">completion</span>: <span class="attribute">@</span><span class="attribute">escaping</span> (<span class="keyword">_</span> <span class="variable">result</span>: <span class="type">Result</span>&lt;<span class="type">TVShowPageableList</span>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;) -&gt; <span class="type">Void</span>) </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Fetches a list of similar TV shows for a TV show.</p>
+
+</div>
+<div class="discussion">
+    <p>This is not the same as the <em>Recommendations</em>.</p>
+
+<p><a href="https://developers.themoviedb.org/3/tv/get-tv-movies">TMDb API - TV: Similar</a></p>
+
+<aside class="precondition" title="Precondition">
+    <p><code>page</code> can be between <code>1</code> and <code>1000</code>.</p>
+
+</aside>
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>tv​Show​ID</th>
+    <td><code class="type">TVShow.​ID</code></td>
+    <td><p>The identifier of the TV show for get similar TV shows for.</p>
+</td>
+</tr>
+<tr>
+    <th>page</th>
+    <td><code class="type">Int?</code></td>
+    <td><p>The page of results to return.</p>
+</td>
+</tr>
+<tr>
+    <th>completion</th>
+    <td><code class="type">@escaping (_ result:​ Result&lt;TVShow​Pageable​List, TMDbError&gt;) -&gt; Void</code></td>
+    <td><p>Completion handler.</p>
+</td>
+</tr>
+<tr>
+    <th>result</th>
+    <td></td>
+    <td><p>Similar TV shows for the matching TV show as a pageable list.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+</div>
+<div role="article" class="function" id="tvshowservice.fetchpopular(page:completion:)">
+    <h3>
+        <code>fetch​Popular(page:​completion:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">func</span> <span class="function">fetchPopular</span>(<span class="variable">page</span>: <span class="type">Int</span>?, <span class="variable">completion</span>: <span class="attribute">@</span><span class="attribute">escaping</span> (<span class="keyword">_</span> <span class="variable">result</span>: <span class="type">Result</span>&lt;<span class="type">TVShowPageableList</span>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;) -&gt; <span class="type">Void</span>) </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Fetches a list current popular TV shows.</p>
+
+</div>
+<div class="discussion">
+    <p><a href="https://developers.themoviedb.org/3/tv/get-popular-tv">TMDb API - TV: Popular</a></p>
+
+<aside class="precondition" title="Precondition">
+    <p><code>page</code> can be between <code>1</code> and <code>1000</code>.</p>
+
+</aside>
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>page</th>
+    <td><code class="type">Int?</code></td>
+    <td><p>The page of results to return.</p>
+</td>
+</tr>
+<tr>
+    <th>completion</th>
+    <td><code class="type">@escaping (_ result:​ Result&lt;TVShow​Pageable​List, TMDbError&gt;) -&gt; Void</code></td>
+    <td><p>Completion handler.</p>
+</td>
+</tr>
+<tr>
+    <th>result</th>
+    <td></td>
+    <td><p>Current popular TV shows as a pageable list.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+</div>
+<div role="article" class="function" id="tvshowservice.detailspublisher(fortvshow:)">
+    <h3>
+        <code>details​Publisher(for​TVShow:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="attribute">@</span><span class="attribute">available</span>(<span class="keyword">macOS</span> <span class="number literal">10.15</span>, <span class="keyword">iOS</span> <span class="number literal">13.0</span>, <span class="keyword">tvOS</span> <span class="number literal">13.0</span>, <span class="keyword">watchOS</span> <span class="number literal">6.0</span>, *)
+    <span class="keyword">func</span> <span class="function">detailsPublisher</span>(<span class="variable">forTVShow</span> <span class="variable">id</span>: <a href="/TMDb/TVShow"><span class="type">TVShow</span></a>.<span class="type">ID</span>) -&gt; <span class="type">AnyPublisher</span>&lt;<a href="/TMDb/TVShow"><span class="type">TVShow</span></a>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;</body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Publishes the primary information about a TV show.</p>
+
+</div>
+<div class="discussion">
+    <p><a href="https://developers.themoviedb.org/3/tv/get-tv-details">TMDb API - TV Shows: Details</a></p>
+
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>id</th>
+    <td><code class="type">TVShow.​ID</code></td>
+    <td><p>The identifier of the TV show.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+  <h4>Returns</h4>
+  <p>A publisher with the matching TV show.</p>
+
+</div>
+<div role="article" class="function" id="tvshowservice.creditspublisher(fortvshow:)">
+    <h3>
+        <code>credits​Publisher(for​TVShow:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="attribute">@</span><span class="attribute">available</span>(<span class="keyword">macOS</span> <span class="number literal">10.15</span>, <span class="keyword">iOS</span> <span class="number literal">13.0</span>, <span class="keyword">tvOS</span> <span class="number literal">13.0</span>, <span class="keyword">watchOS</span> <span class="number literal">6.0</span>, *)
+    <span class="keyword">func</span> <span class="function">creditsPublisher</span>(<span class="variable">forTVShow</span> <span class="variable">tvShowID</span>: <a href="/TMDb/TVShow"><span class="type">TVShow</span></a>.<span class="type">ID</span>) -&gt; <span class="type">AnyPublisher</span>&lt;<a href="/TMDb/ShowCredits"><span class="type">ShowCredits</span></a>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;</body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Publishes the cast and crew of a TV show.</p>
+
+</div>
+<div class="discussion">
+    <p><a href="https://developers.themoviedb.org/3/tv/get-tv-credits">TMDb API - TV Shows: Credits</a></p>
+
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>tv​Show​ID</th>
+    <td><code class="type">TVShow.​ID</code></td>
+    <td><p>The identifier of the TV show.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+  <h4>Returns</h4>
+  <p>A publisher with show credits for the matching TV show.</p>
+
+</div>
+<div role="article" class="function" id="tvshowservice.reviewspublisher(fortvshow:page:)">
+    <h3>
+        <code>reviews​Publisher(for​TVShow:​page:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="attribute">@</span><span class="attribute">available</span>(<span class="keyword">macOS</span> <span class="number literal">10.15</span>, <span class="keyword">iOS</span> <span class="number literal">13.0</span>, <span class="keyword">tvOS</span> <span class="number literal">13.0</span>, <span class="keyword">watchOS</span> <span class="number literal">6.0</span>, *)
+    <span class="keyword">func</span> <span class="function">reviewsPublisher</span>(<span class="variable">forTVShow</span> <span class="variable">tvShowID</span>: <a href="/TMDb/TVShow"><span class="type">TVShow</span></a>.<span class="type">ID</span>, <span class="variable">page</span>: <span class="type">Int</span>?) -&gt; <span class="type">AnyPublisher</span>&lt;<span class="type">ReviewPageableList</span>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;</body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Publishes the user reviews for a TV show.</p>
+
+</div>
+<div class="discussion">
+    <p><a href="https://developers.themoviedb.org/3/tv/get-tv-reviews">TMDb API - TV Shows: Reviews</a></p>
+
+<aside class="precondition" title="Precondition">
+    <p><code>page</code> can be between <code>1</code> and <code>1000</code>.</p>
+
+</aside>
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>tv​Show​ID</th>
+    <td><code class="type">TVShow.​ID</code></td>
+    <td><p>The identifier of the TV show.</p>
+</td>
+</tr>
+<tr>
+    <th>page</th>
+    <td><code class="type">Int?</code></td>
+    <td><p>The page of results to return.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+  <h4>Returns</h4>
+  <p>A publisher with reviews for the matching TV show as a pageable list.</p>
+
+</div>
+<div role="article" class="function" id="tvshowservice.imagespublisher(fortvshow:)">
+    <h3>
+        <code>images​Publisher(for​TVShow:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="attribute">@</span><span class="attribute">available</span>(<span class="keyword">macOS</span> <span class="number literal">10.15</span>, <span class="keyword">iOS</span> <span class="number literal">13.0</span>, <span class="keyword">tvOS</span> <span class="number literal">13.0</span>, <span class="keyword">watchOS</span> <span class="number literal">6.0</span>, *)
+    <span class="keyword">func</span> <span class="function">imagesPublisher</span>(<span class="variable">forTVShow</span> <span class="variable">tvShowID</span>: <a href="/TMDb/TVShow"><span class="type">TVShow</span></a>.<span class="type">ID</span>) -&gt; <span class="type">AnyPublisher</span>&lt;<a href="/TMDb/ImageCollection"><span class="type">ImageCollection</span></a>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;</body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Publishes the images that belong to a TV show.</p>
+
+</div>
+<div class="discussion">
+    <p><a href="https://developers.themoviedb.org/3/tv/get-tv-images">TMDb API - TV Shows: Images</a></p>
+
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>tv​Show​ID</th>
+    <td><code class="type">TVShow.​ID</code></td>
+    <td><p>The identifier of the TV show.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+  <h4>Returns</h4>
+  <p>A publisher with a collection of images for the matching TV show.</p>
+
+</div>
+<div role="article" class="function" id="tvshowservice.videospublisher(fortvshow:)">
+    <h3>
+        <code>videos​Publisher(for​TVShow:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="attribute">@</span><span class="attribute">available</span>(<span class="keyword">macOS</span> <span class="number literal">10.15</span>, <span class="keyword">iOS</span> <span class="number literal">13.0</span>, <span class="keyword">tvOS</span> <span class="number literal">13.0</span>, <span class="keyword">watchOS</span> <span class="number literal">6.0</span>, *)
+    <span class="keyword">func</span> <span class="function">videosPublisher</span>(<span class="variable">forTVShow</span> <span class="variable">tvShowID</span>: <a href="/TMDb/TVShow"><span class="type">TVShow</span></a>.<span class="type">ID</span>) -&gt; <span class="type">AnyPublisher</span>&lt;<a href="/TMDb/VideoCollection"><span class="type">VideoCollection</span></a>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;</body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Publishes the videos that belong to a TV show.</p>
+
+</div>
+<div class="discussion">
+    <p><a href="https://developers.themoviedb.org/3/tv/get-tv-videos">TMDb API - TV Shows: Videos</a></p>
+
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>tv​Show​ID</th>
+    <td><code class="type">TVShow.​ID</code></td>
+    <td><p>The identifier of the TV show.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+  <h4>Returns</h4>
+  <p>A publisher with a collection of videos for the matching TV show.</p>
+
+</div>
+<div role="article" class="function" id="tvshowservice.recommendationspublisher(fortvshow:page:)">
+    <h3>
+        <code>recommendations​Publisher(for​TVShow:​page:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="attribute">@</span><span class="attribute">available</span>(<span class="keyword">macOS</span> <span class="number literal">10.15</span>, <span class="keyword">iOS</span> <span class="number literal">13.0</span>, <span class="keyword">tvOS</span> <span class="number literal">13.0</span>, <span class="keyword">watchOS</span> <span class="number literal">6.0</span>, *)
+    <span class="keyword">func</span> <span class="function">recommendationsPublisher</span>(<span class="variable">forTVShow</span> <span class="variable">tvShowID</span>: <a href="/TMDb/TVShow"><span class="type">TVShow</span></a>.<span class="type">ID</span>,
+                                  <span class="variable">page</span>: <span class="type">Int</span>?) -&gt; <span class="type">AnyPublisher</span>&lt;<span class="type">TVShowPageableList</span>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;</body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Publishes a list of recommended TV shows for a TV show.</p>
+
+</div>
+<div class="discussion">
+    <p><a href="https://developers.themoviedb.org/3/tv/get-tv-recommendations">TMDb API - TV Shows: Recommendations</a></p>
+
+<aside class="precondition" title="Precondition">
+    <p><code>page</code> can be between <code>1</code> and <code>1000</code>.</p>
+
+</aside>
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>tv​Show​ID</th>
+    <td><code class="type">TVShow.​ID</code></td>
+    <td><p>The identifier of the TV show.</p>
+</td>
+</tr>
+<tr>
+    <th>page</th>
+    <td><code class="type">Int?</code></td>
+    <td><p>The page of results to return.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+  <h4>Returns</h4>
+  <p>A publisher with recommended TV shows for the matching TV show as a pageable list.</p>
+
+</div>
+<div role="article" class="function" id="tvshowservice.similarpublisher(totvshow:page:)">
+    <h3>
+        <code>similar​Publisher(to​TVShow:​page:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="attribute">@</span><span class="attribute">available</span>(<span class="keyword">macOS</span> <span class="number literal">10.15</span>, <span class="keyword">iOS</span> <span class="number literal">13.0</span>, <span class="keyword">tvOS</span> <span class="number literal">13.0</span>, <span class="keyword">watchOS</span> <span class="number literal">6.0</span>, *)
+    <span class="keyword">func</span> <span class="function">similarPublisher</span>(<span class="variable">toTVShow</span> <span class="variable">tvShowID</span>: <a href="/TMDb/TVShow"><span class="type">TVShow</span></a>.<span class="type">ID</span>, <span class="variable">page</span>: <span class="type">Int</span>?) -&gt; <span class="type">AnyPublisher</span>&lt;<span class="type">TVShowPageableList</span>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;</body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Publishes a list of similar TV shows for a TV show.</p>
+
+</div>
+<div class="discussion">
+    <p>This is not the same as the <em>Recommendations</em>.</p>
+
+<p><a href="https://developers.themoviedb.org/3/tv/get-tv-movies">TMDb API - TV: Similar</a></p>
+
+<aside class="precondition" title="Precondition">
+    <p><code>page</code> can be between <code>1</code> and <code>1000</code>.</p>
+
+</aside>
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>tv​Show​ID</th>
+    <td><code class="type">TVShow.​ID</code></td>
+    <td><p>The identifier of the TV show for get similar TV shows for.</p>
+</td>
+</tr>
+<tr>
+    <th>page</th>
+    <td><code class="type">Int?</code></td>
+    <td><p>The page of results to return.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+  <h4>Returns</h4>
+  <p>A publisher with similar TV shows for the matching TV show as a pageable list.</p>
+
+</div>
+<div role="article" class="function" id="tvshowservice.popularpublisher(page:)">
+    <h3>
+        <code>popular​Publisher(page:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="attribute">@</span><span class="attribute">available</span>(<span class="keyword">macOS</span> <span class="number literal">10.15</span>, <span class="keyword">iOS</span> <span class="number literal">13.0</span>, <span class="keyword">tvOS</span> <span class="number literal">13.0</span>, <span class="keyword">watchOS</span> <span class="number literal">6.0</span>, *)
+    <span class="keyword">func</span> <span class="function">popularPublisher</span>(<span class="variable">page</span>: <span class="type">Int</span>?) -&gt; <span class="type">AnyPublisher</span>&lt;<span class="type">TVShowPageableList</span>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;</body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Publishes a list current popular TV shows.</p>
+
+</div>
+<div class="discussion">
+    <p><a href="https://developers.themoviedb.org/3/tv/get-popular-tv">TMDb API - TV: Popular</a></p>
+
+<aside class="precondition" title="Precondition">
+    <p><code>page</code> can be between <code>1</code> and <code>1000</code>.</p>
+
+</aside>
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>page</th>
+    <td><code class="type">Int?</code></td>
+    <td><p>The page of results to return.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+  <h4>Returns</h4>
+  <p>A publisher with current popular TV shows as a pageable list.</p>
+
+</div>
+<div role="article" class="function" id="tvshowservice.details(fortvshow:)">
+    <h3>
+        <code>details(for​TVShow:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="attribute">@</span><span class="attribute">available</span>(<span class="keyword">macOS</span> <span class="number literal">12</span>, <span class="keyword">iOS</span> <span class="number literal">15.0</span>, <span class="keyword">tvOS</span> <span class="number literal">15.0</span>, <span class="keyword">watchOS</span> <span class="number literal">8.0</span>, *)
+    <span class="keyword">func</span> <span class="function">details</span>(<span class="variable">forTVShow</span> <span class="variable">id</span>: <a href="/TMDb/TVShow"><span class="type">TVShow</span></a>.<span class="type">ID</span>) </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Returns the primary information about a TV show.</p>
+
+</div>
+<div class="discussion">
+    <p><a href="https://developers.themoviedb.org/3/tv/get-tv-details">TMDb API - TV Shows: Details</a></p>
+
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>id</th>
+    <td><code class="type">TVShow.​ID</code></td>
+    <td><p>The identifier of the TV show.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+  <h4>Returns</h4>
+  <p>The matching TV show.</p>
+
+</div>
+<div role="article" class="function" id="tvshowservice.credits(fortvshow:)">
+    <h3>
+        <code>credits(for​TVShow:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="attribute">@</span><span class="attribute">available</span>(<span class="keyword">macOS</span> <span class="number literal">12</span>, <span class="keyword">iOS</span> <span class="number literal">15.0</span>, <span class="keyword">tvOS</span> <span class="number literal">15.0</span>, <span class="keyword">watchOS</span> <span class="number literal">8.0</span>, *)
+    <span class="keyword">func</span> <span class="function">credits</span>(<span class="variable">forTVShow</span> <span class="variable">tvShowID</span>: <a href="/TMDb/TVShow"><span class="type">TVShow</span></a>.<span class="type">ID</span>) </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Returns the cast and crew of a TV show.</p>
+
+</div>
+<div class="discussion">
+    <p><a href="https://developers.themoviedb.org/3/tv/get-tv-credits">TMDb API - TV Shows: Credits</a></p>
+
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>tv​Show​ID</th>
+    <td><code class="type">TVShow.​ID</code></td>
+    <td><p>The identifier of the TV show.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+  <h4>Returns</h4>
+  <p>Show credits for the matching TV show.</p>
+
+</div>
+<div role="article" class="function" id="tvshowservice.reviews(fortvshow:page:)">
+    <h3>
+        <code>reviews(for​TVShow:​page:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="attribute">@</span><span class="attribute">available</span>(<span class="keyword">macOS</span> <span class="number literal">12</span>, <span class="keyword">iOS</span> <span class="number literal">15.0</span>, <span class="keyword">tvOS</span> <span class="number literal">15.0</span>, <span class="keyword">watchOS</span> <span class="number literal">8.0</span>, *)
+    <span class="keyword">func</span> <span class="function">reviews</span>(<span class="variable">forTVShow</span> <span class="variable">tvShowID</span>: <a href="/TMDb/TVShow"><span class="type">TVShow</span></a>.<span class="type">ID</span>, <span class="variable">page</span>: <span class="type">Int</span>?) </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Returns the user reviews for a TV show.</p>
+
+</div>
+<div class="discussion">
+    <p><a href="https://developers.themoviedb.org/3/tv/get-tv-reviews">TMDb API - TV Shows: Reviews</a></p>
+
+<aside class="precondition" title="Precondition">
+    <p><code>page</code> can be between <code>1</code> and <code>1000</code>.</p>
+
+</aside>
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>tv​Show​ID</th>
+    <td><code class="type">TVShow.​ID</code></td>
+    <td><p>The identifier of the TV show.</p>
+</td>
+</tr>
+<tr>
+    <th>page</th>
+    <td><code class="type">Int?</code></td>
+    <td><p>The page of results to return.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+  <h4>Returns</h4>
+  <p>Reviews for the matching TV show as a pageable list.</p>
+
+</div>
+<div role="article" class="function" id="tvshowservice.images(fortvshow:)">
+    <h3>
+        <code>images(for​TVShow:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="attribute">@</span><span class="attribute">available</span>(<span class="keyword">macOS</span> <span class="number literal">12</span>, <span class="keyword">iOS</span> <span class="number literal">15.0</span>, <span class="keyword">tvOS</span> <span class="number literal">15.0</span>, <span class="keyword">watchOS</span> <span class="number literal">8.0</span>, *)
+    <span class="keyword">func</span> <span class="function">images</span>(<span class="variable">forTVShow</span> <span class="variable">tvShowID</span>: <a href="/TMDb/TVShow"><span class="type">TVShow</span></a>.<span class="type">ID</span>) </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Returns the images that belong to a TV show.</p>
+
+</div>
+<div class="discussion">
+    <p><a href="https://developers.themoviedb.org/3/tv/get-tv-images">TMDb API - TV Shows: Images</a></p>
+
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>tv​Show​ID</th>
+    <td><code class="type">TVShow.​ID</code></td>
+    <td><p>The identifier of the TV show.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+  <h4>Returns</h4>
+  <p>A collection of images for the matching TV show.</p>
+
+</div>
+<div role="article" class="function" id="tvshowservice.videos(fortvshow:)">
+    <h3>
+        <code>videos(for​TVShow:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="attribute">@</span><span class="attribute">available</span>(<span class="keyword">macOS</span> <span class="number literal">12</span>, <span class="keyword">iOS</span> <span class="number literal">15.0</span>, <span class="keyword">tvOS</span> <span class="number literal">15.0</span>, <span class="keyword">watchOS</span> <span class="number literal">8.0</span>, *)
+    <span class="keyword">func</span> <span class="function">videos</span>(<span class="variable">forTVShow</span> <span class="variable">tvShowID</span>: <a href="/TMDb/TVShow"><span class="type">TVShow</span></a>.<span class="type">ID</span>) </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Returns the videos that belong to a TV show.</p>
+
+</div>
+<div class="discussion">
+    <p><a href="https://developers.themoviedb.org/3/tv/get-tv-videos">TMDb API - TV Shows: Videos</a></p>
+
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>tv​Show​ID</th>
+    <td><code class="type">TVShow.​ID</code></td>
+    <td><p>The identifier of the TV show.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+  <h4>Returns</h4>
+  <p>A collection of videos for the matching TV show.</p>
+
+</div>
+<div role="article" class="function" id="tvshowservice.recommendations(fortvshow:page:)">
+    <h3>
+        <code>recommendations(for​TVShow:​page:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="attribute">@</span><span class="attribute">available</span>(<span class="keyword">macOS</span> <span class="number literal">12</span>, <span class="keyword">iOS</span> <span class="number literal">15.0</span>, <span class="keyword">tvOS</span> <span class="number literal">15.0</span>, <span class="keyword">watchOS</span> <span class="number literal">8.0</span>, *)
+    <span class="keyword">func</span> <span class="function">recommendations</span>(<span class="variable">forTVShow</span> <span class="variable">tvShowID</span>: <a href="/TMDb/TVShow"><span class="type">TVShow</span></a>.<span class="type">ID</span>, <span class="variable">page</span>: <span class="type">Int</span>?) </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Returns a list of recommended TV shows for a TV show.</p>
+
+</div>
+<div class="discussion">
+    <p><a href="https://developers.themoviedb.org/3/tv/get-tv-recommendations">TMDb API - TV Shows: Recommendations</a></p>
+
+<aside class="precondition" title="Precondition">
+    <p><code>page</code> can be between <code>1</code> and <code>1000</code>.</p>
+
+</aside>
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>tv​Show​ID</th>
+    <td><code class="type">TVShow.​ID</code></td>
+    <td><p>The identifier of the TV show.</p>
+</td>
+</tr>
+<tr>
+    <th>page</th>
+    <td><code class="type">Int?</code></td>
+    <td><p>The page of results to return.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+  <h4>Returns</h4>
+  <p>Recommended TV shows for the matching TV show as a pageable list.</p>
+
+</div>
+<div role="article" class="function" id="tvshowservice.similar(totvshow:page:)">
+    <h3>
+        <code>similar(to​TVShow:​page:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="attribute">@</span><span class="attribute">available</span>(<span class="keyword">macOS</span> <span class="number literal">12</span>, <span class="keyword">iOS</span> <span class="number literal">15.0</span>, <span class="keyword">tvOS</span> <span class="number literal">15.0</span>, <span class="keyword">watchOS</span> <span class="number literal">8.0</span>, *)
+    <span class="keyword">func</span> <span class="function">similar</span>(<span class="variable">toTVShow</span> <span class="variable">tvShowID</span>: <a href="/TMDb/TVShow"><span class="type">TVShow</span></a>.<span class="type">ID</span>, <span class="variable">page</span>: <span class="type">Int</span>?) </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Returns a list of similar TV shows for a TV show.</p>
+
+</div>
+<div class="discussion">
+    <p>This is not the same as the <em>Recommendations</em>.</p>
+
+<p><a href="https://developers.themoviedb.org/3/tv/get-tv-movies">TMDb API - TV: Similar</a></p>
+
+<aside class="precondition" title="Precondition">
+    <p><code>page</code> can be between <code>1</code> and <code>1000</code>.</p>
+
+</aside>
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>tv​Show​ID</th>
+    <td><code class="type">TVShow.​ID</code></td>
+    <td><p>The identifier of the TV show for get similar TV shows for.</p>
+</td>
+</tr>
+<tr>
+    <th>page</th>
+    <td><code class="type">Int?</code></td>
+    <td><p>The page of results to return.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+  <h4>Returns</h4>
+  <p>Similar TV shows for the matching TV show as a pageable list.</p>
+
+</div>
+<div role="article" class="function" id="tvshowservice.popular(page:)">
+    <h3>
+        <code>popular(page:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="attribute">@</span><span class="attribute">available</span>(<span class="keyword">macOS</span> <span class="number literal">12</span>, <span class="keyword">iOS</span> <span class="number literal">15.0</span>, <span class="keyword">tvOS</span> <span class="number literal">15.0</span>, <span class="keyword">watchOS</span> <span class="number literal">8.0</span>, *)
+    <span class="keyword">func</span> <span class="function">popular</span>(<span class="variable">page</span>: <span class="type">Int</span>?) </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Returns a list current popular TV shows.</p>
+
+</div>
+<div class="discussion">
+    <p><a href="https://developers.themoviedb.org/3/tv/get-popular-tv">TMDb API - TV: Popular</a></p>
+
+<aside class="precondition" title="Precondition">
+    <p><code>page</code> can be between <code>1</code> and <code>1000</code>.</p>
+
+</aside>
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>page</th>
+    <td><code class="type">Int?</code></td>
+    <td><p>The page of results to return.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+  <h4>Returns</h4>
+  <p>Current popular TV shows as a pageable list.</p>
+
+</div>
+    </section>
+        </article>
+    </main>
+
+    <footer>
+        <p>
+    Generated on <time datetime="2021-11-25T17:07:21+0000">November 25, 2021</time> using <a href="https://github.com/SwiftDocOrg/swift-doc">swift-doc</a> <span class="version">1.0.0-rc.1</span>.
+</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TMDb - CertificationService</title>
+    <link rel="stylesheet" type="text/css" href="/TMDb/all.css" media="all" />
+</head>
+<body>
+    <header>
+        <a href="/TMDb/">
+            <strong>
+                TMDb
+            </strong>
+            <span>Documentation</span>
+        </a>
+    </header>
+
+    <!--
+    <form class="search">
+        <input type="search" placeholder="Search" />
+    </form>
+    -->
+
+    <nav>
+        <div class="wrapper">
+            <h2>On This Page</h2>
+            <ol><li><a href="#requirements">Requirements</a><ul><li class="function"><a href="#certificationservice.fetchmoviecertifications(completion:)">fetch​Movie​Certifications(completion:​)</a></li><li class="function"><a href="#certificationservice.fetchtvshowcertifications(completion:)">fetch​TVShow​Certifications(completion:​)</a></li><li class="function"><a href="#certificationservice.moviecertificationspublisher()">movie​Certifications​Publisher()</a></li><li class="function"><a href="#certificationservice.tvshowcertificationspublisher()">tv​Show​Certifications​Publisher()</a></li><li class="function"><a href="#certificationservice.moviecertifications()">movie​Certifications()</a></li><li class="function"><a href="#certificationservice.tvshowcertifications()">tv​Show​Certifications()</a></li></ul></li></ol>
+        </div>
+    </nav>
+
+    <main>
+        <article>
+            <h1>
+    <small>Protocol</small>
+    <code class="name">Certification​Service</code>
+</h1>
+
+<div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">protocol</span> <span class="type">CertificationService</span>  </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Get an up to date list of the officially supported movie certifications on TMDb.</p>
+
+</div>
+
+
+
+
+    <section id="requirements">
+        <h2>Requirements</h2>
+
+        <div role="article" class="function" id="certificationservice.fetchmoviecertifications(completion:)">
+    <h3>
+        <code>fetch​Movie​Certifications(completion:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">func</span> <span class="function">fetchMovieCertifications</span>(
+        <span class="variable">completion</span>: <span class="attribute">@</span><span class="attribute">escaping</span> (<span class="keyword">_</span> <span class="variable">result</span>: <span class="type">Result</span>&lt;[<span class="type">String</span>: [<a href="/TMDb/Certification"><span class="type">Certification</span></a>]], <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;) -&gt; <span class="type">Void</span>) </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Fetches the officially supported movie certifications on TMDb.</p>
+
+</div>
+<div class="discussion">
+    <p><a href="https://developers.themoviedb.org/3/certifications/get-movie-certifications">TMDb API - Movie Certifications</a></p>
+
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>completion</th>
+    <td><code class="type">@escaping (_ result:​ Result&lt;[String:​ [Certification]], TMDbError&gt;) -&gt; Void</code></td>
+    <td><p>Completion handler.</p>
+</td>
+</tr>
+<tr>
+    <th>result</th>
+    <td></td>
+    <td><p>A dictionary of movie certifications.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+</div>
+<div role="article" class="function" id="certificationservice.fetchtvshowcertifications(completion:)">
+    <h3>
+        <code>fetch​TVShow​Certifications(completion:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">func</span> <span class="function">fetchTVShowCertifications</span>(
+        <span class="variable">completion</span>: <span class="attribute">@</span><span class="attribute">escaping</span> (<span class="keyword">_</span> <span class="variable">result</span>: <span class="type">Result</span>&lt;[<span class="type">String</span>: [<a href="/TMDb/Certification"><span class="type">Certification</span></a>]], <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;) -&gt; <span class="type">Void</span>) </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Fetches the officially supported TV show certifications on TMDb.</p>
+
+</div>
+<div class="discussion">
+    <p><a href="https://developers.themoviedb.org/3/certifications/get-tv-certifications">TMDb API - TV show Certifications</a></p>
+
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>completion</th>
+    <td><code class="type">@escaping (_ result:​ Result&lt;[String:​ [Certification]], TMDbError&gt;) -&gt; Void</code></td>
+    <td><p>Completion handler.</p>
+</td>
+</tr>
+<tr>
+    <th>result</th>
+    <td></td>
+    <td><p>A dictionary of TV show certifications.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+</div>
+<div role="article" class="function" id="certificationservice.moviecertificationspublisher()">
+    <h3>
+        <code>movie​Certifications​Publisher()</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="attribute">@</span><span class="attribute">available</span>(<span class="keyword">macOS</span> <span class="number literal">10.15</span>, <span class="keyword">iOS</span> <span class="number literal">13.0</span>, <span class="keyword">tvOS</span> <span class="number literal">13.0</span>, <span class="keyword">watchOS</span> <span class="number literal">6.0</span>, *)
+    <span class="keyword">func</span> <span class="function">movieCertificationsPublisher</span>() -&gt; <span class="type">AnyPublisher</span>&lt;[<span class="type">String</span>: [<a href="/TMDb/Certification"><span class="type">Certification</span></a>]], <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;</body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Publishes the officially supported movie certifications on TMDb.</p>
+
+</div>
+<div class="discussion">
+    <p><a href="https://developers.themoviedb.org/3/certifications/get-movie-certifications">TMDb API - Movie Certifications</a></p>
+
+</div>
+  <h4>Returns</h4>
+  <p>A publisher with a dictionary of movie certifications.</p>
+
+</div>
+<div role="article" class="function" id="certificationservice.tvshowcertificationspublisher()">
+    <h3>
+        <code>tv​Show​Certifications​Publisher()</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="attribute">@</span><span class="attribute">available</span>(<span class="keyword">macOS</span> <span class="number literal">10.15</span>, <span class="keyword">iOS</span> <span class="number literal">13.0</span>, <span class="keyword">tvOS</span> <span class="number literal">13.0</span>, <span class="keyword">watchOS</span> <span class="number literal">6.0</span>, *)
+    <span class="keyword">func</span> <span class="function">tvShowCertificationsPublisher</span>() -&gt; <span class="type">AnyPublisher</span>&lt;[<span class="type">String</span>: [<a href="/TMDb/Certification"><span class="type">Certification</span></a>]], <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;</body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Publishes the officially supported TV show certifications on TMDb.</p>
+
+</div>
+<div class="discussion">
+    <p><a href="https://developers.themoviedb.org/3/certifications/get-tv-certifications">TMDb API - TV show Certifications</a></p>
+
+</div>
+  <h4>Returns</h4>
+  <p>A publisher with a dictionary of tv show certifications.</p>
+
+</div>
+<div role="article" class="function" id="certificationservice.moviecertifications()">
+    <h3>
+        <code>movie​Certifications()</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="attribute">@</span><span class="attribute">available</span>(<span class="keyword">macOS</span> <span class="number literal">12</span>, <span class="keyword">iOS</span> <span class="number literal">15.0</span>, <span class="keyword">tvOS</span> <span class="number literal">15.0</span>, <span class="keyword">watchOS</span> <span class="number literal">8.0</span>, *)
+    <span class="keyword">func</span> <span class="function">movieCertifications</span>() </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Returns the officially supported movie certifications on TMDb.</p>
+
+</div>
+<div class="discussion">
+    <p><a href="https://developers.themoviedb.org/3/certifications/get-movie-certifications">TMDb API - Movie Certifications</a></p>
+
+</div>
+  <h4>Returns</h4>
+  <p>A dictionary of movie certifications.</p>
+
+</div>
+<div role="article" class="function" id="certificationservice.tvshowcertifications()">
+    <h3>
+        <code>tv​Show​Certifications()</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="attribute">@</span><span class="attribute">available</span>(<span class="keyword">macOS</span> <span class="number literal">12</span>, <span class="keyword">iOS</span> <span class="number literal">15.0</span>, <span class="keyword">tvOS</span> <span class="number literal">15.0</span>, <span class="keyword">watchOS</span> <span class="number literal">8.0</span>, *)
+    <span class="keyword">func</span> <span class="function">tvShowCertifications</span>() </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Returns the officially supported TV show certifications on TMDb.</p>
+
+</div>
+<div class="discussion">
+    <p><a href="https://developers.themoviedb.org/3/certifications/get-tv-certifications">TMDb API - TV show Certifications</a></p>
+
+</div>
+  <h4>Returns</h4>
+  <p>A dictionary of TV show certifications.</p>
+
+</div>
+    </section>
+        </article>
+    </main>
+
+    <footer>
+        <p>
+    Generated on <time datetime="2021-11-25T17:07:21+0000">November 25, 2021</time> using <a href="https://github.com/SwiftDocOrg/swift-doc">swift-doc</a> <span class="version">1.0.0-rc.1</span>.
+</p>
+    </footer>
+</body>
+</html>

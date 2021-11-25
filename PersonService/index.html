@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TMDb - PersonService</title>
+    <link rel="stylesheet" type="text/css" href="/TMDb/all.css" media="all" />
+</head>
+<body>
+    <header>
+        <a href="/TMDb/">
+            <strong>
+                TMDb
+            </strong>
+            <span>Documentation</span>
+        </a>
+    </header>
+
+    <!--
+    <form class="search">
+        <input type="search" placeholder="Search" />
+    </form>
+    -->
+
+    <nav>
+        <div class="wrapper">
+            <h2>On This Page</h2>
+            <ol><li><a href="#default implementations">Default Implementations</a><ul><li class="function"><a href="#personservice.fetchpopular(page:completion:)">fetch​Popular(page:​completion:​)</a></li><li class="function"><a href="#personservice.popularpublisher(page:)">popular​Publisher(page:​)</a></li></ul></li><li><a href="#requirements">Requirements</a><ul><li class="function"><a href="#personservice.fetchdetails(forperson:completion:)">fetch​Details(for​Person:​completion:​)</a></li><li class="function"><a href="#personservice.fetchcombinedcredits(forperson:completion:)">fetch​Combined​Credits(for​Person:​completion:​)</a></li><li class="function"><a href="#personservice.fetchmoviecredits(forperson:completion:)">fetch​Movie​Credits(for​Person:​completion:​)</a></li><li class="function"><a href="#personservice.fetchtvshowcredits(forperson:completion:)">fetch​TVShow​Credits(for​Person:​completion:​)</a></li><li class="function"><a href="#personservice.fetchimages(forperson:completion:)">fetch​Images(for​Person:​completion:​)</a></li><li class="function"><a href="#personservice.fetchknownfor(forperson:completion:)">fetch​Known​For(for​Person:​completion:​)</a></li><li class="function"><a href="#personservice.fetchpopular(page:completion:)">fetch​Popular(page:​completion:​)</a></li><li class="function"><a href="#personservice.detailspublisher(forperson:)">details​Publisher(for​Person:​)</a></li><li class="function"><a href="#personservice.combinedcreditspublisher(forperson:)">combined​Credits​Publisher(for​Person:​)</a></li><li class="function"><a href="#personservice.moviecreditspublisher(forperson:)">movie​Credits​Publisher(for​Person:​)</a></li><li class="function"><a href="#personservice.tvshowcreditspublisher(forperson:)">tv​Show​Credits​Publisher(for​Person:​)</a></li><li class="function"><a href="#personservice.imagespublisher(forperson:)">images​Publisher(for​Person:​)</a></li><li class="function"><a href="#personservice.knownforpublisher(forperson:)">known​For​Publisher(for​Person:​)</a></li><li class="function"><a href="#personservice.popularpublisher(page:)">popular​Publisher(page:​)</a></li><li class="function"><a href="#personservice.details(forperson:)">details(for​Person:​)</a></li><li class="function"><a href="#personservice.combinedcredits(forperson:)">combined​Credits(for​Person:​)</a></li><li class="function"><a href="#personservice.moviecredits(forperson:)">movie​Credits(for​Person:​)</a></li><li class="function"><a href="#personservice.tvshowcredits(forperson:)">tv​Show​Credits(for​Person:​)</a></li><li class="function"><a href="#personservice.images(forperson:)">images(for​Person:​)</a></li><li class="function"><a href="#personservice.knownfor(forperson:)">known​For(for​Person:​)</a></li><li class="function"><a href="#personservice.popular(page:)">popular(page:​)</a></li></ul></li></ol>
+        </div>
+    </nav>
+
+    <main>
+        <article>
+            <h1>
+    <small>Protocol</small>
+    <code class="name">Person​Service</code>
+</h1>
+
+<div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">protocol</span> <span class="type">PersonService</span>  </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Fetch details about people.</p>
+
+</div>
+
+    <section id="default implementations">
+        <h2>Default Implementations</h2>
+
+        <div role="article" class="function" id="personservice.fetchpopular(page:completion:)">
+    <h3>
+        <code><a href="#personservice.fetchpopular(page:completion:)">fetch​Popular(page:​completion:​)</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">func</span> <span class="function">fetchPopular</span>(<span class="variable">page</span>: <span class="type">Int</span>? = <span class="keyword">nil</span>,
+                      <span class="variable">completion</span>: <span class="attribute">@</span><span class="attribute">escaping</span> (<span class="keyword">_</span> <span class="variable">result</span>: <span class="type">Result</span>&lt;<span class="type">PersonPageableList</span>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;) -&gt; <span class="type">Void</span>)  </body></html></code></pre>
+</div>
+</div>
+<div role="article" class="function" id="personservice.popularpublisher(page:)">
+    <h3>
+        <code><a href="#personservice.popularpublisher(page:)">popular​Publisher(page:​)</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">func</span> <span class="function">popularPublisher</span>(<span class="variable">page</span>: <span class="type">Int</span>? = <span class="keyword">nil</span>) -&gt; <span class="type">AnyPublisher</span>&lt;<span class="type">PersonPageableList</span>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;  </body></html></code></pre>
+</div>
+</div>
+    </section>
+
+
+    <section id="requirements">
+        <h2>Requirements</h2>
+
+        <div role="article" class="function" id="personservice.fetchdetails(forperson:completion:)">
+    <h3>
+        <code>fetch​Details(for​Person:​completion:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">func</span> <span class="function">fetchDetails</span>(<span class="variable">forPerson</span> <span class="variable">id</span>: <a href="/TMDb/Person"><span class="type">Person</span></a>.<span class="type">ID</span>, <span class="variable">completion</span>: <span class="attribute">@</span><span class="attribute">escaping</span> (<span class="keyword">_</span> <span class="variable">result</span>: <span class="type">Result</span>&lt;<a href="/TMDb/Person"><span class="type">Person</span></a>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;) -&gt; <span class="type">Void</span>) </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Fetches the primary information about a person.</p>
+
+</div>
+<div class="discussion">
+    <p><a href="https://developers.themoviedb.org/3/people/get-person-details">TMDb API - People: Details</a></p>
+
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>id</th>
+    <td><code class="type">Person.​ID</code></td>
+    <td><p>The identifier of the person.</p>
+</td>
+</tr>
+<tr>
+    <th>completion</th>
+    <td><code class="type">@escaping (_ result:​ Result&lt;Person, TMDbError&gt;) -&gt; Void</code></td>
+    <td><p>Completion handler.</p>
+</td>
+</tr>
+<tr>
+    <th>result</th>
+    <td></td>
+    <td><p>The matching person.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+</div>
+<div role="article" class="function" id="personservice.fetchcombinedcredits(forperson:completion:)">
+    <h3>
+        <code>fetch​Combined​Credits(for​Person:​completion:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">func</span> <span class="function">fetchCombinedCredits</span>(<span class="variable">forPerson</span> <span class="variable">personID</span>: <a href="/TMDb/Person"><span class="type">Person</span></a>.<span class="type">ID</span>,
+                              <span class="variable">completion</span>: <span class="attribute">@</span><span class="attribute">escaping</span> (<span class="keyword">_</span> <span class="variable">result</span>: <span class="type">Result</span>&lt;<a href="/TMDb/PersonCombinedCredits"><span class="type">PersonCombinedCredits</span></a>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;) -&gt; <span class="type">Void</span>) </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Fetches the combined movie and TV show credits of a person.</p>
+
+</div>
+<div class="discussion">
+    <p><a href="https://developers.themoviedb.org/3/people/get-person-combined-credits">TMDb API - People: Combined Credits</a></p>
+
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>person​ID</th>
+    <td><code class="type">Person.​ID</code></td>
+    <td><p>The identifier of the person.</p>
+</td>
+</tr>
+<tr>
+    <th>completion</th>
+    <td><code class="type">@escaping (_ result:​ Result&lt;Person​Combined​Credits, TMDbError&gt;) -&gt; Void</code></td>
+    <td><p>Completion handler.</p>
+</td>
+</tr>
+<tr>
+    <th>result</th>
+    <td></td>
+    <td><p>The matching person's combined movie and TV show credits..</p>
+</td>
+</tr>
+  </tbody>
+</table>
+</div>
+<div role="article" class="function" id="personservice.fetchmoviecredits(forperson:completion:)">
+    <h3>
+        <code>fetch​Movie​Credits(for​Person:​completion:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">func</span> <span class="function">fetchMovieCredits</span>(<span class="variable">forPerson</span> <span class="variable">personID</span>: <a href="/TMDb/Person"><span class="type">Person</span></a>.<span class="type">ID</span>,
+                           <span class="variable">completion</span>: <span class="attribute">@</span><span class="attribute">escaping</span> (<span class="keyword">_</span> <span class="variable">result</span>: <span class="type">Result</span>&lt;<a href="/TMDb/PersonMovieCredits"><span class="type">PersonMovieCredits</span></a>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;) -&gt; <span class="type">Void</span>) </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Fetches the movie credits of a person.</p>
+
+</div>
+<div class="discussion">
+    <p><a href="https://developers.themoviedb.org/3/people/get-person-movie-credits">TMDb API - People: Movie Credits</a></p>
+
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>person​ID</th>
+    <td><code class="type">Person.​ID</code></td>
+    <td><p>The identifier of the person.</p>
+</td>
+</tr>
+<tr>
+    <th>completion</th>
+    <td><code class="type">@escaping (_ result:​ Result&lt;Person​Movie​Credits, TMDbError&gt;) -&gt; Void</code></td>
+    <td><p>Completion handler.</p>
+</td>
+</tr>
+<tr>
+    <th>result</th>
+    <td></td>
+    <td><p>The matching person's movie credits.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+</div>
+<div role="article" class="function" id="personservice.fetchtvshowcredits(forperson:completion:)">
+    <h3>
+        <code>fetch​TVShow​Credits(for​Person:​completion:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">func</span> <span class="function">fetchTVShowCredits</span>(<span class="variable">forPerson</span> <span class="variable">personID</span>: <a href="/TMDb/Person"><span class="type">Person</span></a>.<span class="type">ID</span>,
+                            <span class="variable">completion</span>: <span class="attribute">@</span><span class="attribute">escaping</span> (<span class="keyword">_</span> <span class="variable">result</span>: <span class="type">Result</span>&lt;<a href="/TMDb/PersonTVShowCredits"><span class="type">PersonTVShowCredits</span></a>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;) -&gt; <span class="type">Void</span>) </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Fetches the TV show credits of a person.</p>
+
+</div>
+<div class="discussion">
+    <p><a href="https://developers.themoviedb.org/3/people/get-person-tv-credits">TMDb API - People: TV Show Credits</a></p>
+
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>person​ID</th>
+    <td><code class="type">Person.​ID</code></td>
+    <td><p>The identifier of the person.</p>
+</td>
+</tr>
+<tr>
+    <th>completion</th>
+    <td><code class="type">@escaping (_ result:​ Result&lt;Person​TVShow​Credits, TMDbError&gt;) -&gt; Void</code></td>
+    <td><p>Completion handler.</p>
+</td>
+</tr>
+<tr>
+    <th>result</th>
+    <td></td>
+    <td><p>The matching person's TV show credits.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+</div>
+<div role="article" class="function" id="personservice.fetchimages(forperson:completion:)">
+    <h3>
+        <code>fetch​Images(for​Person:​completion:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">func</span> <span class="function">fetchImages</span>(<span class="variable">forPerson</span> <span class="variable">personID</span>: <a href="/TMDb/Person"><span class="type">Person</span></a>.<span class="type">ID</span>,
+                     <span class="variable">completion</span>: <span class="attribute">@</span><span class="attribute">escaping</span> (<span class="keyword">_</span> <span class="variable">result</span>: <span class="type">Result</span>&lt;<a href="/TMDb/PersonImageCollection"><span class="type">PersonImageCollection</span></a>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;) -&gt; <span class="type">Void</span>) </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Fetches the images for a person.</p>
+
+</div>
+<div class="discussion">
+    <p><a href="https://developers.themoviedb.org/3/people/get-person-images">TMDb API - People: Images</a></p>
+
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>person​ID</th>
+    <td><code class="type">Person.​ID</code></td>
+    <td><p>The identifier of the person.</p>
+</td>
+</tr>
+<tr>
+    <th>completion</th>
+    <td><code class="type">@escaping (_ result:​ Result&lt;Person​Image​Collection, TMDbError&gt;) -&gt; Void</code></td>
+    <td><p>Completion handler.</p>
+</td>
+</tr>
+<tr>
+    <th>result</th>
+    <td></td>
+    <td><p>The matching person's images.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+</div>
+<div role="article" class="function" id="personservice.fetchknownfor(forperson:completion:)">
+    <h3>
+        <code>fetch​Known​For(for​Person:​completion:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">func</span> <span class="function">fetchKnownFor</span>(<span class="variable">forPerson</span> <span class="variable">personID</span>: <a href="/TMDb/Person"><span class="type">Person</span></a>.<span class="type">ID</span>,
+                       <span class="variable">completion</span>: <span class="attribute">@</span><span class="attribute">escaping</span> (<span class="keyword">_</span> <span class="variable">result</span>: <span class="type">Result</span>&lt;[<a href="/TMDb/Show"><span class="type">Show</span></a>], <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;) -&gt; <span class="type">Void</span>) </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Fetches the list of known for shows for a person.</p>
+
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>person​ID</th>
+    <td><code class="type">Person.​ID</code></td>
+    <td><p>The identifier of the person.</p>
+</td>
+</tr>
+<tr>
+    <th>completion</th>
+    <td><code class="type">@escaping (_ result:​ Result&lt;[Show], TMDbError&gt;) -&gt; Void</code></td>
+    <td><p>Completion handler.</p>
+</td>
+</tr>
+<tr>
+    <th>result</th>
+    <td></td>
+    <td><p>The matching person's show credits.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+</div>
+<div role="article" class="function" id="personservice.fetchpopular(page:completion:)">
+    <h3>
+        <code>fetch​Popular(page:​completion:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">func</span> <span class="function">fetchPopular</span>(<span class="variable">page</span>: <span class="type">Int</span>?, <span class="variable">completion</span>: <span class="attribute">@</span><span class="attribute">escaping</span> (<span class="keyword">_</span> <span class="variable">result</span>: <span class="type">Result</span>&lt;<span class="type">PersonPageableList</span>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;) -&gt; <span class="type">Void</span>) </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Fetches the list of popular people.</p>
+
+</div>
+<div class="discussion">
+    <p><a href="https://developers.themoviedb.org/3/people/get-popular-people">TMDb API - People: Popular</a></p>
+
+<aside class="precondition" title="Precondition">
+    <p><code>page</code> can be between <code>1</code> and <code>1000</code>.</p>
+
+</aside>
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>page</th>
+    <td><code class="type">Int?</code></td>
+    <td><p>The page of results to return.</p>
+</td>
+</tr>
+<tr>
+    <th>completion</th>
+    <td><code class="type">@escaping (_ result:​ Result&lt;Person​Pageable​List, TMDbError&gt;) -&gt; Void</code></td>
+    <td><p>Completion handler.</p>
+</td>
+</tr>
+<tr>
+    <th>result</th>
+    <td></td>
+    <td><p>Current popular people as a pageable list.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+</div>
+<div role="article" class="function" id="personservice.detailspublisher(forperson:)">
+    <h3>
+        <code>details​Publisher(for​Person:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="attribute">@</span><span class="attribute">available</span>(<span class="keyword">macOS</span> <span class="number literal">10.15</span>, <span class="keyword">iOS</span> <span class="number literal">13.0</span>, <span class="keyword">tvOS</span> <span class="number literal">13.0</span>, <span class="keyword">watchOS</span> <span class="number literal">6.0</span>, *)
+    <span class="keyword">func</span> <span class="function">detailsPublisher</span>(<span class="variable">forPerson</span> <span class="variable">id</span>: <a href="/TMDb/Person"><span class="type">Person</span></a>.<span class="type">ID</span>) -&gt; <span class="type">AnyPublisher</span>&lt;<a href="/TMDb/Person"><span class="type">Person</span></a>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;</body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Publishes the primary information about a person.</p>
+
+</div>
+<div class="discussion">
+    <p><a href="https://developers.themoviedb.org/3/people/get-person-details">TMDb API - People: Details</a></p>
+
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>id</th>
+    <td><code class="type">Person.​ID</code></td>
+    <td><p>The identifier of the person.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+  <h4>Returns</h4>
+  <p>A publisher with the matching person.</p>
+
+</div>
+<div role="article" class="function" id="personservice.combinedcreditspublisher(forperson:)">
+    <h3>
+        <code>combined​Credits​Publisher(for​Person:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="attribute">@</span><span class="attribute">available</span>(<span class="keyword">macOS</span> <span class="number literal">10.15</span>, <span class="keyword">iOS</span> <span class="number literal">13.0</span>, <span class="keyword">tvOS</span> <span class="number literal">13.0</span>, <span class="keyword">watchOS</span> <span class="number literal">6.0</span>, *)
+    <span class="keyword">func</span> <span class="function">combinedCreditsPublisher</span>(<span class="variable">forPerson</span> <span class="variable">personID</span>: <a href="/TMDb/Person"><span class="type">Person</span></a>.<span class="type">ID</span>) -&gt; <span class="type">AnyPublisher</span>&lt;<a href="/TMDb/PersonCombinedCredits"><span class="type">PersonCombinedCredits</span></a>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;</body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Publishes the combined movie and TV show credits of a person.</p>
+
+</div>
+<div class="discussion">
+    <p><a href="https://developers.themoviedb.org/3/people/get-person-combined-credits">TMDb API - People: Combined Credits</a></p>
+
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>person​ID</th>
+    <td><code class="type">Person.​ID</code></td>
+    <td><p>The identifier of the person.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+  <h4>Returns</h4>
+  <p>A publisher with the matching person's combined movie and TV show credits.</p>
+
+</div>
+<div role="article" class="function" id="personservice.moviecreditspublisher(forperson:)">
+    <h3>
+        <code>movie​Credits​Publisher(for​Person:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="attribute">@</span><span class="attribute">available</span>(<span class="keyword">macOS</span> <span class="number literal">10.15</span>, <span class="keyword">iOS</span> <span class="number literal">13.0</span>, <span class="keyword">tvOS</span> <span class="number literal">13.0</span>, <span class="keyword">watchOS</span> <span class="number literal">6.0</span>, *)
+    <span class="keyword">func</span> <span class="function">movieCreditsPublisher</span>(<span class="variable">forPerson</span> <span class="variable">personID</span>: <a href="/TMDb/Person"><span class="type">Person</span></a>.<span class="type">ID</span>) -&gt; <span class="type">AnyPublisher</span>&lt;<a href="/TMDb/PersonMovieCredits"><span class="type">PersonMovieCredits</span></a>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;</body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Publishes the movie credits of a person.</p>
+
+</div>
+<div class="discussion">
+    <p><a href="https://developers.themoviedb.org/3/people/get-person-movie-credits">TMDb API - People: Movie Credits</a></p>
+
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>id</th>
+    <td></td>
+    <td><p>The identifier of the person.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+  <h4>Returns</h4>
+  <p>A publisher with the matching person's movie credits.</p>
+
+</div>
+<div role="article" class="function" id="personservice.tvshowcreditspublisher(forperson:)">
+    <h3>
+        <code>tv​Show​Credits​Publisher(for​Person:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="attribute">@</span><span class="attribute">available</span>(<span class="keyword">macOS</span> <span class="number literal">10.15</span>, <span class="keyword">iOS</span> <span class="number literal">13.0</span>, <span class="keyword">tvOS</span> <span class="number literal">13.0</span>, <span class="keyword">watchOS</span> <span class="number literal">6.0</span>, *)
+    <span class="keyword">func</span> <span class="function">tvShowCreditsPublisher</span>(<span class="variable">forPerson</span> <span class="variable">personID</span>: <a href="/TMDb/Person"><span class="type">Person</span></a>.<span class="type">ID</span>) -&gt; <span class="type">AnyPublisher</span>&lt;<a href="/TMDb/PersonTVShowCredits"><span class="type">PersonTVShowCredits</span></a>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;</body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Publishes the TV show credits of a person.</p>
+
+</div>
+<div class="discussion">
+    <p><a href="https://developers.themoviedb.org/3/people/get-person-tv-credits">TMDb API - People: TV Show Credits</a></p>
+
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>id</th>
+    <td></td>
+    <td><p>The identifier of the person.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+  <h4>Returns</h4>
+  <p>A publisher with the matching person's TV show credits.</p>
+
+</div>
+<div role="article" class="function" id="personservice.imagespublisher(forperson:)">
+    <h3>
+        <code>images​Publisher(for​Person:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="attribute">@</span><span class="attribute">available</span>(<span class="keyword">macOS</span> <span class="number literal">10.15</span>, <span class="keyword">iOS</span> <span class="number literal">13.0</span>, <span class="keyword">tvOS</span> <span class="number literal">13.0</span>, <span class="keyword">watchOS</span> <span class="number literal">6.0</span>, *)
+    <span class="keyword">func</span> <span class="function">imagesPublisher</span>(<span class="variable">forPerson</span> <span class="variable">personID</span>: <a href="/TMDb/Person"><span class="type">Person</span></a>.<span class="type">ID</span>) -&gt; <span class="type">AnyPublisher</span>&lt;<a href="/TMDb/PersonImageCollection"><span class="type">PersonImageCollection</span></a>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;</body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Publishes the images for a person.</p>
+
+</div>
+<div class="discussion">
+    <p><a href="https://developers.themoviedb.org/3/people/get-person-images">TMDb API - People: Images</a></p>
+
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>person​ID</th>
+    <td><code class="type">Person.​ID</code></td>
+    <td><p>The identifier of the person.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+  <h4>Returns</h4>
+  <p>A publisher with the matching person's images.</p>
+
+</div>
+<div role="article" class="function" id="personservice.knownforpublisher(forperson:)">
+    <h3>
+        <code>known​For​Publisher(for​Person:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="attribute">@</span><span class="attribute">available</span>(<span class="keyword">macOS</span> <span class="number literal">10.15</span>, <span class="keyword">iOS</span> <span class="number literal">13.0</span>, <span class="keyword">tvOS</span> <span class="number literal">13.0</span>, <span class="keyword">watchOS</span> <span class="number literal">6.0</span>, *)
+    <span class="keyword">func</span> <span class="function">knownForPublisher</span>(<span class="variable">forPerson</span> <span class="variable">personID</span>: <a href="/TMDb/Person"><span class="type">Person</span></a>.<span class="type">ID</span>) -&gt; <span class="type">AnyPublisher</span>&lt;[<a href="/TMDb/Show"><span class="type">Show</span></a>], <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;</body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Publishes the list of known for shows for a person.</p>
+
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>person​ID</th>
+    <td><code class="type">Person.​ID</code></td>
+    <td><p>The identifier of the person.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+  <h4>Returns</h4>
+  <p>A publisher with the matching person's show credits.</p>
+
+</div>
+<div role="article" class="function" id="personservice.popularpublisher(page:)">
+    <h3>
+        <code>popular​Publisher(page:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="attribute">@</span><span class="attribute">available</span>(<span class="keyword">macOS</span> <span class="number literal">10.15</span>, <span class="keyword">iOS</span> <span class="number literal">13.0</span>, <span class="keyword">tvOS</span> <span class="number literal">13.0</span>, <span class="keyword">watchOS</span> <span class="number literal">6.0</span>, *)
+    <span class="keyword">func</span> <span class="function">popularPublisher</span>(<span class="variable">page</span>: <span class="type">Int</span>?) -&gt; <span class="type">AnyPublisher</span>&lt;<span class="type">PersonPageableList</span>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;</body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Publishes the list of popular people.</p>
+
+</div>
+<div class="discussion">
+    <p><a href="https://developers.themoviedb.org/3/people/get-popular-people">TMDb API - People: Popular</a></p>
+
+<aside class="precondition" title="Precondition">
+    <p><code>page</code> can be between <code>1</code> and <code>1000</code>.</p>
+
+</aside>
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>page</th>
+    <td><code class="type">Int?</code></td>
+    <td><p>The page of results to return.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+  <h4>Returns</h4>
+  <p>A publisher of current popular people as a pageable list.</p>
+
+</div>
+<div role="article" class="function" id="personservice.details(forperson:)">
+    <h3>
+        <code>details(for​Person:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="attribute">@</span><span class="attribute">available</span>(<span class="keyword">macOS</span> <span class="number literal">12</span>, <span class="keyword">iOS</span> <span class="number literal">15.0</span>, <span class="keyword">tvOS</span> <span class="number literal">15.0</span>, <span class="keyword">watchOS</span> <span class="number literal">8.0</span>, *)
+    <span class="keyword">func</span> <span class="function">details</span>(<span class="variable">forPerson</span> <span class="variable">id</span>: <a href="/TMDb/Person"><span class="type">Person</span></a>.<span class="type">ID</span>) </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Returns the primary information about a person.</p>
+
+</div>
+<div class="discussion">
+    <p><a href="https://developers.themoviedb.org/3/people/get-person-details">TMDb API - People: Details</a></p>
+
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>id</th>
+    <td><code class="type">Person.​ID</code></td>
+    <td><p>The identifier of the person.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+  <h4>Returns</h4>
+  <p>The matching person.</p>
+
+</div>
+<div role="article" class="function" id="personservice.combinedcredits(forperson:)">
+    <h3>
+        <code>combined​Credits(for​Person:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="attribute">@</span><span class="attribute">available</span>(<span class="keyword">macOS</span> <span class="number literal">12</span>, <span class="keyword">iOS</span> <span class="number literal">15.0</span>, <span class="keyword">tvOS</span> <span class="number literal">15.0</span>, <span class="keyword">watchOS</span> <span class="number literal">8.0</span>, *)
+    <span class="keyword">func</span> <span class="function">combinedCredits</span>(<span class="variable">forPerson</span> <span class="variable">personID</span>: <a href="/TMDb/Person"><span class="type">Person</span></a>.<span class="type">ID</span>) </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Returns the combined movie and TV show credits of a person.</p>
+
+</div>
+<div class="discussion">
+    <p><a href="https://developers.themoviedb.org/3/people/get-person-combined-credits">TMDb API - People: Combined Credits</a></p>
+
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>person​ID</th>
+    <td><code class="type">Person.​ID</code></td>
+    <td><p>The identifier of the person.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+  <h4>Returns</h4>
+  <p>The matching person's combined movie and TV show credits..</p>
+
+</div>
+<div role="article" class="function" id="personservice.moviecredits(forperson:)">
+    <h3>
+        <code>movie​Credits(for​Person:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="attribute">@</span><span class="attribute">available</span>(<span class="keyword">macOS</span> <span class="number literal">12</span>, <span class="keyword">iOS</span> <span class="number literal">15.0</span>, <span class="keyword">tvOS</span> <span class="number literal">15.0</span>, <span class="keyword">watchOS</span> <span class="number literal">8.0</span>, *)
+    <span class="keyword">func</span> <span class="function">movieCredits</span>(<span class="variable">forPerson</span> <span class="variable">personID</span>: <a href="/TMDb/Person"><span class="type">Person</span></a>.<span class="type">ID</span>) </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Returns the movie credits of a person.</p>
+
+</div>
+<div class="discussion">
+    <p><a href="https://developers.themoviedb.org/3/people/get-person-movie-credits">TMDb API - People: Movie Credits</a></p>
+
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>person​ID</th>
+    <td><code class="type">Person.​ID</code></td>
+    <td><p>The identifier of the person.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+  <h4>Returns</h4>
+  <p>The matching person's movie credits.</p>
+
+</div>
+<div role="article" class="function" id="personservice.tvshowcredits(forperson:)">
+    <h3>
+        <code>tv​Show​Credits(for​Person:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="attribute">@</span><span class="attribute">available</span>(<span class="keyword">macOS</span> <span class="number literal">12</span>, <span class="keyword">iOS</span> <span class="number literal">15.0</span>, <span class="keyword">tvOS</span> <span class="number literal">15.0</span>, <span class="keyword">watchOS</span> <span class="number literal">8.0</span>, *)
+    <span class="keyword">func</span> <span class="function">tvShowCredits</span>(<span class="variable">forPerson</span> <span class="variable">personID</span>: <a href="/TMDb/Person"><span class="type">Person</span></a>.<span class="type">ID</span>) </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Returns the TV show credits of a person.</p>
+
+</div>
+<div class="discussion">
+    <p><a href="https://developers.themoviedb.org/3/people/get-person-tv-credits">TMDb API - People: TV Show Credits</a></p>
+
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>person​ID</th>
+    <td><code class="type">Person.​ID</code></td>
+    <td><p>The identifier of the person.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+  <h4>Returns</h4>
+  <p>The matching person's TV show credits.</p>
+
+</div>
+<div role="article" class="function" id="personservice.images(forperson:)">
+    <h3>
+        <code>images(for​Person:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="attribute">@</span><span class="attribute">available</span>(<span class="keyword">macOS</span> <span class="number literal">12</span>, <span class="keyword">iOS</span> <span class="number literal">15.0</span>, <span class="keyword">tvOS</span> <span class="number literal">15.0</span>, <span class="keyword">watchOS</span> <span class="number literal">8.0</span>, *)
+    <span class="keyword">func</span> <span class="function">images</span>(<span class="variable">forPerson</span> <span class="variable">personID</span>: <a href="/TMDb/Person"><span class="type">Person</span></a>.<span class="type">ID</span>) </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Returns the images for a person.</p>
+
+</div>
+<div class="discussion">
+    <p><a href="https://developers.themoviedb.org/3/people/get-person-images">TMDb API - People: Images</a></p>
+
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>person​ID</th>
+    <td><code class="type">Person.​ID</code></td>
+    <td><p>The identifier of the person.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+  <h4>Returns</h4>
+  <p>The matching person's images.</p>
+
+</div>
+<div role="article" class="function" id="personservice.knownfor(forperson:)">
+    <h3>
+        <code>known​For(for​Person:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="attribute">@</span><span class="attribute">available</span>(<span class="keyword">macOS</span> <span class="number literal">12</span>, <span class="keyword">iOS</span> <span class="number literal">15.0</span>, <span class="keyword">tvOS</span> <span class="number literal">15.0</span>, <span class="keyword">watchOS</span> <span class="number literal">8.0</span>, *)
+    <span class="keyword">func</span> <span class="function">knownFor</span>(<span class="variable">forPerson</span> <span class="variable">personID</span>: <a href="/TMDb/Person"><span class="type">Person</span></a>.<span class="type">ID</span>) </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Returns the list of known for shows for a person.</p>
+
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>person​ID</th>
+    <td><code class="type">Person.​ID</code></td>
+    <td><p>The identifier of the person.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+  <h4>Returns</h4>
+  <p>The matching person's show credits.</p>
+
+</div>
+<div role="article" class="function" id="personservice.popular(page:)">
+    <h3>
+        <code>popular(page:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="attribute">@</span><span class="attribute">available</span>(<span class="keyword">macOS</span> <span class="number literal">12</span>, <span class="keyword">iOS</span> <span class="number literal">15.0</span>, <span class="keyword">tvOS</span> <span class="number literal">15.0</span>, <span class="keyword">watchOS</span> <span class="number literal">8.0</span>, *)
+    <span class="keyword">func</span> <span class="function">popular</span>(<span class="variable">page</span>: <span class="type">Int</span>?) </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Returns the list of popular people.</p>
+
+</div>
+<div class="discussion">
+    <p><a href="https://developers.themoviedb.org/3/people/get-popular-people">TMDb API - People: Popular</a></p>
+
+<aside class="precondition" title="Precondition">
+    <p><code>page</code> can be between <code>1</code> and <code>1000</code>.</p>
+
+</aside>
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>page</th>
+    <td><code class="type">Int?</code></td>
+    <td><p>The page of results to return.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+  <h4>Returns</h4>
+  <p>Current popular people as a pageable list.</p>
+
+</div>
+    </section>
+        </article>
+    </main>
+
+    <footer>
+        <p>
+    Generated on <time datetime="2021-11-25T17:07:21+0000">November 25, 2021</time> using <a href="https://github.com/SwiftDocOrg/swift-doc">swift-doc</a> <span class="version">1.0.0-rc.1</span>.
+</p>
+    </footer>
+</body>
+</html>

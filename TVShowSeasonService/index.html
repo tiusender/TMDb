@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TMDb - TVShowSeasonService</title>
+    <link rel="stylesheet" type="text/css" href="/TMDb/all.css" media="all" />
+</head>
+<body>
+    <header>
+        <a href="/TMDb/">
+            <strong>
+                TMDb
+            </strong>
+            <span>Documentation</span>
+        </a>
+    </header>
+
+    <!--
+    <form class="search">
+        <input type="search" placeholder="Search" />
+    </form>
+    -->
+
+    <nav>
+        <div class="wrapper">
+            <h2>On This Page</h2>
+            <ol><li><a href="#requirements">Requirements</a><ul><li class="function"><a href="#tvshowseasonservice.fetchdetails(forseason:intvshow:completion:)">fetch​Details(for​Season:​in​TVShow:​completion:​)</a></li><li class="function"><a href="#tvshowseasonservice.fetchimages(forseason:intvshow:completion:)">fetch​Images(for​Season:​in​TVShow:​completion:​)</a></li><li class="function"><a href="#tvshowseasonservice.fetchvideos(forseason:intvshow:completion:)">fetch​Videos(for​Season:​in​TVShow:​completion:​)</a></li><li class="function"><a href="#tvshowseasonservice.detailspublisher(forseason:intvshow:)">details​Publisher(for​Season:​in​TVShow:​)</a></li><li class="function"><a href="#tvshowseasonservice.imagespublisher(forseason:intvshow:)">images​Publisher(for​Season:​in​TVShow:​)</a></li><li class="function"><a href="#tvshowseasonservice.videospublisher(forseason:intvshow:)">videos​Publisher(for​Season:​in​TVShow:​)</a></li><li class="function"><a href="#tvshowseasonservice.details(forseason:intvshow:)">details(for​Season:​in​TVShow:​)</a></li><li class="function"><a href="#tvshowseasonservice.images(forseason:intvshow:)">images(for​Season:​in​TVShow:​)</a></li><li class="function"><a href="#tvshowseasonservice.videos(forseason:intvshow:)">videos(for​Season:​in​TVShow:​)</a></li></ul></li></ol>
+        </div>
+    </nav>
+
+    <main>
+        <article>
+            <h1>
+    <small>Protocol</small>
+    <code class="name">TVShow​Season​Service</code>
+</h1>
+
+<div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">protocol</span> <span class="type">TVShowSeasonService</span>  </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Fetch details about TV show seasons.</p>
+
+</div>
+
+
+
+
+    <section id="requirements">
+        <h2>Requirements</h2>
+
+        <div role="article" class="function" id="tvshowseasonservice.fetchdetails(forseason:intvshow:completion:)">
+    <h3>
+        <code>fetch​Details(for​Season:​in​TVShow:​completion:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">func</span> <span class="function">fetchDetails</span>(<span class="variable">forSeason</span> <span class="variable">seasonNumber</span>: <span class="type">Int</span>, <span class="variable">inTVShow</span> <span class="variable">tvShowID</span>: <a href="/TMDb/TVShow"><span class="type">TVShow</span></a>.<span class="type">ID</span>,
+                      <span class="variable">completion</span>: <span class="attribute">@</span><span class="attribute">escaping</span> (<span class="keyword">_</span> <span class="variable">result</span>: <span class="type">Result</span>&lt;<a href="/TMDb/TVShowSeason"><span class="type">TVShowSeason</span></a>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;) -&gt; <span class="type">Void</span>) </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Fetches the primary information about a TV show season.</p>
+
+</div>
+<div class="discussion">
+    <p><a href="https://developers.themoviedb.org/3/tv-seasons/get-tv-season-details">TMDb API - TV Show Seasons: Details</a></p>
+
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>season​Number</th>
+    <td><code class="type">Int</code></td>
+    <td><p>The season number of a TV show.</p>
+</td>
+</tr>
+<tr>
+    <th>tv​Show​ID</th>
+    <td><code class="type">TVShow.​ID</code></td>
+    <td><p>The identifier of the TV show.</p>
+</td>
+</tr>
+<tr>
+    <th>completion</th>
+    <td><code class="type">@escaping (_ result:​ Result&lt;TVShow​Season, TMDbError&gt;) -&gt; Void</code></td>
+    <td><p>Completion handler.</p>
+</td>
+</tr>
+<tr>
+    <th>result</th>
+    <td></td>
+    <td><p>A season of the matching TV show.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+</div>
+<div role="article" class="function" id="tvshowseasonservice.fetchimages(forseason:intvshow:completion:)">
+    <h3>
+        <code>fetch​Images(for​Season:​in​TVShow:​completion:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">func</span> <span class="function">fetchImages</span>(<span class="variable">forSeason</span> <span class="variable">seasonNumber</span>: <span class="type">Int</span>, <span class="variable">inTVShow</span> <span class="variable">tvShowID</span>: <a href="/TMDb/TVShow"><span class="type">TVShow</span></a>.<span class="type">ID</span>,
+                     <span class="variable">completion</span>: <span class="attribute">@</span><span class="attribute">escaping</span> (<span class="keyword">_</span> <span class="variable">result</span>: <span class="type">Result</span>&lt;<a href="/TMDb/ImageCollection"><span class="type">ImageCollection</span></a>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;) -&gt; <span class="type">Void</span>) </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Fetches the images that belong to a TV show season.</p>
+
+</div>
+<div class="discussion">
+    <p><a href="https://developers.themoviedb.org/3/tv-seasons/get-tv-season-images">TMDb API - TV Show Seasons: Images</a></p>
+
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>season​Number</th>
+    <td><code class="type">Int</code></td>
+    <td><p>The season number of a TV show.</p>
+</td>
+</tr>
+<tr>
+    <th>tv​Show​ID</th>
+    <td><code class="type">TVShow.​ID</code></td>
+    <td><p>The identifier of the TV show.</p>
+</td>
+</tr>
+<tr>
+    <th>completion</th>
+    <td><code class="type">@escaping (_ result:​ Result&lt;Image​Collection, TMDbError&gt;) -&gt; Void</code></td>
+    <td><p>Completion handler.</p>
+</td>
+</tr>
+<tr>
+    <th>result</th>
+    <td></td>
+    <td><p>A collection of images for the matching TV show's season.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+</div>
+<div role="article" class="function" id="tvshowseasonservice.fetchvideos(forseason:intvshow:completion:)">
+    <h3>
+        <code>fetch​Videos(for​Season:​in​TVShow:​completion:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">func</span> <span class="function">fetchVideos</span>(<span class="variable">forSeason</span> <span class="variable">seasonNumber</span>: <span class="type">Int</span>, <span class="variable">inTVShow</span> <span class="variable">tvShowID</span>: <a href="/TMDb/TVShow"><span class="type">TVShow</span></a>.<span class="type">ID</span>,
+                     <span class="variable">completion</span>: <span class="attribute">@</span><span class="attribute">escaping</span> (<span class="keyword">_</span> <span class="variable">result</span>: <span class="type">Result</span>&lt;<a href="/TMDb/VideoCollection"><span class="type">VideoCollection</span></a>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;) -&gt; <span class="type">Void</span>) </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Fetches the videos that belong to a TV show season.</p>
+
+</div>
+<div class="discussion">
+    <p><a href="https://developers.themoviedb.org/3/tv-seasons/get-tv-season-videos">TMDb API - TV Show Seasons: Videos</a></p>
+
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>season​Number</th>
+    <td><code class="type">Int</code></td>
+    <td><p>The season number of a TV show.</p>
+</td>
+</tr>
+<tr>
+    <th>tv​Show​ID</th>
+    <td><code class="type">TVShow.​ID</code></td>
+    <td><p>The identifier of the TV show.</p>
+</td>
+</tr>
+<tr>
+    <th>completion</th>
+    <td><code class="type">@escaping (_ result:​ Result&lt;Video​Collection, TMDbError&gt;) -&gt; Void</code></td>
+    <td><p>Completion handler.</p>
+</td>
+</tr>
+<tr>
+    <th>result</th>
+    <td></td>
+    <td><p>A collection of videos for the matching TV show's season.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+</div>
+<div role="article" class="function" id="tvshowseasonservice.detailspublisher(forseason:intvshow:)">
+    <h3>
+        <code>details​Publisher(for​Season:​in​TVShow:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="attribute">@</span><span class="attribute">available</span>(<span class="keyword">macOS</span> <span class="number literal">10.15</span>, <span class="keyword">iOS</span> <span class="number literal">13.0</span>, <span class="keyword">tvOS</span> <span class="number literal">13.0</span>, <span class="keyword">watchOS</span> <span class="number literal">6.0</span>, *)
+    <span class="keyword">func</span> <span class="function">detailsPublisher</span>(<span class="variable">forSeason</span> <span class="variable">seasonNumber</span>: <span class="type">Int</span>,
+                          <span class="variable">inTVShow</span> <span class="variable">tvShowID</span>: <a href="/TMDb/TVShow"><span class="type">TVShow</span></a>.<span class="type">ID</span>) -&gt; <span class="type">AnyPublisher</span>&lt;<a href="/TMDb/TVShowSeason"><span class="type">TVShowSeason</span></a>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;</body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Publishes the primary information about a TV show season.</p>
+
+</div>
+<div class="discussion">
+    <p><a href="https://developers.themoviedb.org/3/tv-seasons/get-tv-season-details">TMDb API - TV Show Seasons: Details</a></p>
+
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>season​Number</th>
+    <td><code class="type">Int</code></td>
+    <td><p>The season number of a TV show.</p>
+</td>
+</tr>
+<tr>
+    <th>tv​Show​ID</th>
+    <td><code class="type">TVShow.​ID</code></td>
+    <td><p>The identifier of the TV show.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+  <h4>Returns</h4>
+  <p>A publisher with a season of the matching TV show.</p>
+
+</div>
+<div role="article" class="function" id="tvshowseasonservice.imagespublisher(forseason:intvshow:)">
+    <h3>
+        <code>images​Publisher(for​Season:​in​TVShow:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="attribute">@</span><span class="attribute">available</span>(<span class="keyword">macOS</span> <span class="number literal">10.15</span>, <span class="keyword">iOS</span> <span class="number literal">13.0</span>, <span class="keyword">tvOS</span> <span class="number literal">13.0</span>, <span class="keyword">watchOS</span> <span class="number literal">6.0</span>, *)
+    <span class="keyword">func</span> <span class="function">imagesPublisher</span>(<span class="variable">forSeason</span> <span class="variable">seasonNumber</span>: <span class="type">Int</span>,
+                         <span class="variable">inTVShow</span> <span class="variable">tvShowID</span>: <a href="/TMDb/TVShow"><span class="type">TVShow</span></a>.<span class="type">ID</span>) -&gt; <span class="type">AnyPublisher</span>&lt;<a href="/TMDb/ImageCollection"><span class="type">ImageCollection</span></a>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;</body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Publishes the images that belong to a TV show season.</p>
+
+</div>
+<div class="discussion">
+    <p><a href="https://developers.themoviedb.org/3/tv-seasons/get-tv-season-images">TMDb API - TV Show Seasons: Images</a></p>
+
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>season​Number</th>
+    <td><code class="type">Int</code></td>
+    <td><p>The season number of a TV show.</p>
+</td>
+</tr>
+<tr>
+    <th>tv​Show​ID</th>
+    <td><code class="type">TVShow.​ID</code></td>
+    <td><p>The identifier of the TV show.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+  <h4>Returns</h4>
+  <p>A publisher with a collection of images for the matching TV show's season.</p>
+
+</div>
+<div role="article" class="function" id="tvshowseasonservice.videospublisher(forseason:intvshow:)">
+    <h3>
+        <code>videos​Publisher(for​Season:​in​TVShow:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="attribute">@</span><span class="attribute">available</span>(<span class="keyword">macOS</span> <span class="number literal">10.15</span>, <span class="keyword">iOS</span> <span class="number literal">13.0</span>, <span class="keyword">tvOS</span> <span class="number literal">13.0</span>, <span class="keyword">watchOS</span> <span class="number literal">6.0</span>, *)
+    <span class="keyword">func</span> <span class="function">videosPublisher</span>(<span class="variable">forSeason</span> <span class="variable">seasonNumber</span>: <span class="type">Int</span>,
+                         <span class="variable">inTVShow</span> <span class="variable">tvShowID</span>: <a href="/TMDb/TVShow"><span class="type">TVShow</span></a>.<span class="type">ID</span>) -&gt; <span class="type">AnyPublisher</span>&lt;<a href="/TMDb/VideoCollection"><span class="type">VideoCollection</span></a>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;</body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Publishes the videos that belong to a TV show season.</p>
+
+</div>
+<div class="discussion">
+    <p><a href="https://developers.themoviedb.org/3/tv-seasons/get-tv-season-videos">TMDb API - TV Show Seasons: Videos</a></p>
+
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>season​Number</th>
+    <td><code class="type">Int</code></td>
+    <td><p>The season number of a TV show.</p>
+</td>
+</tr>
+<tr>
+    <th>tv​Show​ID</th>
+    <td><code class="type">TVShow.​ID</code></td>
+    <td><p>The identifier of the TV show.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+  <h4>Returns</h4>
+  <p>A publisher with a collection of videos for the matching TV show's season.</p>
+
+</div>
+<div role="article" class="function" id="tvshowseasonservice.details(forseason:intvshow:)">
+    <h3>
+        <code>details(for​Season:​in​TVShow:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="attribute">@</span><span class="attribute">available</span>(<span class="keyword">macOS</span> <span class="number literal">12</span>, <span class="keyword">iOS</span> <span class="number literal">15.0</span>, <span class="keyword">tvOS</span> <span class="number literal">15.0</span>, <span class="keyword">watchOS</span> <span class="number literal">8.0</span>, *)
+    <span class="keyword">func</span> <span class="function">details</span>(<span class="variable">forSeason</span> <span class="variable">seasonNumber</span>: <span class="type">Int</span>, <span class="variable">inTVShow</span> <span class="variable">tvShowID</span>: <a href="/TMDb/TVShow"><span class="type">TVShow</span></a>.<span class="type">ID</span>) </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Returns the primary information about a TV show season.</p>
+
+</div>
+<div class="discussion">
+    <p><a href="https://developers.themoviedb.org/3/tv-seasons/get-tv-season-details">TMDb API - TV Show Seasons: Details</a></p>
+
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>season​Number</th>
+    <td><code class="type">Int</code></td>
+    <td><p>The season number of a TV show.</p>
+</td>
+</tr>
+<tr>
+    <th>tv​Show​ID</th>
+    <td><code class="type">TVShow.​ID</code></td>
+    <td><p>The identifier of the TV show.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+  <h4>Returns</h4>
+  <p>A season of the matching TV show.</p>
+
+</div>
+<div role="article" class="function" id="tvshowseasonservice.images(forseason:intvshow:)">
+    <h3>
+        <code>images(for​Season:​in​TVShow:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="attribute">@</span><span class="attribute">available</span>(<span class="keyword">macOS</span> <span class="number literal">12</span>, <span class="keyword">iOS</span> <span class="number literal">15.0</span>, <span class="keyword">tvOS</span> <span class="number literal">15.0</span>, <span class="keyword">watchOS</span> <span class="number literal">8.0</span>, *)
+    <span class="keyword">func</span> <span class="function">images</span>(<span class="variable">forSeason</span> <span class="variable">seasonNumber</span>: <span class="type">Int</span>, <span class="variable">inTVShow</span> <span class="variable">tvShowID</span>: <a href="/TMDb/TVShow"><span class="type">TVShow</span></a>.<span class="type">ID</span>) </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Returns the images that belong to a TV show season.</p>
+
+</div>
+<div class="discussion">
+    <p><a href="https://developers.themoviedb.org/3/tv-seasons/get-tv-season-images">TMDb API - TV Show Seasons: Images</a></p>
+
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>season​Number</th>
+    <td><code class="type">Int</code></td>
+    <td><p>The season number of a TV show.</p>
+</td>
+</tr>
+<tr>
+    <th>tv​Show​ID</th>
+    <td><code class="type">TVShow.​ID</code></td>
+    <td><p>The identifier of the TV show.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+  <h4>Returns</h4>
+  <p>A collection of images for the matching TV show's season.</p>
+
+</div>
+<div role="article" class="function" id="tvshowseasonservice.videos(forseason:intvshow:)">
+    <h3>
+        <code>videos(for​Season:​in​TVShow:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="attribute">@</span><span class="attribute">available</span>(<span class="keyword">macOS</span> <span class="number literal">12</span>, <span class="keyword">iOS</span> <span class="number literal">15.0</span>, <span class="keyword">tvOS</span> <span class="number literal">15.0</span>, <span class="keyword">watchOS</span> <span class="number literal">8.0</span>, *)
+    <span class="keyword">func</span> <span class="function">videos</span>(<span class="variable">forSeason</span> <span class="variable">seasonNumber</span>: <span class="type">Int</span>, <span class="variable">inTVShow</span> <span class="variable">tvShowID</span>: <a href="/TMDb/TVShow"><span class="type">TVShow</span></a>.<span class="type">ID</span>) </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Returns the videos that belong to a TV show season.</p>
+
+</div>
+<div class="discussion">
+    <p><a href="https://developers.themoviedb.org/3/tv-seasons/get-tv-season-videos">TMDb API - TV Show Seasons: Videos</a></p>
+
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>season​Number</th>
+    <td><code class="type">Int</code></td>
+    <td><p>The season number of a TV show.</p>
+</td>
+</tr>
+<tr>
+    <th>tv​Show​ID</th>
+    <td><code class="type">TVShow.​ID</code></td>
+    <td><p>The identifier of the TV show.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+  <h4>Returns</h4>
+  <p>A collection of videos for the matching TV show's season.</p>
+
+</div>
+    </section>
+        </article>
+    </main>
+
+    <footer>
+        <p>
+    Generated on <time datetime="2021-11-25T17:07:21+0000">November 25, 2021</time> using <a href="https://github.com/SwiftDocOrg/swift-doc">swift-doc</a> <span class="version">1.0.0-rc.1</span>.
+</p>
+    </footer>
+</body>
+</html>

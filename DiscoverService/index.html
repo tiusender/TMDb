@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TMDb - DiscoverService</title>
+    <link rel="stylesheet" type="text/css" href="/TMDb/all.css" media="all" />
+</head>
+<body>
+    <header>
+        <a href="/TMDb/">
+            <strong>
+                TMDb
+            </strong>
+            <span>Documentation</span>
+        </a>
+    </header>
+
+    <!--
+    <form class="search">
+        <input type="search" placeholder="Search" />
+    </form>
+    -->
+
+    <nav>
+        <div class="wrapper">
+            <h2>On This Page</h2>
+            <ol><li><a href="#default implementations">Default Implementations</a><ul><li class="function"><a href="#discoverservice.fetchmovies(sortedby:withpeople:page:completion:)">fetch​Movies(sorted​By:​with​People:​page:​completion:​)</a></li><li class="function"><a href="#discoverservice.fetchtvshows(sortedby:page:completion:)">fetch​TVShows(sorted​By:​page:​completion:​)</a></li><li class="function"><a href="#discoverservice.moviespublisher(sortedby:withpeople:page:)">movies​Publisher(sorted​By:​with​People:​page:​)</a></li><li class="function"><a href="#discoverservice.tvshowspublisher(sortedby:page:)">tv​Shows​Publisher(sorted​By:​page:​)</a></li></ul></li><li><a href="#requirements">Requirements</a><ul><li class="function"><a href="#discoverservice.fetchmovies(sortedby:withpeople:page:completion:)">fetch​Movies(sorted​By:​with​People:​page:​completion:​)</a></li><li class="function"><a href="#discoverservice.fetchtvshows(sortedby:page:completion:)">fetch​TVShows(sorted​By:​page:​completion:​)</a></li><li class="function"><a href="#discoverservice.moviespublisher(sortedby:withpeople:page:)">movies​Publisher(sorted​By:​with​People:​page:​)</a></li><li class="function"><a href="#discoverservice.tvshowspublisher(sortedby:page:)">tv​Shows​Publisher(sorted​By:​page:​)</a></li><li class="function"><a href="#discoverservice.movies(sortedby:withpeople:page:)">movies(sorted​By:​with​People:​page:​)</a></li><li class="function"><a href="#discoverservice.tvshows(sortedby:page:)">tv​Shows(sorted​By:​page:​)</a></li></ul></li></ol>
+        </div>
+    </nav>
+
+    <main>
+        <article>
+            <h1>
+    <small>Protocol</small>
+    <code class="name">Discover​Service</code>
+</h1>
+
+<div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">protocol</span> <span class="type">DiscoverService</span>  </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Discover movies by different types of data like average rating, number of votes, genres and certifications.</p>
+
+</div>
+
+    <section id="default implementations">
+        <h2>Default Implementations</h2>
+
+        <div role="article" class="function" id="discoverservice.fetchmovies(sortedby:withpeople:page:completion:)">
+    <h3>
+        <code><a href="#discoverservice.fetchmovies(sortedby:withpeople:page:completion:)">fetch​Movies(sorted​By:​with​People:​page:​completion:​)</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">func</span> <span class="function">fetchMovies</span>(<span class="variable">sortedBy</span>: <a href="/TMDb/MovieSort"><span class="type">MovieSort</span></a>? = <span class="keyword">nil</span>, <span class="variable">withPeople</span> <span class="variable">people</span>: [<a href="/TMDb/Person"><span class="type">Person</span></a>.<span class="type">ID</span>]? = <span class="keyword">nil</span>, <span class="variable">page</span>: <span class="type">Int</span>? = <span class="keyword">nil</span>,
+                     <span class="variable">completion</span>: <span class="attribute">@</span><span class="attribute">escaping</span> (<span class="keyword">_</span> <span class="variable">result</span>: <span class="type">Result</span>&lt;<span class="type">MoviePageableList</span>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;) -&gt; <span class="type">Void</span>)  </body></html></code></pre>
+</div>
+</div>
+<div role="article" class="function" id="discoverservice.fetchtvshows(sortedby:page:completion:)">
+    <h3>
+        <code><a href="#discoverservice.fetchtvshows(sortedby:page:completion:)">fetch​TVShows(sorted​By:​page:​completion:​)</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">func</span> <span class="function">fetchTVShows</span>(<span class="variable">sortedBy</span>: <a href="/TMDb/TVShowSort"><span class="type">TVShowSort</span></a>? = <span class="keyword">nil</span>, <span class="variable">page</span>: <span class="type">Int</span>? = <span class="keyword">nil</span>,
+                      <span class="variable">completion</span>: <span class="attribute">@</span><span class="attribute">escaping</span> (<span class="keyword">_</span> <span class="variable">result</span>: <span class="type">Result</span>&lt;<span class="type">TVShowPageableList</span>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;) -&gt; <span class="type">Void</span>)  </body></html></code></pre>
+</div>
+</div>
+<div role="article" class="function" id="discoverservice.moviespublisher(sortedby:withpeople:page:)">
+    <h3>
+        <code><a href="#discoverservice.moviespublisher(sortedby:withpeople:page:)">movies​Publisher(sorted​By:​with​People:​page:​)</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">func</span> <span class="function">moviesPublisher</span>(<span class="variable">sortedBy</span>: <a href="/TMDb/MovieSort"><span class="type">MovieSort</span></a>? = <span class="keyword">nil</span>, <span class="variable">withPeople</span> <span class="variable">people</span>: [<a href="/TMDb/Person"><span class="type">Person</span></a>.<span class="type">ID</span>]? = <span class="keyword">nil</span>,
+                         <span class="variable">page</span>: <span class="type">Int</span>? = <span class="keyword">nil</span>) -&gt; <span class="type">AnyPublisher</span>&lt;<span class="type">MoviePageableList</span>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;  </body></html></code></pre>
+</div>
+</div>
+<div role="article" class="function" id="discoverservice.tvshowspublisher(sortedby:page:)">
+    <h3>
+        <code><a href="#discoverservice.tvshowspublisher(sortedby:page:)">tv​Shows​Publisher(sorted​By:​page:​)</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">func</span> <span class="function">tvShowsPublisher</span>(<span class="variable">sortedBy</span>: <a href="/TMDb/TVShowSort"><span class="type">TVShowSort</span></a>? = <span class="keyword">nil</span>,
+                          <span class="variable">page</span>: <span class="type">Int</span>? = <span class="keyword">nil</span>) -&gt; <span class="type">AnyPublisher</span>&lt;<span class="type">TVShowPageableList</span>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;  </body></html></code></pre>
+</div>
+</div>
+    </section>
+
+
+    <section id="requirements">
+        <h2>Requirements</h2>
+
+        <div role="article" class="function" id="discoverservice.fetchmovies(sortedby:withpeople:page:completion:)">
+    <h3>
+        <code>fetch​Movies(sorted​By:​with​People:​page:​completion:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">func</span> <span class="function">fetchMovies</span>(<span class="variable">sortedBy</span>: <a href="/TMDb/MovieSort"><span class="type">MovieSort</span></a>?, <span class="variable">withPeople</span> <span class="variable">people</span>: [<a href="/TMDb/Person"><span class="type">Person</span></a>.<span class="type">ID</span>]?, <span class="variable">page</span>: <span class="type">Int</span>?,
+                     <span class="variable">completion</span>: <span class="attribute">@</span><span class="attribute">escaping</span> (<span class="keyword">_</span> <span class="variable">result</span>: <span class="type">Result</span>&lt;<span class="type">MoviePageableList</span>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;) -&gt; <span class="type">Void</span>) </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Fetches movies to be discovered.</p>
+
+</div>
+<div class="discussion">
+    <p><a href="https://developers.themoviedb.org/3/discover/movie-discover">TMDb API - Discover: Movies</a></p>
+
+<aside class="precondition" title="Precondition">
+    <p><code>page</code> can be between <code>1</code> and <code>1000</code>.</p>
+
+</aside>
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>sorted​By</th>
+    <td><code class="type">Movie​Sort?</code></td>
+    <td><p>How results should be sorted.</p>
+</td>
+</tr>
+<tr>
+    <th>people</th>
+    <td><code class="type">[Person.​ID]?</code></td>
+    <td><p>A list of Person identifiers which to return only movies they have appeared in.</p>
+</td>
+</tr>
+<tr>
+    <th>page</th>
+    <td><code class="type">Int?</code></td>
+    <td><p>The page of results to return.</p>
+</td>
+</tr>
+<tr>
+    <th>completion</th>
+    <td><code class="type">@escaping (_ result:​ Result&lt;Movie​Pageable​List, TMDbError&gt;) -&gt; Void</code></td>
+    <td><p>Completion handler.</p>
+</td>
+</tr>
+<tr>
+    <th>result</th>
+    <td></td>
+    <td><p>Matching movies as a pageable list.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+</div>
+<div role="article" class="function" id="discoverservice.fetchtvshows(sortedby:page:completion:)">
+    <h3>
+        <code>fetch​TVShows(sorted​By:​page:​completion:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">func</span> <span class="function">fetchTVShows</span>(<span class="variable">sortedBy</span>: <a href="/TMDb/TVShowSort"><span class="type">TVShowSort</span></a>?, <span class="variable">page</span>: <span class="type">Int</span>?,
+                      <span class="variable">completion</span>: <span class="attribute">@</span><span class="attribute">escaping</span> (<span class="keyword">_</span> <span class="variable">result</span>: <span class="type">Result</span>&lt;<span class="type">TVShowPageableList</span>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;) -&gt; <span class="type">Void</span>) </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Fetches TV shows to be discovered.</p>
+
+</div>
+<div class="discussion">
+    <p><a href="https://developers.themoviedb.org/3/discover/tv-discover">TMDb API - Discover: TV Shows</a></p>
+
+<aside class="precondition" title="Precondition">
+    <p><code>page</code> can be between <code>1</code> and <code>1000</code>.</p>
+
+</aside>
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>sorted​By</th>
+    <td><code class="type">TVShow​Sort?</code></td>
+    <td><p>How results should be sorted.</p>
+</td>
+</tr>
+<tr>
+    <th>page</th>
+    <td><code class="type">Int?</code></td>
+    <td><p>The page of results to return.</p>
+</td>
+</tr>
+<tr>
+    <th>completion</th>
+    <td><code class="type">@escaping (_ result:​ Result&lt;TVShow​Pageable​List, TMDbError&gt;) -&gt; Void</code></td>
+    <td><p>Completion handler.</p>
+</td>
+</tr>
+<tr>
+    <th>result</th>
+    <td></td>
+    <td><p>Matching TV shows as a pageable list.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+</div>
+<div role="article" class="function" id="discoverservice.moviespublisher(sortedby:withpeople:page:)">
+    <h3>
+        <code>movies​Publisher(sorted​By:​with​People:​page:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="attribute">@</span><span class="attribute">available</span>(<span class="keyword">macOS</span> <span class="number literal">10.15</span>, <span class="keyword">iOS</span> <span class="number literal">13.0</span>, <span class="keyword">tvOS</span> <span class="number literal">13.0</span>, <span class="keyword">watchOS</span> <span class="number literal">6.0</span>, *)
+    <span class="keyword">func</span> <span class="function">moviesPublisher</span>(<span class="variable">sortedBy</span>: <a href="/TMDb/MovieSort"><span class="type">MovieSort</span></a>?, <span class="variable">withPeople</span> <span class="variable">people</span>: [<a href="/TMDb/Person"><span class="type">Person</span></a>.<span class="type">ID</span>]?,
+                         <span class="variable">page</span>: <span class="type">Int</span>?) -&gt; <span class="type">AnyPublisher</span>&lt;<span class="type">MoviePageableList</span>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;</body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Publishes movies to be discovered.</p>
+
+</div>
+<div class="discussion">
+    <p><a href="https://developers.themoviedb.org/3/discover/movie-discover">TMDb API - Discover: Movies</a></p>
+
+<aside class="precondition" title="Precondition">
+    <p><code>page</code> can be between <code>1</code> and <code>1000</code>.</p>
+
+</aside>
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>sorted​By</th>
+    <td><code class="type">Movie​Sort?</code></td>
+    <td><p>How results should be sorted.</p>
+</td>
+</tr>
+<tr>
+    <th>people</th>
+    <td><code class="type">[Person.​ID]?</code></td>
+    <td><p>A list of Person identifiers which to return only movies they have appeared in.</p>
+</td>
+</tr>
+<tr>
+    <th>page</th>
+    <td><code class="type">Int?</code></td>
+    <td><p>The page of results to return.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+  <h4>Returns</h4>
+  <p>A publisher with the matching movies as a pageable list.</p>
+
+</div>
+<div role="article" class="function" id="discoverservice.tvshowspublisher(sortedby:page:)">
+    <h3>
+        <code>tv​Shows​Publisher(sorted​By:​page:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="attribute">@</span><span class="attribute">available</span>(<span class="keyword">macOS</span> <span class="number literal">10.15</span>, <span class="keyword">iOS</span> <span class="number literal">13.0</span>, <span class="keyword">tvOS</span> <span class="number literal">13.0</span>, <span class="keyword">watchOS</span> <span class="number literal">6.0</span>, *)
+    <span class="keyword">func</span> <span class="function">tvShowsPublisher</span>(<span class="variable">sortedBy</span>: <a href="/TMDb/TVShowSort"><span class="type">TVShowSort</span></a>?, <span class="variable">page</span>: <span class="type">Int</span>?) -&gt; <span class="type">AnyPublisher</span>&lt;<span class="type">TVShowPageableList</span>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;</body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Publishes TV shows to be discovered.</p>
+
+</div>
+<div class="discussion">
+    <p><a href="https://developers.themoviedb.org/3/discover/tv-discover">TMDb API - Discover: TV Shows</a></p>
+
+<aside class="precondition" title="Precondition">
+    <p><code>page</code> can be between <code>1</code> and <code>1000</code>.</p>
+
+</aside>
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>sorted​By</th>
+    <td><code class="type">TVShow​Sort?</code></td>
+    <td><p>How results should be sorted.</p>
+</td>
+</tr>
+<tr>
+    <th>page</th>
+    <td><code class="type">Int?</code></td>
+    <td><p>The page of results to return.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+  <h4>Returns</h4>
+  <p>A publisher with the matching TV shows as a pageable list.</p>
+
+</div>
+<div role="article" class="function" id="discoverservice.movies(sortedby:withpeople:page:)">
+    <h3>
+        <code>movies(sorted​By:​with​People:​page:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="attribute">@</span><span class="attribute">available</span>(<span class="keyword">macOS</span> <span class="number literal">12</span>, <span class="keyword">iOS</span> <span class="number literal">15.0</span>, <span class="keyword">tvOS</span> <span class="number literal">15.0</span>, <span class="keyword">watchOS</span> <span class="number literal">8.0</span>, *)
+    <span class="keyword">func</span> <span class="function">movies</span>(<span class="variable">sortedBy</span>: <a href="/TMDb/MovieSort"><span class="type">MovieSort</span></a>?, <span class="variable">withPeople</span> <span class="variable">people</span>: [<a href="/TMDb/Person"><span class="type">Person</span></a>.<span class="type">ID</span>]?, <span class="variable">page</span>: <span class="type">Int</span>?) </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Returns movies to be discovered.</p>
+
+</div>
+<div class="discussion">
+    <p><a href="https://developers.themoviedb.org/3/discover/movie-discover">TMDb API - Discover: Movies</a></p>
+
+<aside class="precondition" title="Precondition">
+    <p><code>page</code> can be between <code>1</code> and <code>1000</code>.</p>
+
+</aside>
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>sorted​By</th>
+    <td><code class="type">Movie​Sort?</code></td>
+    <td><p>How results should be sorted.</p>
+</td>
+</tr>
+<tr>
+    <th>people</th>
+    <td><code class="type">[Person.​ID]?</code></td>
+    <td><p>A list of Person identifiers which to return only movies they have appeared in.</p>
+</td>
+</tr>
+<tr>
+    <th>page</th>
+    <td><code class="type">Int?</code></td>
+    <td><p>The page of results to return.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+  <h4>Returns</h4>
+  <p>Matching movies as a pageable list.</p>
+
+</div>
+<div role="article" class="function" id="discoverservice.tvshows(sortedby:page:)">
+    <h3>
+        <code>tv​Shows(sorted​By:​page:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="attribute">@</span><span class="attribute">available</span>(<span class="keyword">macOS</span> <span class="number literal">12</span>, <span class="keyword">iOS</span> <span class="number literal">15.0</span>, <span class="keyword">tvOS</span> <span class="number literal">15.0</span>, <span class="keyword">watchOS</span> <span class="number literal">8.0</span>, *)
+    <span class="keyword">func</span> <span class="function">tvShows</span>(<span class="variable">sortedBy</span>: <a href="/TMDb/TVShowSort"><span class="type">TVShowSort</span></a>?, <span class="variable">page</span>: <span class="type">Int</span>?) </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Returns TV shows to be discovered.</p>
+
+</div>
+<div class="discussion">
+    <p><a href="https://developers.themoviedb.org/3/discover/tv-discover">TMDb API - Discover: TV Shows</a></p>
+
+<aside class="precondition" title="Precondition">
+    <p><code>page</code> can be between <code>1</code> and <code>1000</code>.</p>
+
+</aside>
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>sorted​By</th>
+    <td><code class="type">TVShow​Sort?</code></td>
+    <td><p>How results should be sorted.</p>
+</td>
+</tr>
+<tr>
+    <th>page</th>
+    <td><code class="type">Int?</code></td>
+    <td><p>The page of results to return.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+  <h4>Returns</h4>
+  <p>Matching TV shows as a pageable list.</p>
+
+</div>
+    </section>
+        </article>
+    </main>
+
+    <footer>
+        <p>
+    Generated on <time datetime="2021-11-25T17:07:21+0000">November 25, 2021</time> using <a href="https://github.com/SwiftDocOrg/swift-doc">swift-doc</a> <span class="version">1.0.0-rc.1</span>.
+</p>
+    </footer>
+</body>
+</html>

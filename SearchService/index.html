@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TMDb - SearchService</title>
+    <link rel="stylesheet" type="text/css" href="/TMDb/all.css" media="all" />
+</head>
+<body>
+    <header>
+        <a href="/TMDb/">
+            <strong>
+                TMDb
+            </strong>
+            <span>Documentation</span>
+        </a>
+    </header>
+
+    <!--
+    <form class="search">
+        <input type="search" placeholder="Search" />
+    </form>
+    -->
+
+    <nav>
+        <div class="wrapper">
+            <h2>On This Page</h2>
+            <ol><li><a href="#default implementations">Default Implementations</a><ul><li class="function"><a href="#searchservice.searchall(query:page:completion:)">search​All(query:​page:​completion:​)</a></li><li class="function"><a href="#searchservice.searchmovies(query:year:page:completion:)">search​Movies(query:​year:​page:​completion:​)</a></li><li class="function"><a href="#searchservice.searchtvshows(query:firstairdateyear:page:completion:)">search​TVShows(query:​first​Air​Date​Year:​page:​completion:​)</a></li><li class="function"><a href="#searchservice.searchpeople(query:page:completion:)">search​People(query:​page:​completion:​)</a></li><li class="function"><a href="#searchservice.searchallpublisher(query:page:)">search​All​Publisher(query:​page:​)</a></li><li class="function"><a href="#searchservice.searchmoviespublisher(query:year:page:)">search​Movies​Publisher(query:​year:​page:​)</a></li><li class="function"><a href="#searchservice.searchtvshowspublisher(query:firstairdateyear:page:)">search​TVShows​Publisher(query:​first​Air​Date​Year:​page:​)</a></li><li class="function"><a href="#searchservice.searchpeoplepublisher(query:page:)">search​People​Publisher(query:​page:​)</a></li></ul></li><li><a href="#requirements">Requirements</a><ul><li class="function"><a href="#searchservice.searchall(query:page:completion:)">search​All(query:​page:​completion:​)</a></li><li class="function"><a href="#searchservice.searchmovies(query:year:page:completion:)">search​Movies(query:​year:​page:​completion:​)</a></li><li class="function"><a href="#searchservice.searchtvshows(query:firstairdateyear:page:completion:)">search​TVShows(query:​first​Air​Date​Year:​page:​completion:​)</a></li><li class="function"><a href="#searchservice.searchpeople(query:page:completion:)">search​People(query:​page:​completion:​)</a></li><li class="function"><a href="#searchservice.searchallpublisher(query:page:)">search​All​Publisher(query:​page:​)</a></li><li class="function"><a href="#searchservice.searchmoviespublisher(query:year:page:)">search​Movies​Publisher(query:​year:​page:​)</a></li><li class="function"><a href="#searchservice.searchtvshowspublisher(query:firstairdateyear:page:)">search​TVShows​Publisher(query:​first​Air​Date​Year:​page:​)</a></li><li class="function"><a href="#searchservice.searchpeoplepublisher(query:page:)">search​People​Publisher(query:​page:​)</a></li><li class="function"><a href="#searchservice.searchall(query:page:)">search​All(query:​page:​)</a></li><li class="function"><a href="#searchservice.searchmovies(query:year:page:)">search​Movies(query:​year:​page:​)</a></li><li class="function"><a href="#searchservice.searchtvshows(query:firstairdateyear:page:)">search​TVShows(query:​first​Air​Date​Year:​page:​)</a></li><li class="function"><a href="#searchservice.searchpeople(query:page:)">search​People(query:​page:​)</a></li></ul></li></ol>
+        </div>
+    </nav>
+
+    <main>
+        <article>
+            <h1>
+    <small>Protocol</small>
+    <code class="name">Search​Service</code>
+</h1>
+
+<div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">public</span> <span class="keyword">protocol</span> <span class="type">SearchService</span>  </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Search for movies, TV shows and people.</p>
+
+</div>
+
+    <section id="default implementations">
+        <h2>Default Implementations</h2>
+
+        <div role="article" class="function" id="searchservice.searchall(query:page:completion:)">
+    <h3>
+        <code><a href="#searchservice.searchall(query:page:completion:)">search​All(query:​page:​completion:​)</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">func</span> <span class="function">searchAll</span>(<span class="variable">query</span>: <span class="type">String</span>, <span class="variable">page</span>: <span class="type">Int</span>? = <span class="keyword">nil</span>,
+                   <span class="variable">completion</span>: <span class="attribute">@</span><span class="attribute">escaping</span> (<span class="keyword">_</span> <span class="variable">result</span>: <span class="type">Result</span>&lt;<span class="type">MediaPageableList</span>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;) -&gt; <span class="type">Void</span>)  </body></html></code></pre>
+</div>
+</div>
+<div role="article" class="function" id="searchservice.searchmovies(query:year:page:completion:)">
+    <h3>
+        <code><a href="#searchservice.searchmovies(query:year:page:completion:)">search​Movies(query:​year:​page:​completion:​)</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">func</span> <span class="function">searchMovies</span>(<span class="variable">query</span>: <span class="type">String</span>, <span class="variable">year</span>: <span class="type">Int</span>? = <span class="keyword">nil</span>, <span class="variable">page</span>: <span class="type">Int</span>? = <span class="keyword">nil</span>,
+                      <span class="variable">completion</span>: <span class="attribute">@</span><span class="attribute">escaping</span> (<span class="keyword">_</span> <span class="variable">result</span>: <span class="type">Result</span>&lt;<span class="type">MoviePageableList</span>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;) -&gt; <span class="type">Void</span>)  </body></html></code></pre>
+</div>
+</div>
+<div role="article" class="function" id="searchservice.searchtvshows(query:firstairdateyear:page:completion:)">
+    <h3>
+        <code><a href="#searchservice.searchtvshows(query:firstairdateyear:page:completion:)">search​TVShows(query:​first​Air​Date​Year:​page:​completion:​)</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">func</span> <span class="function">searchTVShows</span>(<span class="variable">query</span>: <span class="type">String</span>, <span class="variable">firstAirDateYear</span>: <span class="type">Int</span>? = <span class="keyword">nil</span>, <span class="variable">page</span>: <span class="type">Int</span>? = <span class="keyword">nil</span>,
+                       <span class="variable">completion</span>: <span class="attribute">@</span><span class="attribute">escaping</span> (<span class="keyword">_</span> <span class="variable">result</span>: <span class="type">Result</span>&lt;<span class="type">TVShowPageableList</span>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;) -&gt; <span class="type">Void</span>)  </body></html></code></pre>
+</div>
+</div>
+<div role="article" class="function" id="searchservice.searchpeople(query:page:completion:)">
+    <h3>
+        <code><a href="#searchservice.searchpeople(query:page:completion:)">search​People(query:​page:​completion:​)</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">func</span> <span class="function">searchPeople</span>(<span class="variable">query</span>: <span class="type">String</span>, <span class="variable">page</span>: <span class="type">Int</span>? = <span class="keyword">nil</span>,
+                      <span class="variable">completion</span>: <span class="attribute">@</span><span class="attribute">escaping</span> (<span class="keyword">_</span> <span class="variable">result</span>: <span class="type">Result</span>&lt;<span class="type">PersonPageableList</span>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;) -&gt; <span class="type">Void</span>)  </body></html></code></pre>
+</div>
+</div>
+<div role="article" class="function" id="searchservice.searchallpublisher(query:page:)">
+    <h3>
+        <code><a href="#searchservice.searchallpublisher(query:page:)">search​All​Publisher(query:​page:​)</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">func</span> <span class="function">searchAllPublisher</span>(<span class="variable">query</span>: <span class="type">String</span>, <span class="variable">page</span>: <span class="type">Int</span>? = <span class="keyword">nil</span>) -&gt; <span class="type">AnyPublisher</span>&lt;<span class="type">MediaPageableList</span>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;  </body></html></code></pre>
+</div>
+</div>
+<div role="article" class="function" id="searchservice.searchmoviespublisher(query:year:page:)">
+    <h3>
+        <code><a href="#searchservice.searchmoviespublisher(query:year:page:)">search​Movies​Publisher(query:​year:​page:​)</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">func</span> <span class="function">searchMoviesPublisher</span>(<span class="variable">query</span>: <span class="type">String</span>, <span class="variable">year</span>: <span class="type">Int</span>? = <span class="keyword">nil</span>,
+                               <span class="variable">page</span>: <span class="type">Int</span>? = <span class="keyword">nil</span>) -&gt; <span class="type">AnyPublisher</span>&lt;<span class="type">MoviePageableList</span>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;  </body></html></code></pre>
+</div>
+</div>
+<div role="article" class="function" id="searchservice.searchtvshowspublisher(query:firstairdateyear:page:)">
+    <h3>
+        <code><a href="#searchservice.searchtvshowspublisher(query:firstairdateyear:page:)">search​TVShows​Publisher(query:​first​Air​Date​Year:​page:​)</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">func</span> <span class="function">searchTVShowsPublisher</span>(<span class="variable">query</span>: <span class="type">String</span>, <span class="variable">firstAirDateYear</span>: <span class="type">Int</span>? = <span class="keyword">nil</span>,
+                                <span class="variable">page</span>: <span class="type">Int</span>? = <span class="keyword">nil</span>) -&gt; <span class="type">AnyPublisher</span>&lt;<span class="type">TVShowPageableList</span>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;  </body></html></code></pre>
+</div>
+</div>
+<div role="article" class="function" id="searchservice.searchpeoplepublisher(query:page:)">
+    <h3>
+        <code><a href="#searchservice.searchpeoplepublisher(query:page:)">search​People​Publisher(query:​page:​)</a></code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">func</span> <span class="function">searchPeoplePublisher</span>(<span class="variable">query</span>: <span class="type">String</span>, <span class="variable">page</span>: <span class="type">Int</span>? = <span class="keyword">nil</span>) -&gt; <span class="type">AnyPublisher</span>&lt;<span class="type">PersonPageableList</span>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;  </body></html></code></pre>
+</div>
+</div>
+    </section>
+
+
+    <section id="requirements">
+        <h2>Requirements</h2>
+
+        <div role="article" class="function" id="searchservice.searchall(query:page:completion:)">
+    <h3>
+        <code>search​All(query:​page:​completion:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">func</span> <span class="function">searchAll</span>(<span class="variable">query</span>: <span class="type">String</span>, <span class="variable">page</span>: <span class="type">Int</span>?,
+                   <span class="variable">completion</span>: <span class="attribute">@</span><span class="attribute">escaping</span> (<span class="keyword">_</span> <span class="variable">result</span>: <span class="type">Result</span>&lt;<span class="type">MediaPageableList</span>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;) -&gt; <span class="type">Void</span>) </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Fetches search results for movies, TV shows and people based on a query.</p>
+
+</div>
+<div class="discussion">
+    <p><a href="https://developers.themoviedb.org/3/search/multi-search">TMDb API - Search: Multi</a></p>
+
+<aside class="precondition" title="Precondition">
+    <p><code>page</code> can be between <code>1</code> and <code>1000</code>.</p>
+
+</aside>
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>query</th>
+    <td><code class="type">String</code></td>
+    <td><p>A text query to search for.</p>
+</td>
+</tr>
+<tr>
+    <th>page</th>
+    <td><code class="type">Int?</code></td>
+    <td><p>The page of results to return.</p>
+</td>
+</tr>
+<tr>
+    <th>completion</th>
+    <td><code class="type">@escaping (_ result:​ Result&lt;Media​Pageable​List, TMDbError&gt;) -&gt; Void</code></td>
+    <td><p>Completion handler.</p>
+</td>
+</tr>
+<tr>
+    <th>result</th>
+    <td></td>
+    <td><p>Movies, TV shows and people matching the query.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+</div>
+<div role="article" class="function" id="searchservice.searchmovies(query:year:page:completion:)">
+    <h3>
+        <code>search​Movies(query:​year:​page:​completion:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">func</span> <span class="function">searchMovies</span>(<span class="variable">query</span>: <span class="type">String</span>, <span class="variable">year</span>: <span class="type">Int</span>?, <span class="variable">page</span>: <span class="type">Int</span>?,
+                      <span class="variable">completion</span>: <span class="attribute">@</span><span class="attribute">escaping</span> (<span class="keyword">_</span> <span class="variable">result</span>: <span class="type">Result</span>&lt;<span class="type">MoviePageableList</span>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;) -&gt; <span class="type">Void</span>) </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Fetches search results for movies.</p>
+
+</div>
+<div class="discussion">
+    <p><a href="https://developers.themoviedb.org/3/search/search-movies">TMDb API - Search: Movies</a></p>
+
+<aside class="precondition" title="Precondition">
+    <p><code>page</code> can be between <code>1</code> and <code>1000</code>.</p>
+
+</aside>
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>query</th>
+    <td><code class="type">String</code></td>
+    <td><p>A text query to search for.</p>
+</td>
+</tr>
+<tr>
+    <th>year</th>
+    <td><code class="type">Int?</code></td>
+    <td><p>The year to filter results for.</p>
+</td>
+</tr>
+<tr>
+    <th>page</th>
+    <td><code class="type">Int?</code></td>
+    <td><p>The page of results to return.</p>
+</td>
+</tr>
+<tr>
+    <th>completion</th>
+    <td><code class="type">@escaping (_ result:​ Result&lt;Movie​Pageable​List, TMDbError&gt;) -&gt; Void</code></td>
+    <td><p>Completion handler.</p>
+</td>
+</tr>
+<tr>
+    <th>result</th>
+    <td></td>
+    <td><p>Movies matching the query.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+</div>
+<div role="article" class="function" id="searchservice.searchtvshows(query:firstairdateyear:page:completion:)">
+    <h3>
+        <code>search​TVShows(query:​first​Air​Date​Year:​page:​completion:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">func</span> <span class="function">searchTVShows</span>(<span class="variable">query</span>: <span class="type">String</span>, <span class="variable">firstAirDateYear</span>: <span class="type">Int</span>?, <span class="variable">page</span>: <span class="type">Int</span>?,
+                       <span class="variable">completion</span>: <span class="attribute">@</span><span class="attribute">escaping</span> (<span class="keyword">_</span> <span class="variable">result</span>: <span class="type">Result</span>&lt;<span class="type">TVShowPageableList</span>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;) -&gt; <span class="type">Void</span>) </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Fetches search results for TV shows.</p>
+
+</div>
+<div class="discussion">
+    <p><a href="https://developers.themoviedb.org/3/search/search-tv-shows">TMDb API - Search: TV Shows</a></p>
+
+<aside class="precondition" title="Precondition">
+    <p><code>page</code> can be between <code>1</code> and <code>1000</code>.</p>
+
+</aside>
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>query</th>
+    <td><code class="type">String</code></td>
+    <td><p>A text query to search for.</p>
+</td>
+</tr>
+<tr>
+    <th>first​Air​Date​Year</th>
+    <td><code class="type">Int?</code></td>
+    <td><p>The year of first air date to filter results for.</p>
+</td>
+</tr>
+<tr>
+    <th>page</th>
+    <td><code class="type">Int?</code></td>
+    <td><p>The page of results to return.</p>
+</td>
+</tr>
+<tr>
+    <th>completion</th>
+    <td><code class="type">@escaping (_ result:​ Result&lt;TVShow​Pageable​List, TMDbError&gt;) -&gt; Void</code></td>
+    <td><p>Completion handler.</p>
+</td>
+</tr>
+<tr>
+    <th>result</th>
+    <td></td>
+    <td><p>TV shows matching the query.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+</div>
+<div role="article" class="function" id="searchservice.searchpeople(query:page:completion:)">
+    <h3>
+        <code>search​People(query:​page:​completion:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="keyword">func</span> <span class="function">searchPeople</span>(<span class="variable">query</span>: <span class="type">String</span>, <span class="variable">page</span>: <span class="type">Int</span>?,
+                      <span class="variable">completion</span>: <span class="attribute">@</span><span class="attribute">escaping</span> (<span class="keyword">_</span> <span class="variable">result</span>: <span class="type">Result</span>&lt;<span class="type">PersonPageableList</span>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;) -&gt; <span class="type">Void</span>) </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Fetches search results for people.</p>
+
+</div>
+<div class="discussion">
+    <p><a href="https://developers.themoviedb.org/3/search/search-people">TMDb API - Search: People</a></p>
+
+<aside class="precondition" title="Precondition">
+    <p><code>page</code> can be between <code>1</code> and <code>1000</code>.</p>
+
+</aside>
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>query</th>
+    <td><code class="type">String</code></td>
+    <td><p>A text query to search for.</p>
+</td>
+</tr>
+<tr>
+    <th>page</th>
+    <td><code class="type">Int?</code></td>
+    <td><p>The page of results to return.</p>
+</td>
+</tr>
+<tr>
+    <th>completion</th>
+    <td><code class="type">@escaping (_ result:​ Result&lt;Person​Pageable​List, TMDbError&gt;) -&gt; Void</code></td>
+    <td><p>Completion handler.</p>
+</td>
+</tr>
+<tr>
+    <th>result</th>
+    <td></td>
+    <td><p>People matching the query.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+</div>
+<div role="article" class="function" id="searchservice.searchallpublisher(query:page:)">
+    <h3>
+        <code>search​All​Publisher(query:​page:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="attribute">@</span><span class="attribute">available</span>(<span class="keyword">macOS</span> <span class="number literal">10.15</span>, <span class="keyword">iOS</span> <span class="number literal">13.0</span>, <span class="keyword">tvOS</span> <span class="number literal">13.0</span>, <span class="keyword">watchOS</span> <span class="number literal">6.0</span>, *)
+    <span class="keyword">func</span> <span class="function">searchAllPublisher</span>(<span class="variable">query</span>: <span class="type">String</span>, <span class="variable">page</span>: <span class="type">Int</span>?) -&gt; <span class="type">AnyPublisher</span>&lt;<span class="type">MediaPageableList</span>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;</body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Publishes search results for movies, TV shows and people based on a query.</p>
+
+</div>
+<div class="discussion">
+    <p><a href="https://developers.themoviedb.org/3/search/multi-search">TMDb API - Search: Multi</a></p>
+
+<aside class="precondition" title="Precondition">
+    <p><code>page</code> can be between <code>1</code> and <code>1000</code>.</p>
+
+</aside>
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>query</th>
+    <td><code class="type">String</code></td>
+    <td><p>A text query to search for.</p>
+</td>
+</tr>
+<tr>
+    <th>page</th>
+    <td><code class="type">Int?</code></td>
+    <td><p>The page of results to return.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+  <h4>Returns</h4>
+  <p>A publisher with movies, TV shows and people matching the query.</p>
+
+</div>
+<div role="article" class="function" id="searchservice.searchmoviespublisher(query:year:page:)">
+    <h3>
+        <code>search​Movies​Publisher(query:​year:​page:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="attribute">@</span><span class="attribute">available</span>(<span class="keyword">macOS</span> <span class="number literal">10.15</span>, <span class="keyword">iOS</span> <span class="number literal">13.0</span>, <span class="keyword">tvOS</span> <span class="number literal">13.0</span>, <span class="keyword">watchOS</span> <span class="number literal">6.0</span>, *)
+    <span class="keyword">func</span> <span class="function">searchMoviesPublisher</span>(<span class="variable">query</span>: <span class="type">String</span>, <span class="variable">year</span>: <span class="type">Int</span>?, <span class="variable">page</span>: <span class="type">Int</span>?) -&gt; <span class="type">AnyPublisher</span>&lt;<span class="type">MoviePageableList</span>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;</body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Publishes search results for movies.</p>
+
+</div>
+<div class="discussion">
+    <p><a href="https://developers.themoviedb.org/3/search/search-movies">TMDb API - Search: Movies</a></p>
+
+<aside class="precondition" title="Precondition">
+    <p><code>page</code> can be between <code>1</code> and <code>1000</code>.</p>
+
+</aside>
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>query</th>
+    <td><code class="type">String</code></td>
+    <td><p>A text query to search for.</p>
+</td>
+</tr>
+<tr>
+    <th>year</th>
+    <td><code class="type">Int?</code></td>
+    <td><p>The year to filter results for.</p>
+</td>
+</tr>
+<tr>
+    <th>page</th>
+    <td><code class="type">Int?</code></td>
+    <td><p>The page of results to return.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+  <h4>Returns</h4>
+  <p>A publisher with movies matching the query.</p>
+
+</div>
+<div role="article" class="function" id="searchservice.searchtvshowspublisher(query:firstairdateyear:page:)">
+    <h3>
+        <code>search​TVShows​Publisher(query:​first​Air​Date​Year:​page:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="attribute">@</span><span class="attribute">available</span>(<span class="keyword">macOS</span> <span class="number literal">10.15</span>, <span class="keyword">iOS</span> <span class="number literal">13.0</span>, <span class="keyword">tvOS</span> <span class="number literal">13.0</span>, <span class="keyword">watchOS</span> <span class="number literal">6.0</span>, *)
+    <span class="keyword">func</span> <span class="function">searchTVShowsPublisher</span>(<span class="variable">query</span>: <span class="type">String</span>, <span class="variable">firstAirDateYear</span>: <span class="type">Int</span>?,
+                                <span class="variable">page</span>: <span class="type">Int</span>?) -&gt; <span class="type">AnyPublisher</span>&lt;<span class="type">TVShowPageableList</span>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;</body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Publishes search results for TV shows.</p>
+
+</div>
+<div class="discussion">
+    <p><a href="https://developers.themoviedb.org/3/search/search-tv-shows">TMDb API - Search: TV Shows</a></p>
+
+<aside class="precondition" title="Precondition">
+    <p><code>page</code> can be between <code>1</code> and <code>1000</code>.</p>
+
+</aside>
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>query</th>
+    <td><code class="type">String</code></td>
+    <td><p>A text query to search for.</p>
+</td>
+</tr>
+<tr>
+    <th>first​Air​Date​Year</th>
+    <td><code class="type">Int?</code></td>
+    <td><p>The year of first air date to filter results for.</p>
+</td>
+</tr>
+<tr>
+    <th>page</th>
+    <td><code class="type">Int?</code></td>
+    <td><p>The page of results to return.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+  <h4>Returns</h4>
+  <p>A publisher with TV shows matching the query.</p>
+
+</div>
+<div role="article" class="function" id="searchservice.searchpeoplepublisher(query:page:)">
+    <h3>
+        <code>search​People​Publisher(query:​page:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="attribute">@</span><span class="attribute">available</span>(<span class="keyword">macOS</span> <span class="number literal">10.15</span>, <span class="keyword">iOS</span> <span class="number literal">13.0</span>, <span class="keyword">tvOS</span> <span class="number literal">13.0</span>, <span class="keyword">watchOS</span> <span class="number literal">6.0</span>, *)
+    <span class="keyword">func</span> <span class="function">searchPeoplePublisher</span>(<span class="variable">query</span>: <span class="type">String</span>, <span class="variable">page</span>: <span class="type">Int</span>?) -&gt; <span class="type">AnyPublisher</span>&lt;<span class="type">PersonPageableList</span>, <a href="/TMDb/TMDbError"><span class="type">TMDbError</span></a>&gt;</body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Publishes search results for people.</p>
+
+</div>
+<div class="discussion">
+    <p><a href="https://developers.themoviedb.org/3/search/search-people">TMDb API - Search: People</a></p>
+
+<aside class="precondition" title="Precondition">
+    <p><code>page</code> can be between <code>1</code> and <code>1000</code>.</p>
+
+</aside>
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>query</th>
+    <td><code class="type">String</code></td>
+    <td><p>A text query to search for.</p>
+</td>
+</tr>
+<tr>
+    <th>page</th>
+    <td><code class="type">Int?</code></td>
+    <td><p>The page of results to return.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+  <h4>Returns</h4>
+  <p>A publisher with people matching the query.</p>
+
+</div>
+<div role="article" class="function" id="searchservice.searchall(query:page:)">
+    <h3>
+        <code>search​All(query:​page:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="attribute">@</span><span class="attribute">available</span>(<span class="keyword">macOS</span> <span class="number literal">12</span>, <span class="keyword">iOS</span> <span class="number literal">15.0</span>, <span class="keyword">tvOS</span> <span class="number literal">15.0</span>, <span class="keyword">watchOS</span> <span class="number literal">8.0</span>, *)
+    <span class="keyword">func</span> <span class="function">searchAll</span>(<span class="variable">query</span>: <span class="type">String</span>, <span class="variable">page</span>: <span class="type">Int</span>?) </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Returns search results for movies, TV shows and people based on a query.</p>
+
+</div>
+<div class="discussion">
+    <p><a href="https://developers.themoviedb.org/3/search/multi-search">TMDb API - Search: Multi</a></p>
+
+<aside class="precondition" title="Precondition">
+    <p><code>page</code> can be between <code>1</code> and <code>1000</code>.</p>
+
+</aside>
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>query</th>
+    <td><code class="type">String</code></td>
+    <td><p>A text query to search for.</p>
+</td>
+</tr>
+<tr>
+    <th>page</th>
+    <td><code class="type">Int?</code></td>
+    <td><p>The page of results to return.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+  <h4>Returns</h4>
+  <p>Movies, TV shows and people matching the query.</p>
+
+</div>
+<div role="article" class="function" id="searchservice.searchmovies(query:year:page:)">
+    <h3>
+        <code>search​Movies(query:​year:​page:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="attribute">@</span><span class="attribute">available</span>(<span class="keyword">macOS</span> <span class="number literal">12</span>, <span class="keyword">iOS</span> <span class="number literal">15.0</span>, <span class="keyword">tvOS</span> <span class="number literal">15.0</span>, <span class="keyword">watchOS</span> <span class="number literal">8.0</span>, *)
+    <span class="keyword">func</span> <span class="function">searchMovies</span>(<span class="variable">query</span>: <span class="type">String</span>, <span class="variable">year</span>: <span class="type">Int</span>?, <span class="variable">page</span>: <span class="type">Int</span>?) </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Returns search results for movies.</p>
+
+</div>
+<div class="discussion">
+    <p><a href="https://developers.themoviedb.org/3/search/search-movies">TMDb API - Search: Movies</a></p>
+
+<aside class="precondition" title="Precondition">
+    <p><code>page</code> can be between <code>1</code> and <code>1000</code>.</p>
+
+</aside>
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>query</th>
+    <td><code class="type">String</code></td>
+    <td><p>A text query to search for.</p>
+</td>
+</tr>
+<tr>
+    <th>year</th>
+    <td><code class="type">Int?</code></td>
+    <td><p>The year to filter results for.</p>
+</td>
+</tr>
+<tr>
+    <th>page</th>
+    <td><code class="type">Int?</code></td>
+    <td><p>The page of results to return.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+  <h4>Returns</h4>
+  <p>Movies matching the query.</p>
+
+</div>
+<div role="article" class="function" id="searchservice.searchtvshows(query:firstairdateyear:page:)">
+    <h3>
+        <code>search​TVShows(query:​first​Air​Date​Year:​page:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="attribute">@</span><span class="attribute">available</span>(<span class="keyword">macOS</span> <span class="number literal">12</span>, <span class="keyword">iOS</span> <span class="number literal">15.0</span>, <span class="keyword">tvOS</span> <span class="number literal">15.0</span>, <span class="keyword">watchOS</span> <span class="number literal">8.0</span>, *)
+    <span class="keyword">func</span> <span class="function">searchTVShows</span>(<span class="variable">query</span>: <span class="type">String</span>, <span class="variable">firstAirDateYear</span>: <span class="type">Int</span>?, <span class="variable">page</span>: <span class="type">Int</span>?) </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Returns search results for TV shows.</p>
+
+</div>
+<div class="discussion">
+    <p><a href="https://developers.themoviedb.org/3/search/search-tv-shows">TMDb API - Search: TV Shows</a></p>
+
+<aside class="precondition" title="Precondition">
+    <p><code>page</code> can be between <code>1</code> and <code>1000</code>.</p>
+
+</aside>
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>query</th>
+    <td><code class="type">String</code></td>
+    <td><p>A text query to search for.</p>
+</td>
+</tr>
+<tr>
+    <th>first​Air​Date​Year</th>
+    <td><code class="type">Int?</code></td>
+    <td><p>The year of first air date to filter results for.</p>
+</td>
+</tr>
+<tr>
+    <th>page</th>
+    <td><code class="type">Int?</code></td>
+    <td><p>The page of results to return.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+  <h4>Returns</h4>
+  <p>TV shows matching the query.</p>
+
+</div>
+<div role="article" class="function" id="searchservice.searchpeople(query:page:)">
+    <h3>
+        <code>search​People(query:​page:​)</code>
+    </h3>
+    <div class="declaration">
+<pre class="highlight"><code><html><body><span class="attribute">@</span><span class="attribute">available</span>(<span class="keyword">macOS</span> <span class="number literal">12</span>, <span class="keyword">iOS</span> <span class="number literal">15.0</span>, <span class="keyword">tvOS</span> <span class="number literal">15.0</span>, <span class="keyword">watchOS</span> <span class="number literal">8.0</span>, *)
+    <span class="keyword">func</span> <span class="function">searchPeople</span>(<span class="variable">query</span>: <span class="type">String</span>, <span class="variable">page</span>: <span class="type">Int</span>?) </body></html></code></pre>
+</div>
+<div class="summary" role="doc-abstract">
+    <p>Returns search results for people.</p>
+
+</div>
+<div class="discussion">
+    <p><a href="https://developers.themoviedb.org/3/search/search-people">TMDb API - Search: People</a></p>
+
+<aside class="precondition" title="Precondition">
+    <p><code>page</code> can be between <code>1</code> and <code>1000</code>.</p>
+
+</aside>
+</div>
+<h4>Parameters</h4>
+
+<table class="parameters">
+  <thead hidden>
+  <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <th>query</th>
+    <td><code class="type">String</code></td>
+    <td><p>A text query to search for.</p>
+</td>
+</tr>
+<tr>
+    <th>page</th>
+    <td><code class="type">Int?</code></td>
+    <td><p>The page of results to return.</p>
+</td>
+</tr>
+  </tbody>
+</table>
+  <h4>Returns</h4>
+  <p>People matching the query.</p>
+
+</div>
+    </section>
+        </article>
+    </main>
+
+    <footer>
+        <p>
+    Generated on <time datetime="2021-11-25T17:07:21+0000">November 25, 2021</time> using <a href="https://github.com/SwiftDocOrg/swift-doc">swift-doc</a> <span class="version">1.0.0-rc.1</span>.
+</p>
+    </footer>
+</body>
+</html>
