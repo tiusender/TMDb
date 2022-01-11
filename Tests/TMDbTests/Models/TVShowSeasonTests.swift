@@ -5,7 +5,7 @@ final class TVShowSeasonTests: XCTestCase {
 
     func testDecodeReturnsTVShowSeason() throws {
         let data = json.data(using: .utf8)!
-        let result = try JSONDecoder.theMovieDatabase.decode(TVShowSeason.self, from: data)
+        let result = try JSONDecoder.tmdb.decode(TVShowSeason.self, from: data)
 
         XCTAssertEqual(result, tvShowSeason)
     }

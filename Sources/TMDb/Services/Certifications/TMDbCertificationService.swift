@@ -1,52 +1,20 @@
+import APIClient
 import Foundation
-
-#if canImport(Combine)
-import Combine
-#endif
 
 final class TMDbCertificationService: CertificationService {
 
     private let apiClient: APIClient
 
-    init(apiClient: APIClient = TMDbAPIClient.shared) {
+    init(apiClient: APIClient = .prod) {
         self.apiClient = apiClient
     }
 
-    func fetchMovieCertifications(completion: @escaping (Result<[String: [Certification]], TMDbError>) -> Void) {
-        apiClient.get(endpoint: CertificationsEndpoint.movie, completion: completion)
-    }
-
-    func fetchTVShowCertifications(completion: @escaping (Result<[String: [Certification]], TMDbError>) -> Void) {
-        apiClient.get(endpoint: CertificationsEndpoint.tvShow, completion: completion)
-    }
-
-}
-
-#if canImport(Combine)
-extension TMDbCertificationService {
-
-    func movieCertificationsPublisher() -> AnyPublisher<[String: [Certification]], TMDbError> {
-        apiClient.get(endpoint: CertificationsEndpoint.movie)
-    }
-
-    func tvShowCertificationsPublisher() -> AnyPublisher<[String: [Certification]], TMDbError> {
-        apiClient.get(endpoint: CertificationsEndpoint.tvShow)
-    }
-
-}
-#endif
-
-#if swift(>=5.5) && !os(Linux)
-@available(macOS 12, iOS 15.0, tvOS 15.0, watchOS 8.0, *)
-extension TMDbCertificationService {
-
     func movieCertifications() async throws -> [String: [Certification]] {
-        try await apiClient.get(endpoint: CertificationsEndpoint.movie)
+        try await apiClient.value(for: CertificationsResource.movie.get).certifications
     }
 
     func tvShowCertifications() async throws -> [String: [Certification]] {
-        try await apiClient.get(endpoint: CertificationsEndpoint.tvShow)
+        try await apiClient.value(for: CertificationsResource.tvShow.get).certifications
     }
 
 }
-#endif

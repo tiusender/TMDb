@@ -5,7 +5,7 @@ final class PersonMovieCreditsTests: XCTestCase {
 
     func testDecodeReturnsPersonMovieCredits() throws {
         let data = json.data(using: .utf8)!
-        let result = try JSONDecoder.theMovieDatabase.decode(PersonMovieCredits.self, from: data)
+        let result = try JSONDecoder.tmdb.decode(PersonMovieCredits.self, from: data)
 
         XCTAssertEqual(result.id, personMovieCredits.id)
         XCTAssertEqual(result.cast, personMovieCredits.cast)

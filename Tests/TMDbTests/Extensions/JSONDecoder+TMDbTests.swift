@@ -25,7 +25,7 @@ final class JSONDecoderTMDbTests: XCTestCase {
         """
         let data = jsonString.data(using: .utf8)!
 
-        let result = try JSONDecoder.theMovieDatabase.decode(SomeThing.self, from: data)
+        let result = try JSONDecoder.tmdb.decode(SomeThing.self, from: data)
 
         XCTAssertEqual(result, expectedResult)
     }

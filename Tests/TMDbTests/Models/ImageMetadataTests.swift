@@ -9,7 +9,7 @@ final class ImageMetadataTests: XCTestCase {
 
     func testDecodeReturnsImageMetadata() throws {
         let data = json.data(using: .utf8)!
-        let result = try JSONDecoder.theMovieDatabase.decode(ImageMetadata.self, from: data)
+        let result = try JSONDecoder.tmdb.decode(ImageMetadata.self, from: data)
 
         XCTAssertEqual(result, imageMetadata)
     }

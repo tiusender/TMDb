@@ -17,7 +17,7 @@ final class MediaTests: XCTestCase {
 
     func testDecodeReturnsMedias() throws {
         let data = json.data(using: .utf8)!
-        let result = try JSONDecoder.theMovieDatabase.decode([Media].self, from: data)
+        let result = try JSONDecoder.tmdb.decode([Media].self, from: data)
 
         XCTAssertEqual(result, medias)
     }

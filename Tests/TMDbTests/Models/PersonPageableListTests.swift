@@ -5,7 +5,7 @@ final class PersonPageableListTests: XCTestCase {
 
     func testDecodeReturnsPersonPageableList() throws {
         let data = json.data(using: .utf8)!
-        let result = try JSONDecoder.theMovieDatabase.decode(PersonPageableList.self, from: data)
+        let result = try JSONDecoder.tmdb.decode(PersonPageableList.self, from: data)
 
         XCTAssertEqual(result.page, list.page)
         XCTAssertEqual(result.results, list.results)

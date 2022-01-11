@@ -5,7 +5,7 @@ final class ImagesConfigurationTests: XCTestCase {
 
     func testDecodeReturnsImagesConfiguration() throws {
         let data = json.data(using: .utf8)!
-        let result = try JSONDecoder.theMovieDatabase.decode(ImagesConfiguration.self, from: data)
+        let result = try JSONDecoder.tmdb.decode(ImagesConfiguration.self, from: data)
 
         XCTAssertEqual(result, imagesConfiguration)
     }

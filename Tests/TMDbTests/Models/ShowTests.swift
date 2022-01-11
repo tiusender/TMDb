@@ -31,14 +31,14 @@ final class ShowTests: XCTestCase {
 
     func testDecodeReturnsMovie() throws {
         let data = movieJSON.data(using: .utf8)!
-        let result = try JSONDecoder.theMovieDatabase.decode(Show.self, from: data)
+        let result = try JSONDecoder.tmdb.decode(Show.self, from: data)
 
         XCTAssertEqual(result, movieShow)
     }
 
     func testDecodeReturnsTVShow() throws {
         let data = tvShowJSON.data(using: .utf8)!
-        let result = try JSONDecoder.theMovieDatabase.decode(Show.self, from: data)
+        let result = try JSONDecoder.tmdb.decode(Show.self, from: data)
 
         XCTAssertEqual(result, tvShowShow)
     }

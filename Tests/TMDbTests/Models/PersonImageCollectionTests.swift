@@ -5,7 +5,7 @@ final class PersonImageCollectionTests: XCTestCase {
 
     func testDecodeReturnsPersonImageCollection() throws {
         let data = json.data(using: .utf8)!
-        let result = try JSONDecoder.theMovieDatabase.decode(PersonImageCollection.self, from: data)
+        let result = try JSONDecoder.tmdb.decode(PersonImageCollection.self, from: data)
 
         XCTAssertEqual(result.id, personImageCollection.id)
         XCTAssertEqual(result.profiles, personImageCollection.profiles)

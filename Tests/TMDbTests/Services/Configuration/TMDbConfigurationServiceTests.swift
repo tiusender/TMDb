@@ -1,36 +1,32 @@
+import Mocker
 @testable import TMDb
 import XCTest
 
 final class TMDbConfigurationServiceTests: XCTestCase {
 
     var service: TMDbConfigurationService!
-    var apiClient: MockAPIClient!
 
     override func setUp() {
         super.setUp()
-        apiClient = MockAPIClient()
-        service = TMDbConfigurationService(apiClient: apiClient)
+        service = TMDbConfigurationService(apiClient: .mock)
     }
 
     override func tearDown() {
-        apiClient = nil
         service = nil
         super.tearDown()
     }
 
-    func testFetchAPIConfigurationReturnsAPIConfiguration() {
+    func testAPIConfigurationReturnsAPIConfiguration() async throws {
+        let url = URL(string: "https://tmdb.com/configuration")!
+        let data = try! Data(fromResource: "configuration", withExtension: "json")
+        Mock(url: url, dataType: .json, statusCode: 200, data: [
+            .get: data
+        ]).register()
         let expectedResult = APIConfiguration.mock
-        apiClient.result = .success(expectedResult)
 
-        let expectation = XCTestExpectation(description: "await")
-        service.fetchAPIConfiguration { result in
-            XCTAssertEqual(try? result.get(), expectedResult)
-            expectation.fulfill()
-        }
+        let result = try await service.apiConfiguration()
 
-        wait(for: [expectation], timeout: 1)
-
-        XCTAssertEqual(apiClient.lastPath, ConfigurationEndpoint.api.url)
+        XCTAssertEqual(result, expectedResult)
     }
 
 }

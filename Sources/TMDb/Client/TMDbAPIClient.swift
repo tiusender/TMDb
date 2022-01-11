@@ -8,7 +8,7 @@ import Combine
 import FoundationNetworking
 #endif
 
-final class TMDbAPIClient: APIClient {
+final class TMDbAPIClient: APIClientOld {
 
     private let urlSession: URLSession
     private let jsonDecoder: JSONDecoder
@@ -21,7 +21,7 @@ final class TMDbAPIClient: APIClient {
         shared.setAPIKey(apiKey)
     }
 
-    init(urlSession: URLSession = URLSession(configuration: .default), jsonDecoder: JSONDecoder = .theMovieDatabase) {
+    init(urlSession: URLSession = URLSession(configuration: .default), jsonDecoder: JSONDecoder = .tmdb) {
         self.urlSession = urlSession
         self.jsonDecoder = jsonDecoder
     }

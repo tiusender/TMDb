@@ -5,7 +5,7 @@ final class MediaPageableListDTOTests: XCTestCase {
 
     func testDecodeReturnsMediaPageableList() throws {
         let data = json.data(using: .utf8)!
-        let result = try JSONDecoder.theMovieDatabase.decode(MediaPageableList.self, from: data)
+        let result = try JSONDecoder.tmdb.decode(MediaPageableList.self, from: data)
 
         XCTAssertEqual(result.page, list.page)
         XCTAssertEqual(result.results, list.results)

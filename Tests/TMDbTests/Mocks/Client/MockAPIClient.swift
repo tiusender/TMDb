@@ -5,7 +5,7 @@ import XCTest
 import Combine
 #endif
 
-class MockAPIClient: APIClient {
+class MockAPIClient: APIClientOld {
 
     static var apiKey: String?
 

@@ -1,51 +1,45 @@
+import APIClient
+import Mocker
 @testable import TMDb
 import XCTest
 
 final class TMDbCertificationServiceTests: XCTestCase {
 
     var service: TMDbCertificationService!
-    var apiClient: MockAPIClient!
 
     override func setUp() {
         super.setUp()
-        apiClient = MockAPIClient()
-        service = TMDbCertificationService(apiClient: apiClient)
+        service = TMDbCertificationService(apiClient: .mock)
     }
 
     override func tearDown() {
-        apiClient = nil
         service = nil
         super.tearDown()
     }
 
-    func testFetchMovieCertificationsReturnsMovieCertifications() {
+    func testMovieCertificationsReturnsMovieCertifications() async throws {
+        let url = URL(string: "https://tmdb.com/certification/movie/list")!
+        let data = try! Data(fromResource: "certifications", withExtension: "json")
+        Mock(url: url, dataType: .json, statusCode: 200, data: [
+            .get: data
+        ]).register()
         let expectedResult = Certification.mocks
-        apiClient.result = .success(expectedResult)
 
-        let expectation = XCTestExpectation(description: "await")
-        service.fetchMovieCertifications { result in
-            XCTAssertEqual(try? result.get(), expectedResult)
-            expectation.fulfill()
-        }
+        let result = try await service.movieCertifications()
 
-        wait(for: [expectation], timeout: 1)
-
-        XCTAssertEqual(apiClient.lastPath, CertificationsEndpoint.movie.url)
+        XCTAssertEqual(result, expectedResult)
     }
 
-    func testFetchTVShowCertificationsReturnsTVShowCertifications() {
+    func testTVShowCertificationsReturnsTVShowCertifications() async throws {
+        let url = URL(string: "https://tmdb.com/certification/tv/list")!
+        Mock(url: url, dataType: .json, statusCode: 200, data: [
+            .get: try! .init(fromResource: "certifications", withExtension: "json")
+        ]).register()
         let expectedResult = Certification.mocks
-        apiClient.result = .success(expectedResult)
 
-        let expectation = XCTestExpectation(description: "await")
-        service.fetchTVShowCertifications { result in
-            XCTAssertEqual(try? result.get(), expectedResult)
-            expectation.fulfill()
-        }
+        let result = try await service.tvShowCertifications()
 
-        wait(for: [expectation], timeout: 1)
-
-        XCTAssertEqual(apiClient.lastPath, CertificationsEndpoint.tvShow.url)
+        XCTAssertEqual(result, expectedResult)
     }
 
 }

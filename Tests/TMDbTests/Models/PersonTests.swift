@@ -18,7 +18,7 @@ final class PersonTests: XCTestCase {
 
     func testDecodeReturnsPerson() throws {
         let data = json.data(using: .utf8)!
-        let result = try JSONDecoder.theMovieDatabase.decode(Person.self, from: data)
+        let result = try JSONDecoder.tmdb.decode(Person.self, from: data)
 
         XCTAssertEqual(result, person)
     }

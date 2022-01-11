@@ -44,7 +44,7 @@ public final class TMDbAPI: MovieTVShowAPI {
     }
 
     public static func setAPIKey(_ apiKey: String) {
-        TMDbAPIClient.setAPIKey(apiKey)
+        TMDbAPIClientDelegate.setAPIKey(apiKey)
     }
 
 }

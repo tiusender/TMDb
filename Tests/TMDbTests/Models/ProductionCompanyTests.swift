@@ -5,7 +5,7 @@ final class ProductionCompanyTests: XCTestCase {
 
     func testDecodeReturnsProductionCompany() throws {
         let data = json.data(using: .utf8)!
-        let result = try JSONDecoder.theMovieDatabase.decode(ProductionCompany.self, from: data)
+        let result = try JSONDecoder.tmdb.decode(ProductionCompany.self, from: data)
 
         XCTAssertEqual(result, productionCompany)
     }

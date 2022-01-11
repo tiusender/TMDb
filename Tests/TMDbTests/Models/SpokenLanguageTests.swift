@@ -9,7 +9,7 @@ final class SpokenLanguageTests: XCTestCase {
 
     func testDecodeReturnsSpokenLanguage() throws {
         let data = json.data(using: .utf8)!
-        let result = try JSONDecoder.theMovieDatabase.decode(SpokenLanguage.self, from: data)
+        let result = try JSONDecoder.tmdb.decode(SpokenLanguage.self, from: data)
 
         XCTAssertEqual(result, spokenLanguage)
     }

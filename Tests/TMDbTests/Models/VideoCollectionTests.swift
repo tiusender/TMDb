@@ -5,7 +5,7 @@ final class VideoCollectionTests: XCTestCase {
 
     func testDecodeReturnsVideoCollection() throws {
         let data = json.data(using: .utf8)!
-        let result = try JSONDecoder.theMovieDatabase.decode(VideoCollection.self, from: data)
+        let result = try JSONDecoder.tmdb.decode(VideoCollection.self, from: data)
 
         XCTAssertEqual(result, videoCollection)
     }

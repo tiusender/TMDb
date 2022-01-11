@@ -5,7 +5,7 @@ final class ReviewTests: XCTestCase {
 
     func testDecodeReturnsReview() throws {
         let data = json.data(using: .utf8)!
-        let result = try JSONDecoder.theMovieDatabase.decode(Review.self, from: data)
+        let result = try JSONDecoder.tmdb.decode(Review.self, from: data)
 
         XCTAssertEqual(result, review)
     }

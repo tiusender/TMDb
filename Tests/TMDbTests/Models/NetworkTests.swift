@@ -5,7 +5,7 @@ final class NetworkTests: XCTestCase {
 
     func testDecodeReturnsNetwork() throws {
         let data = json.data(using: .utf8)!
-        let result = try JSONDecoder.theMovieDatabase.decode(Network.self, from: data)
+        let result = try JSONDecoder.tmdb.decode(Network.self, from: data)
 
         XCTAssertEqual(result, network)
     }

@@ -1,3 +1,4 @@
+import APIClient
 import Foundation
 
 enum DiscoverEndpoint {
@@ -26,6 +27,34 @@ extension DiscoverEndpoint: Endpoint {
                 .appendingSortBy(sortedBy)
                 .appendingPage(page)
         }
+    }
+
+}
+
+struct DiscoverResource {
+
+    static func movies(sortedBy: MovieSort? = nil, people: [Person.ID]? = nil,
+                       page: Int? = nil) -> MoviesDiscoverResource {
+        MoviesDiscoverResource(path: "/discover/movie", sortedBy: sortedBy, people: people, page: page)
+    }
+
+}
+
+extension DiscoverResource {
+
+    struct MoviesDiscoverResource {
+        let path: String
+        let sortedBy: MovieSort?
+        let people: [Person.ID]?
+        let page: Int?
+
+        var get: Request<MoviePageableList> {
+            .get(path, query: [
+                "sort_by": sortedBy,
+                "with_people": people?.map(String.init).joined(separator: ",")
+            ])
+        }
+
     }
 
 }

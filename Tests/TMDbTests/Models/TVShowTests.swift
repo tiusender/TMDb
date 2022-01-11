@@ -24,7 +24,7 @@ final class TVShowTests: XCTestCase {
 
     func testDecodeReturnsTVShow() throws {
         let data = json.data(using: .utf8)!
-        let result = try JSONDecoder.theMovieDatabase.decode(TVShow.self, from: data)
+        let result = try JSONDecoder.tmdb.decode(TVShow.self, from: data)
 
         XCTAssertEqual(result, tvShow)
     }
